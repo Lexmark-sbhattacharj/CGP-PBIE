@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lexmark Reporting</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_include_tag '/assets/lodash.js', nonce: true %>
+    <%= javascript_include_tag 'application', nonce: true %>
+    <%= javascript_include_tag '/assets/powerbi.js', nonce: true%>
+    
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= favicon_link_tag "/images/favicon-16x16.png" %>
+
+    <%= yield :vue_js %>
+    
+  </head>
+
+  <body>
+    <div id="reports">
+
+    <nav class="navbar has-shadow">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="/images/logo_rgb_reversed.svg" width="200px">
+        </a>
+      </div>
+
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <div>Reporting</div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+      
+      <%= yield :navbar %>
+
+      <div class="navbar-item has-dropdown" v-bind:class="{ 'is-active': showProfileDropDown }">
+          <div class="navbar-link" v-on:click="showProfileDropDown = !showProfileDropDown">
+            <%= @current_user.email %>
+          </div>
+          <div class="navbar-dropdown is-right is-active">
+            <a href="/auth/logout" class="navbar-item">
+              <div>
+                <span class="icon is-small">
+                  <i class="fa fa-sign-out"></i>
+                </span>
+                Sign Out
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+      <%= render '/contactus/modal'%>      
+      <%= yield %>
+
+      <footer class="footer">
+         <div class="content has-text-right">
+           <a class="button is-primary is-pulled-right" v-on:click="showContactUs = true">
+              Contact Us
+           </a>
+         </div>
+        <div class="content has-text-centered">
+          <p>
+            &#169; 2021 Lexmark. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

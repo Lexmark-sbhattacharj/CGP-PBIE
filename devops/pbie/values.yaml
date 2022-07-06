@@ -1,0 +1,104 @@
+# Default values for pbie.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: onelexcloudregistry.azurecr.io/platform-apps/dev2/pbie/pbie
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: latest
+
+configmaps:
+  - vault
+  - "{{ .Values.pipeline.infraConfigMap }}"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+namespace: pbie
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 3000
+
+ingress:
+  enabled: true
+  annotations:
+    appgw.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/acme-challenge-type: dns01
+    cert-manager.io/cluster-issuer: "{{ .Values.pipeline.clusterIssuer }}"
+    kubernetes.io/ingress.class: azure/application-gateway
+    appgw.ingress.kubernetes.io/backend-hostname: "{{ index .Values.pipeline.hostNames 0 }}"
+    appgw.ingress.kubernetes.io/backend-protocol: https
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  hosts:
+  - host: "{{ index .Values.pipeline.hostNames 0 }}"
+    paths:
+      - path: /
+        pathType: ImplementationSpecific
+  tls:
+  - secretName: pbie
+    hosts:
+      - "{{ index .Values.pipeline.hostNames 0 }}"
+    
+
+resources:
+  requests:
+    memory: 500M
+    cpu: 0.5
+  limits:
+    memory: 1000M
+    cpu: 1
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+pipeline:
+  clusterIssuer: ""
+  hostNames: []
+  infraConfigMap: ""

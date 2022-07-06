@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lexmark Reporting</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_include_tag '/assets/lodash.js', nonce: true %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag '/assets/powerbi.js', nonce: true %>
+    
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+
+    <%= yield :vue_js %>
+    
+  </head>
+
+  <body>
+    <div id="reports">
+
+        <nav class="navbar has-shadow">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                <img src="/images/logo_rgb_reversed.svg" width="200px">
+                </a>
+            </div>
+
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <div class="navbar-item">
+                        <div>Reporting</div>
+                    </div>
+                </div>
+
+                <div class="navbar-end">
+                </div>
+            </div>
+        </nav>
+
+
+        <div id="login-container">
+            <div id="login">
+                <h1>Login</h1>
+                <div style="padding:20px;">
+                    <%= form_tag '/auth/route', method: :post do %>
+                        <div style="margin-bottom: 20px">
+                            <label>Email Address</label>
+                            <input type="text" class="input" autofocus autocomplete="off" name="username">
+                        </div>
+
+                        <% flash.each do |type, msg| %>
+                            <div style="margin-top:-10px;margin-bottom:10px;color:red">
+                              <%= msg %>
+                            </div>
+                          <% end %>
+
+                        <input type="submit" class="is-primary button" value="Login"/>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <div class="content has-text-centered">
+            <p>
+                &#169; 2021 Lexmark. All rights reserved.
+            </p>
+            </div>
+        </footer>
+    </div>
+  </body>
+</html>

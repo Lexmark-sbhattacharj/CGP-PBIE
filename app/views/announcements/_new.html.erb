@@ -1,0 +1,56 @@
+<section class="section">
+<div v-bind:class="{modal: true, 'is-active': showAnnouncement }">
+<div class="modal-background"></div>
+<div class="modal-card">
+  <header class="modal-card-head">
+    <p class="modal-card-title">Create Announcement</p>
+    <button class="delete" aria-label="close" v-on:click="showAnnouncement=false"></button>
+  </header>
+  <section class="modal-card-body">
+  <div class="field">
+      <div class="control">
+        <label class="label">Details</label>
+        <textarea class="textarea" v-model="announcements.title" placeholder=""></textarea>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Start Date</label>
+      <div class="control">
+        <span v-if="showAnnouncement"></span>
+        <input class="input"  v-model="announcements.start_date" type="datetime-local" placeholder="Enter Start Time"/>
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">End Date</label>
+      <div class="control">
+        <span v-if="showAnnouncement"></span>
+        <input class="input"  v-model="announcements.end_date" type="datetime-local" placeholder="Enter End Time"/>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="modal-card-foot">
+    <button class="button is-success" v-on:click="announcement(); showAnnouncement = false; showAnnouncementConfirmation = true; announcements.title = ''; announcements.start_date = '', announcements.end_date = ''">Submit</button>
+  </footer>
+</div>
+</div>
+</section>
+<section class="section">
+<div v-bind:class="{modal: true, 'is-active': showAnnouncementConfirmation }">
+<div class="modal-background"></div>
+<div class="modal-card">
+  <header class="modal-card-head">
+    <p class="modal-card-title">Create Announcement</p>
+    <button class="delete" aria-label="close" v-on:click="showAnnouncementConfirmation=false"></button>
+  </header>
+  <section class="modal-card-body">
+  <div class="field">
+      <label class="label">Announcement created successfully</label>
+    </div>
+  </section>
+
+</div>
+</div>
+</section>

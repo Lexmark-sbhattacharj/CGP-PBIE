@@ -1,0 +1,283 @@
+<% content_for :vue_js do %>
+  <%= javascript_pack_tag 'people_vue' %>
+<% end %>
+    
+<flash-message class="flash-ah-ah"></flash-message>
+
+<section class="section">
+  <div class="columns is-gapless">
+    <div class="column is-4-tablet is-3-desktop is-2-widescreen report-list" style="background:white;">
+
+      <div class="back-to-reports" v-on:click="backToReports()" style="top:0px;position:sticky;background:white;z-index:1;padding:20px 20px;border-bottom:1px solid #e0e0e0">
+        <i class="fa fa-angle-left"></i> Back to Reports
+      </div>
+
+      <div class="people" style="top:65px;position:sticky;padding:20px;border-bottom:1px solid #e0e0e0;background:white">
+        <div v-if="!showFilterUsers && filteredUsers.length > 1" style="float:right">
+          <span>
+            <span class="icon is-small">
+              <i class="fa fa-filter" v-on:click="showFilterUsers=!showFilterUsers;focusUsersFilter()"></i>
+            </span>
+          </span>
+          
+        </div>
+
+        <h1 v-if="!showFilterUsers" class="title is-6" style="margin-bottom:5px;padding-top:5px;">Users</h1>
+     
+        <div v-show="showFilterUsers">
+          <div style="float:right">
+            <span class="icon is-small">
+              <i class="fa fa-times" v-on:click="showFilterUsers=false;search=''"></i>
+            </span>
+          </div>
+          <input
+            ref="filterUsers"
+            name="name"
+            placeholder="Filter Users"
+            v-model="search"
+            autocomplete="off"
+            style="border:0px; height:28px;font-size:16px"
+            type="text"
+            value
+            class="ng-pristine ng-valid ng-touched"
+          />
+        </div>
+      </div>
+      
+
+      <nav class="menu">
+        <ul class="menu-list">
+          <li v-if="usersLoading"><i class="fa fa-spinner fa-spin"></i></li>
+          <li v-bind:class="{ active: user == selectedUser }" v-for="user in filteredUsers" v-on:click="loadUser(user);showUserMenu=false">
+            <div class="user-name admin">
+              {{user.email}} 
+            </div>        
+          </li>
+        </ul> 
+      </nav>
+    </div>
+    
+    <div class="column">
+      <div style="padding: 20px;">
+      <h3 class="title" v-if="selectedUser" style="margin-bottom:10px;">
+
+        <div class="tabs is-toggle is-centered">
+          <ul>
+            <li class=""><a href="/admin">Workspaces</a></li>
+            <li class="is-active"><a style="border-color:#6d6e71!important; background-color:#6d6e71!important">People</a></li>
+            <li><a v-on:click="showAnnouncementDetails = true">Announcement</a></li>
+          </ul>
+        </div>
+        
+        {{selectedUser.email}} 
+
+        <% if @current_user.is_admin? %>
+          <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button is-text" aria-haspopup="true" aria-controls="dropdown-menu3" v-on:click="showUserMenu=!showUserMenu">
+                <i class="fa fa-ellipsis-h"></i>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu3" role="menu" v-bind:class="{ 'is-active': showUserMenu }">
+              <div class="dropdown-content">
+                <a href="#" v-on:click="confirmB2CStatus=true" v-show="user && user.email && user.onboarded == false && !user.email.includes('lexmark.com')"  class="dropdown-item">
+                  Confirm B2C Status
+                </a>
+                <a href="#" v-on:click="editUser=true;errors=[];showUserMenu=false" class="dropdown-item">
+                  Edit Roles
+                </a>
+                <a href="#" v-show="user.is_admin == false" v-on:click="deleteUser=true;errors=[];showUserMenu=false" class="dropdown-item">
+                  Delete User
+                </a>
+              </div>
+            </div>
+          </div>
+      <% else %>
+        <div style="margin-bottom:20px"></div>
+      <% end %>
+      </h3>
+    
+      
+ 
+      <table class="table is-hoverable is-fullwidth" style="width:100%" v-if="selectedUser">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Roles</th>
+          <th>Onboarded</th>
+          <th>Created At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="user-username" v-if="user.name">{{user.name}}</td>
+          <td class="user-username" v-if="!user.name"><b>Not Signed In Yet</b></td>
+          <td class="">{{user.roles}}</td>
+          <td class="">{{user.onboarded}}</td>
+          <td class="">{{user.created_at}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table width="100%">
+    <tr>
+    <td valign="top" width="50%" style="padding-right:20px">
+
+    <h3 class="userdata-heading">Workspaces</h3>
+    <div class="table-container" style="height:50vh;overflow:auto">
+      <table class="table is-hoverable is-fullwidth" style="width:100%;" v-if="selectedUser">
+        <tbody>
+          <tr v-if="workspaces && workspaces.length == 0"><td>No Workspaces</td></tr>
+          <tr v-if="workspaces && workspaces.length > 0" v-for="workspace in workspaces">
+            <td>
+              <i class="fa fa-trash" style="float:right" v-show="user.is_admin == false" v-on:click.stop="selectedWorkspace=workspace;removeWorkspaceAccess = true;"></i>
+              {{workspace.name}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    </td>
+    <td valign=top width="50%" style="padding-right:20px">
+
+    <h3 class="userdata-heading">Usage Metrics</h3>
+    <div class="table-container" style="height:50vh;overflow:auto">
+      <table class="table is-hoverable is-fullwidth" style="width:100%;" v-if="selectedUser">
+        <tbody>
+          <tr v-if="usage_metrics && usage_metrics.length == 0"><td>No Usage Metrics</td></tr>
+          <tr v-if="usage_metrics && usage_metrics.length > 0" v-for="metric in usage_metrics">
+            <td>
+            
+            <ul>
+            <li></li>
+            <li>
+             <div class="activity-header">{{metric.date_on}}</div>
+             <table class="table">
+              <tr>
+                <th width="200px">Report</th>
+                <th>Workspace</th>
+                <th width="125px;">View Count</th>
+              </tr>
+              <tr v-for="(report_view, report_id) in metric.report_views">
+                <td>{{report_view.report_name}}</td>
+                <td>{{report_view.workspace_name}}</td> 
+                <td>{{report_view.count}}</td>
+              </tr>
+             </table>
+            </li>
+          </ul>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    </td>
+    </table>
+
+      
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- MODAL: EDIT USER -->
+<div v-bind:class="{modal: true, 'is-active': editUser }">
+  <div class="modal-background"></div>
+  
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title" v-if="editUser">Edit Roles</p>
+      <button class="delete" aria-label="close" v-on:click="editUser=false;addUser=false"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="field">
+        <label class="label">Email address</label>
+        <div class="control">
+          <span v-if="editUser">{{user.email}}</span>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Roles</label>
+        <div class="control">
+          <textarea class="textarea" v-model="user.roles" placeholder="Role 1, Role 2, Role 3"></textarea>
+        </div>
+      </div>
+    </section>
+    
+    <footer class="modal-card-foot">
+      <button class="button is-success" v-if="editUser" v-on:click="updateUser()">Save</button>
+      <button class="button is-success" v-if="addUser" v-on:click="createUser()">Create</button>
+      <button class="button" v-on:click="editUser=false;addUser=false">Cancel</button>
+    </footer>
+  </div>
+  
+</div>
+
+
+
+<!-- MODAL: REMOVE ACCESS -->
+<div v-bind:class="{modal: true, 'is-active': removeWorkspaceAccess}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Remove Access</p>
+      <button class="delete" aria-label="close" v-on:click="removeWorkspaceAccess=false"></button>
+    </header>
+    <section class="modal-card-body">
+      Are you sure you want to remove <strong>{{selectedUser.email}}</strong> from  {{selectedWorkspace.name}}?
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-danger" v-on:click="removeWorkspaceAccessForUser()">Remove</button>
+      <button class="button" v-on:click="removeWorkspaceAccess=false">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+
+<!-- MODAL: DELETE User -->
+<div v-if="selectedUser" v-bind:class="{modal: true, 'is-active': deleteUser}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Delete User</p>
+      <button class="delete" aria-label="close" v-on:click="deleteUser=false"></button>
+    </header>
+    <section class="modal-card-body">
+      Are you sure you want to delete
+      <strong>{{selectedUser.email}}</strong>?
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-danger" v-on:click="removeUser()">Delete</button>
+      <button class="button" v-on:click="deleteUser=false">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+
+<!-- MODAL: Show B2C Status -->
+<div v-if="selectedUser" v-bind:class="{modal: true, 'is-active': confirmB2CStatus}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Confirm B2C Status</p>
+      <button class="delete" aria-label="close" v-on:click="confirmB2CStatus=false"></button>
+    </header>
+    <section class="modal-card-body">
+      <strong>Are you sure you want to confirm status</strong>?
+      <p style="padding-top:5px">If <strong>{{user.email}}</strong> does not have an account in B2C, one will be created.</p>
+      
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-danger" v-on:click="confirmB2CStatusAction()">Confirm Status</button>
+      <button class="button" v-on:click="confirmB2CStatus=false;showUserMenu=false">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<%= render '/announcements/new'%>
+<%= render '/announcements/index'%>

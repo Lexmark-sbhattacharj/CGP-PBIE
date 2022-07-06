@@ -1,0 +1,245 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://login.windows.net/common/oauth2/token/
+    body:
+      encoding: UTF-8
+      string: client_id=08d11f0c-383b-4bfa-a5a5-f5b47abeb642&grant_type=password&username=powerbi%40lexmark.com&password=Rabbit1010%21&scope=openid&resource=https%3A%2F%2Fanalysis.windows.net%2Fpowerbi%2Fapi
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.6.0 x86_64) ruby/2.6.3p62
+      Content-Length:
+      - '193'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - login.windows.net
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '4002'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      P3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      X-Ms-Request-Id:
+      - 525e03fc-2cbb-4cd6-b4f4-2030682d3900
+      X-Ms-Ests-Server:
+      - 2.1.11829.4 - SCUS ProdSlices
+      Set-Cookie:
+      - fpc=AnVc6ptjG6xHlcNrFX4-VL9bBFe4AQAAAKf7XtgOAAAA; expires=Sun, 18-Jul-2021
+        20:40:08 GMT; path=/; secure; HttpOnly; SameSite=None
+      - stsservicecookie=estsfd; path=/; secure; samesite=none; httponly
+      - x-ms-gateway-slice=estsfd; path=/; secure; samesite=none; httponly
+      Date:
+      - Fri, 18 Jun 2021 20:40:07 GMT
+    body:
+      encoding: UTF-8
+      string: '{"token_type":"Bearer","scope":"Dashboard.Read.All Dataset.Read.All
+        Group.Read Report.Read.All","expires_in":"3599","ext_expires_in":"3599","expires_on":"1624052407","not_before":"1624048507","resource":"https://analysis.windows.net/powerbi/api","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlLyIsImlhdCI6MTYyNDA0ODUwNywibmJmIjoxNjI0MDQ4NTA3LCJleHAiOjE2MjQwNTI0MDcsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJFMlpnWUJBem50L3FjYlBsb1JyWDJUZjUyWXIvcXdRWXR5VSsvR1I1V08xNDVMT2wvZ2NCIiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6IjA4ZDExZjBjLTM4M2ItNGJmYS1hNWE1LWY1YjQ3YWJlYjY0MiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiU2VydmljZSBBY2NvdW50IiwiZ2l2ZW5fbmFtZSI6IlBvd2VyQkkiLCJpcGFkZHIiOiIxMDcuMTAuMTc2Ljg1IiwibmFtZSI6IlBvd2VyQkkgU2VydmljZSBBY2NvdW50Iiwib2lkIjoiOGIxYjhmN2ItNTg0OC00NmFjLTg5ZWUtNDI2MjVjMmFlYzJjIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTMyNjYzMzY0NDgtMzQyMTY3NjI0MC0xMjUxODQ5OTExLTE5OTMzNiIsInB1aWQiOiIxMDAzQkZGREE4RTUwNEUxIiwicmgiOiIwLkFSc0FaWkJ3RW14dXlVR2VUZnNLUTJscHpnd2YwUWc3T1BwTHBhWDF0SHEtdGtJYkFBSS4iLCJzY3AiOiJEYXNoYm9hcmQuUmVhZC5BbGwgRGF0YXNldC5SZWFkLkFsbCBHcm91cC5SZWFkIFJlcG9ydC5SZWFkLkFsbCIsInN1YiI6InBETUlWU0VxYnNfemVJQVdQME5FVGZuZVhhZy15NkF5NzhIQWRtc3MwdmMiLCJ0aWQiOiIxMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UiLCJ1bmlxdWVfbmFtZSI6IlBPV0VSQklAbGV4bWFyay5jb20iLCJ1cG4iOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidXRpIjoiX0FOZVVyc3Mxa3kwOUNBd2FDMDVBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il19.cjDh81vq1Hr6PxCdRcmy_X3BkLpCEDpDL26CKftaQxNV1NScm29XQpey-LeAJRTVsrp20Xl-ZyqExajoLWGtWt_5mWYUM3yV66fpXEnRhb3iEOMI9WT5b5u50y12WOb2_EqtqCYPmUwhISzb_bftwcMp5Ut-hAXi6eoADZGRbMwE0QJoPtSapnoOD4F2rDA_v2txeYA0G6gsEUMLCI41t2JB8gBVenY3zw2O4Veov-5M4gYh0WNkk8LnDWHg8Kn456YIYdV6MGrcspYiJpwpTQ1NjvquxuLgdH6lwcYXzZmErATUmIdYE6p7ttPcSCbxYPNOAajTqPPq9OA_KLO1hg","refresh_token":"0.ARsAZZBwEmxuyUGeTfsKQ2lpzgwf0Qg7OPpLpaX1tHq-tkIbAAI.AgABAAAAAAD--DLA3VO7QrddgJg7WevrAgDs_wQA9P-gIxdSj2Hr78V20wVILY7jz_ibjSXNyWDURHcoCXu_19tBIQFK6k7HfQHzDfMqcs29IFjqUmPwMk4dsX9-W-56b-qc2SdciTsEiD4P9fIGvD_i7MiJixVRGaHfVVS20VtWqgxv7w1cU1-7EPsn_ICA0uo7osaj5qej3CisdDTPjMGv32pAweMXdfnHHxOjGiaV9SFVkhXDZXRFiBknvmbm79Z1CqqSjVcu9GDi9mVLABtNmoFW7c09K9V_XKbbZfjqXNlmC0cZbfZaY5aO3bVOmugFoRRgAvcw6fR0MePkAQo90bf9D52xqRqCW2vznQuoDL49Sl0fgw6d5vNZ72dXqALtAPGkdR03YGOk5mxitb3LozTCaC9QaHyaF1oppIjjuwWuECxEnbrpOVSNKUXhOrPWqNeoVamtHUrUJrogwrASsx5OQqkZZdJPqzK-MOpR3Xh87wCQTfzA0ZPYR4Ywu-CsXp91gvNzLi0zpQ5WyzWv88PuYE5e28u7qPnddNKFDiKHApKZrXdQ_avjrJDizmqBNJ3cZjMTmhKOa6BrFSOyUn-X4vSATlafKGMJkGoPoh3JINw3nsDidopDR96yrhsKz8argplMt_V4rrhiOpGnHXahRmNhOc5eicVTLXabHxR0kbgEzHZDszA769UmyMI8eiUzskuEKPxqis7ezoUtStnCCFCgw25E3M-1XAgRN8B9fZwA0bVXqsg99kQVLuXCGM_YK4qjLM5qoyUGRJnFamSq6djaYkmAm0zIbUr7AB2lq7YoYgC5SdcJ2_R91lWxSIhwPBFNQIdIfxF2dEMucThI7HBqrCd9MObT4M8Bepu-ONmGMuInRbKdYI9tKWPLiPtGcOxeO5AjaThFuFGMNfGmZjKu5iXqlHXcqCrW0keZpZT7RhF05jiM-NKWqQ7OcX6W6hbKyxKUyc6zfbB8OLtYR74IRn_xhSPu5_Yu-fI","id_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwOGQxMWYwYy0zODNiLTRiZmEtYTVhNS1mNWI0N2FiZWI2NDIiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UvIiwiaWF0IjoxNjI0MDQ4NTA3LCJuYmYiOjE2MjQwNDg1MDcsImV4cCI6MTYyNDA1MjQwNywiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlNlcnZpY2UgQWNjb3VudCIsImdpdmVuX25hbWUiOiJQb3dlckJJIiwiaXBhZGRyIjoiMTA3LjEwLjE3Ni44NSIsIm5hbWUiOiJQb3dlckJJIFNlcnZpY2UgQWNjb3VudCIsIm9pZCI6IjhiMWI4ZjdiLTU4NDgtNDZhYy04OWVlLTQyNjI1YzJhZWMyYyIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zMjY2MzM2NDQ4LTM0MjE2NzYyNDAtMTI1MTg0OTkxMS0xOTkzMzYiLCJyaCI6IjAuQVJzQVpaQndFbXh1eVVHZVRmc0tRMmxwemd3ZjBRZzdPUHBMcGFYMXRIcS10a0liQUFJLiIsInN1YiI6ImM5SXBoU2Y3X2JNeXg4aXgwT3BGMHNXd19OSkJjd1VZYUhITV9WUldSbHciLCJ0aWQiOiIxMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UiLCJ1bmlxdWVfbmFtZSI6IlBPV0VSQklAbGV4bWFyay5jb20iLCJ1cG4iOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidmVyIjoiMS4wIn0."}'
+  recorded_at: Fri, 18 Jun 2021 20:40:08 GMT
+- request:
+    method: get
+    uri: https://api.powerbi.com/v1.0/myorg/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.6.0 x86_64) ruby/2.6.3p62
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlLyIsImlhdCI6MTYyNDA0ODUwNywibmJmIjoxNjI0MDQ4NTA3LCJleHAiOjE2MjQwNTI0MDcsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJFMlpnWUJBem50L3FjYlBsb1JyWDJUZjUyWXIvcXdRWXR5VSsvR1I1V08xNDVMT2wvZ2NCIiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6IjA4ZDExZjBjLTM4M2ItNGJmYS1hNWE1LWY1YjQ3YWJlYjY0MiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiU2VydmljZSBBY2NvdW50IiwiZ2l2ZW5fbmFtZSI6IlBvd2VyQkkiLCJpcGFkZHIiOiIxMDcuMTAuMTc2Ljg1IiwibmFtZSI6IlBvd2VyQkkgU2VydmljZSBBY2NvdW50Iiwib2lkIjoiOGIxYjhmN2ItNTg0OC00NmFjLTg5ZWUtNDI2MjVjMmFlYzJjIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTMyNjYzMzY0NDgtMzQyMTY3NjI0MC0xMjUxODQ5OTExLTE5OTMzNiIsInB1aWQiOiIxMDAzQkZGREE4RTUwNEUxIiwicmgiOiIwLkFSc0FaWkJ3RW14dXlVR2VUZnNLUTJscHpnd2YwUWc3T1BwTHBhWDF0SHEtdGtJYkFBSS4iLCJzY3AiOiJEYXNoYm9hcmQuUmVhZC5BbGwgRGF0YXNldC5SZWFkLkFsbCBHcm91cC5SZWFkIFJlcG9ydC5SZWFkLkFsbCIsInN1YiI6InBETUlWU0VxYnNfemVJQVdQME5FVGZuZVhhZy15NkF5NzhIQWRtc3MwdmMiLCJ0aWQiOiIxMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UiLCJ1bmlxdWVfbmFtZSI6IlBPV0VSQklAbGV4bWFyay5jb20iLCJ1cG4iOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidXRpIjoiX0FOZVVyc3Mxa3kwOUNBd2FDMDVBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il19.cjDh81vq1Hr6PxCdRcmy_X3BkLpCEDpDL26CKftaQxNV1NScm29XQpey-LeAJRTVsrp20Xl-ZyqExajoLWGtWt_5mWYUM3yV66fpXEnRhb3iEOMI9WT5b5u50y12WOb2_EqtqCYPmUwhISzb_bftwcMp5Ut-hAXi6eoADZGRbMwE0QJoPtSapnoOD4F2rDA_v2txeYA0G6gsEUMLCI41t2JB8gBVenY3zw2O4Veov-5M4gYh0WNkk8LnDWHg8Kn456YIYdV6MGrcspYiJpwpTQ1NjvquxuLgdH6lwcYXzZmErATUmIdYE6p7ttPcSCbxYPNOAajTqPPq9OA_KLO1hg
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.powerbi.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, must-revalidate, no-cache
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '1115'
+      Content-Type:
+      - application/json; odata.metadata=minimal
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      Requestid:
+      - b757814a-8f57-4c74-a797-8c465d9ce48c
+      Odata-Version:
+      - '4.0'
+      Access-Control-Expose-Headers:
+      - RequestId
+      Request-Redirected:
+      - 'true'
+      Home-Cluster-Uri:
+      - https://wabi-us-east2-redirect.analysis.windows.net/
+      Date:
+      - Fri, 18 Jun 2021 20:40:07 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: "{\r\n  \"@odata.context\":\"http://wabi-us-east2-redirect.analysis.windows.net/v1.0/myorg/groups/5ee276ae-2485-4f3d-a453-db6d74869186/$metadata#reports\",\"value\":[\r\n
+        \   {\r\n      \"id\":\"4f01205a-20d3-4759-af3b-2c73a13e1087\",\"reportType\":\"PowerBIReport\",\"name\":\"Fleet
+        Performance and Refresh Analysis\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/4f01205a-20d3-4759-af3b-2c73a13e1087\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=4f01205a-20d3-4759-af3b-2c73a13e1087&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":true,\"isOwnedByMe\":true,\"datasetId\":\"34afc64f-689f-4811-a138-4af2017921ea\",\"users\":[\r\n
+        \       \r\n      ]\r\n    },{\r\n      \"id\":\"2b37bfca-9084-4f50-9c9d-ecc551f19528\",\"reportType\":\"PowerBIReport\",\"name\":\"MPS
+        Process Analytics\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/2b37bfca-9084-4f50-9c9d-ecc551f19528\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=2b37bfca-9084-4f50-9c9d-ecc551f19528&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":true,\"isOwnedByMe\":true,\"datasetId\":\"0eee4483-adf4-4173-8ede-355a2d4a04b7\",\"users\":[\r\n
+        \       \r\n      ]\r\n    },{\r\n      \"id\":\"dc13015e-20db-4805-8ab5-e24d83c1abbd\",\"reportType\":\"PowerBIReport\",\"name\":\"DCAT
+        CS to FS\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/dc13015e-20db-4805-8ab5-e24d83c1abbd\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=dc13015e-20db-4805-8ab5-e24d83c1abbd&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":true,\"isOwnedByMe\":true,\"datasetId\":\"b187a049-1c37-420f-ab59-a300662e8bac\",\"users\":[\r\n
+        \       \r\n      ]\r\n    },{\r\n      \"id\":\"6432b5eb-2b04-40ac-b6be-f26623e0b479\",\"reportType\":\"PowerBIReport\",\"name\":\"Banking
+        Analytics - LPM User Data\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/6432b5eb-2b04-40ac-b6be-f26623e0b479\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=6432b5eb-2b04-40ac-b6be-f26623e0b479&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":true,\"isOwnedByMe\":true,\"datasetId\":\"024239e8-b4b5-4de3-8b57-fcbcb37c84db\",\"users\":[\r\n
+        \       \r\n      ]\r\n    },{\r\n      \"id\":\"23b92512-2c75-4d70-a08a-e6156d3a5f00\",\"reportType\":\"PowerBIReport\",\"name\":\"Monthly
+        Operations Scorecard\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/23b92512-2c75-4d70-a08a-e6156d3a5f00\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=23b92512-2c75-4d70-a08a-e6156d3a5f00&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":true,\"isOwnedByMe\":true,\"datasetId\":\"feaf155d-f5e9-4d70-a916-a02f731e9209\",\"users\":[\r\n
+        \       \r\n      ]\r\n    },{\r\n      \"id\":\"a3b377cd-3b71-4eb1-b53a-1ee63cef792f\",\"reportType\":\"PowerBIReport\",\"name\":\"Report
+        Usage Metrics Report\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/a3b377cd-3b71-4eb1-b53a-1ee63cef792f\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=a3b377cd-3b71-4eb1-b53a-1ee63cef792f&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":false,\"isOwnedByMe\":true,\"datasetId\":\"25f95f87-fb09-481e-8723-22f9c333dd1c\",\"users\":[\r\n
+        \       \r\n      ]\r\n    },{\r\n      \"id\":\"b7d3df75-46bf-4462-9a80-409790e69427\",\"reportType\":\"PowerBIReport\",\"name\":\"Generic
+        global assessment findings - PowerBI\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/b7d3df75-46bf-4462-9a80-409790e69427\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=b7d3df75-46bf-4462-9a80-409790e69427&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":false,\"isOwnedByMe\":true,\"datasetId\":\"fc587b16-28a5-4073-b2bb-53d307695ea8\",\"users\":[\r\n
+        \       \r\n      ]\r\n    }\r\n  ]\r\n}"
+  recorded_at: Fri, 18 Jun 2021 20:40:08 GMT
+- request:
+    method: get
+    uri: https://api.powerbi.com/v1.0/myorg/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.6.0 x86_64) ruby/2.6.3p62
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlLyIsImlhdCI6MTYyNDA0ODUwNywibmJmIjoxNjI0MDQ4NTA3LCJleHAiOjE2MjQwNTI0MDcsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJFMlpnWUJBem50L3FjYlBsb1JyWDJUZjUyWXIvcXdRWXR5VSsvR1I1V08xNDVMT2wvZ2NCIiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6IjA4ZDExZjBjLTM4M2ItNGJmYS1hNWE1LWY1YjQ3YWJlYjY0MiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiU2VydmljZSBBY2NvdW50IiwiZ2l2ZW5fbmFtZSI6IlBvd2VyQkkiLCJpcGFkZHIiOiIxMDcuMTAuMTc2Ljg1IiwibmFtZSI6IlBvd2VyQkkgU2VydmljZSBBY2NvdW50Iiwib2lkIjoiOGIxYjhmN2ItNTg0OC00NmFjLTg5ZWUtNDI2MjVjMmFlYzJjIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTMyNjYzMzY0NDgtMzQyMTY3NjI0MC0xMjUxODQ5OTExLTE5OTMzNiIsInB1aWQiOiIxMDAzQkZGREE4RTUwNEUxIiwicmgiOiIwLkFSc0FaWkJ3RW14dXlVR2VUZnNLUTJscHpnd2YwUWc3T1BwTHBhWDF0SHEtdGtJYkFBSS4iLCJzY3AiOiJEYXNoYm9hcmQuUmVhZC5BbGwgRGF0YXNldC5SZWFkLkFsbCBHcm91cC5SZWFkIFJlcG9ydC5SZWFkLkFsbCIsInN1YiI6InBETUlWU0VxYnNfemVJQVdQME5FVGZuZVhhZy15NkF5NzhIQWRtc3MwdmMiLCJ0aWQiOiIxMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UiLCJ1bmlxdWVfbmFtZSI6IlBPV0VSQklAbGV4bWFyay5jb20iLCJ1cG4iOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidXRpIjoiX0FOZVVyc3Mxa3kwOUNBd2FDMDVBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il19.cjDh81vq1Hr6PxCdRcmy_X3BkLpCEDpDL26CKftaQxNV1NScm29XQpey-LeAJRTVsrp20Xl-ZyqExajoLWGtWt_5mWYUM3yV66fpXEnRhb3iEOMI9WT5b5u50y12WOb2_EqtqCYPmUwhISzb_bftwcMp5Ut-hAXi6eoADZGRbMwE0QJoPtSapnoOD4F2rDA_v2txeYA0G6gsEUMLCI41t2JB8gBVenY3zw2O4Veov-5M4gYh0WNkk8LnDWHg8Kn456YIYdV6MGrcspYiJpwpTQ1NjvquxuLgdH6lwcYXzZmErATUmIdYE6p7ttPcSCbxYPNOAajTqPPq9OA_KLO1hg
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.powerbi.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, must-revalidate, no-cache
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '1115'
+      Content-Type:
+      - application/json; odata.metadata=minimal
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      Requestid:
+      - 112a4ae8-e2ed-41aa-a0a8-38b4f5157284
+      Odata-Version:
+      - '4.0'
+      Access-Control-Expose-Headers:
+      - RequestId
+      Request-Redirected:
+      - 'true'
+      Home-Cluster-Uri:
+      - https://wabi-us-east2-redirect.analysis.windows.net/
+      Date:
+      - Fri, 18 Jun 2021 20:40:07 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: "{\r\n  \"@odata.context\":\"http://wabi-us-east2-redirect.analysis.windows.net/v1.0/myorg/groups/5ee276ae-2485-4f3d-a453-db6d74869186/$metadata#reports\",\"value\":[\r\n
+        \   {\r\n      \"id\":\"4f01205a-20d3-4759-af3b-2c73a13e1087\",\"reportType\":\"PowerBIReport\",\"name\":\"Fleet
+        Performance and Refresh Analysis\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/4f01205a-20d3-4759-af3b-2c73a13e1087\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=4f01205a-20d3-4759-af3b-2c73a13e1087&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":true,\"isOwnedByMe\":true,\"datasetId\":\"34afc64f-689f-4811-a138-4af2017921ea\",\"users\":[\r\n
+        \       \r\n      ]\r\n    },{\r\n      \"id\":\"2b37bfca-9084-4f50-9c9d-ecc551f19528\",\"reportType\":\"PowerBIReport\",\"name\":\"MPS
+        Process Analytics\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/2b37bfca-9084-4f50-9c9d-ecc551f19528\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=2b37bfca-9084-4f50-9c9d-ecc551f19528&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":true,\"isOwnedByMe\":true,\"datasetId\":\"0eee4483-adf4-4173-8ede-355a2d4a04b7\",\"users\":[\r\n
+        \       \r\n      ]\r\n    },{\r\n      \"id\":\"dc13015e-20db-4805-8ab5-e24d83c1abbd\",\"reportType\":\"PowerBIReport\",\"name\":\"DCAT
+        CS to FS\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/dc13015e-20db-4805-8ab5-e24d83c1abbd\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=dc13015e-20db-4805-8ab5-e24d83c1abbd&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":true,\"isOwnedByMe\":true,\"datasetId\":\"b187a049-1c37-420f-ab59-a300662e8bac\",\"users\":[\r\n
+        \       \r\n      ]\r\n    },{\r\n      \"id\":\"6432b5eb-2b04-40ac-b6be-f26623e0b479\",\"reportType\":\"PowerBIReport\",\"name\":\"Banking
+        Analytics - LPM User Data\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/6432b5eb-2b04-40ac-b6be-f26623e0b479\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=6432b5eb-2b04-40ac-b6be-f26623e0b479&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":true,\"isOwnedByMe\":true,\"datasetId\":\"024239e8-b4b5-4de3-8b57-fcbcb37c84db\",\"users\":[\r\n
+        \       \r\n      ]\r\n    },{\r\n      \"id\":\"23b92512-2c75-4d70-a08a-e6156d3a5f00\",\"reportType\":\"PowerBIReport\",\"name\":\"Monthly
+        Operations Scorecard\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/23b92512-2c75-4d70-a08a-e6156d3a5f00\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=23b92512-2c75-4d70-a08a-e6156d3a5f00&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":true,\"isOwnedByMe\":true,\"datasetId\":\"feaf155d-f5e9-4d70-a916-a02f731e9209\",\"users\":[\r\n
+        \       \r\n      ]\r\n    },{\r\n      \"id\":\"a3b377cd-3b71-4eb1-b53a-1ee63cef792f\",\"reportType\":\"PowerBIReport\",\"name\":\"Report
+        Usage Metrics Report\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/a3b377cd-3b71-4eb1-b53a-1ee63cef792f\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=a3b377cd-3b71-4eb1-b53a-1ee63cef792f&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":false,\"isOwnedByMe\":true,\"datasetId\":\"25f95f87-fb09-481e-8723-22f9c333dd1c\",\"users\":[\r\n
+        \       \r\n      ]\r\n    },{\r\n      \"id\":\"b7d3df75-46bf-4462-9a80-409790e69427\",\"reportType\":\"PowerBIReport\",\"name\":\"Generic
+        global assessment findings - PowerBI\",\"webUrl\":\"https://app.powerbi.com/groups/5ee276ae-2485-4f3d-a453-db6d74869186/reports/b7d3df75-46bf-4462-9a80-409790e69427\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed?reportId=b7d3df75-46bf-4462-9a80-409790e69427&groupId=5ee276ae-2485-4f3d-a453-db6d74869186&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"isFromPbix\":false,\"isOwnedByMe\":true,\"datasetId\":\"fc587b16-28a5-4073-b2bb-53d307695ea8\",\"users\":[\r\n
+        \       \r\n      ]\r\n    }\r\n  ]\r\n}"
+  recorded_at: Fri, 18 Jun 2021 20:40:08 GMT
+- request:
+    method: get
+    uri: https://api.powerbi.com/v1.0/myorg/groups/031cd415-fb8f-4a14-83a7-1732f12555a2/reports
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.6.0 x86_64) ruby/2.6.3p62
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlLyIsImlhdCI6MTYyNDA0ODUwNywibmJmIjoxNjI0MDQ4NTA3LCJleHAiOjE2MjQwNTI0MDcsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJFMlpnWUJBem50L3FjYlBsb1JyWDJUZjUyWXIvcXdRWXR5VSsvR1I1V08xNDVMT2wvZ2NCIiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6IjA4ZDExZjBjLTM4M2ItNGJmYS1hNWE1LWY1YjQ3YWJlYjY0MiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiU2VydmljZSBBY2NvdW50IiwiZ2l2ZW5fbmFtZSI6IlBvd2VyQkkiLCJpcGFkZHIiOiIxMDcuMTAuMTc2Ljg1IiwibmFtZSI6IlBvd2VyQkkgU2VydmljZSBBY2NvdW50Iiwib2lkIjoiOGIxYjhmN2ItNTg0OC00NmFjLTg5ZWUtNDI2MjVjMmFlYzJjIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTMyNjYzMzY0NDgtMzQyMTY3NjI0MC0xMjUxODQ5OTExLTE5OTMzNiIsInB1aWQiOiIxMDAzQkZGREE4RTUwNEUxIiwicmgiOiIwLkFSc0FaWkJ3RW14dXlVR2VUZnNLUTJscHpnd2YwUWc3T1BwTHBhWDF0SHEtdGtJYkFBSS4iLCJzY3AiOiJEYXNoYm9hcmQuUmVhZC5BbGwgRGF0YXNldC5SZWFkLkFsbCBHcm91cC5SZWFkIFJlcG9ydC5SZWFkLkFsbCIsInN1YiI6InBETUlWU0VxYnNfemVJQVdQME5FVGZuZVhhZy15NkF5NzhIQWRtc3MwdmMiLCJ0aWQiOiIxMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UiLCJ1bmlxdWVfbmFtZSI6IlBPV0VSQklAbGV4bWFyay5jb20iLCJ1cG4iOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidXRpIjoiX0FOZVVyc3Mxa3kwOUNBd2FDMDVBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il19.cjDh81vq1Hr6PxCdRcmy_X3BkLpCEDpDL26CKftaQxNV1NScm29XQpey-LeAJRTVsrp20Xl-ZyqExajoLWGtWt_5mWYUM3yV66fpXEnRhb3iEOMI9WT5b5u50y12WOb2_EqtqCYPmUwhISzb_bftwcMp5Ut-hAXi6eoADZGRbMwE0QJoPtSapnoOD4F2rDA_v2txeYA0G6gsEUMLCI41t2JB8gBVenY3zw2O4Veov-5M4gYh0WNkk8LnDWHg8Kn456YIYdV6MGrcspYiJpwpTQ1NjvquxuLgdH6lwcYXzZmErATUmIdYE6p7ttPcSCbxYPNOAajTqPPq9OA_KLO1hg
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.powerbi.com
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Length:
+      - '0'
+      X-Powerbi-Error-Info:
+      - GroupNotAccessible
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Expose-Headers:
+      - RequestId,X-PowerBI-Error-Info
+      Request-Redirected:
+      - 'true'
+      Home-Cluster-Uri:
+      - https://wabi-us-east2-redirect.analysis.windows.net/
+      Requestid:
+      - 1b87fdb9-5520-4d17-9a31-0878e1f4f9b6
+      Date:
+      - Fri, 18 Jun 2021 20:40:09 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 18 Jun 2021 20:40:09 GMT
+recorded_with: VCR 6.0.0

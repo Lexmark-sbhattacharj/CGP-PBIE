@@ -1,0 +1,14 @@
+powerbi:
+  username: "powerbi@lexmark.com"
+
+b2c:
+  oauth2_token_url: "https://login.microsoftonline.com/LexmarkB2CQA.onmicrosoft.com/oauth2/v2.0/token"
+  oauth2_scope: "https://LexmarkB2CQA.onmicrosoft.com/identity-management-service/.default"
+
+acim:
+  url: "https://ims.us.qa.cloud.onelxk.co"
+  redirect_uri: "https://reporting.lexmark.com/auth/azureactivedirectory/callback"
+
+idp:
+  url: "https://idp.us.cloud.onelxk.co"
+  redirect_uri: "https://reporting.dev.cloud.onelxk.co.lexmark.com/mps/callback"

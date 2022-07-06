@@ -1,0 +1,17 @@
+{
+  "name": "pbie",
+  "private": true,
+  "dependencies": {
+    "@microsoft/applicationinsights-web": "^2.6.2",
+    "@rails/webpacker": "^5.4.3",
+    "axios": "^0.21.0",
+    "powerbi-client": "^2.18.0",
+    "vue": "^2.6.12",
+    "vue-flash-message": "^0.7.2",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.2"
+  }
+}

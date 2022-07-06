@@ -1,0 +1,339 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://login.windows.net/common/oauth2/token/
+    body:
+      encoding: UTF-8
+      string: client_id=08d11f0c-383b-4bfa-a5a5-f5b47abeb642&grant_type=password&username=powerbi%40lexmark.com&password=Rabbit1010%21&scope=openid&resource=https%3A%2F%2Fanalysis.windows.net%2Fpowerbi%2Fapi
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.6.0 x86_64) ruby/2.6.3p62
+      Content-Length:
+      - '193'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - login.windows.net
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      P3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      X-Ms-Request-Id:
+      - 1a117191-25fb-486a-a5a4-8aad54742d00
+      X-Ms-Ests-Server:
+      - 2.1.11829.4 - NCUS ProdSlices
+      Set-Cookie:
+      - fpc=Akh_-ly15pJMqvYGabu7sBpbBFe4AQAAAKH7XtgOAAAA; expires=Sun, 18-Jul-2021
+        20:40:02 GMT; path=/; secure; HttpOnly; SameSite=None
+      - stsservicecookie=estsfd; path=/; secure; samesite=none; httponly
+      - x-ms-gateway-slice=estsfd; path=/; secure; samesite=none; httponly
+      Date:
+      - Fri, 18 Jun 2021 20:40:02 GMT
+      Content-Length:
+      - '4008'
+    body:
+      encoding: UTF-8
+      string: '{"token_type":"Bearer","scope":"Dashboard.Read.All Dataset.Read.All
+        Group.Read Report.Read.All","expires_in":"3599","ext_expires_in":"3599","expires_on":"1624052401","not_before":"1624048501","resource":"https://analysis.windows.net/powerbi/api","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlLyIsImlhdCI6MTYyNDA0ODUwMSwibmJmIjoxNjI0MDQ4NTAxLCJleHAiOjE2MjQwNTI0MDEsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84VEFBQUEvdFFhMVFpWm1ndEVtc1ZJSmptTDNmaDZ6TGtHcER4QWtzU0pITlJSWjNRPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwOGQxMWYwYy0zODNiLTRiZmEtYTVhNS1mNWI0N2FiZWI2NDIiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlNlcnZpY2UgQWNjb3VudCIsImdpdmVuX25hbWUiOiJQb3dlckJJIiwiaXBhZGRyIjoiMTA3LjEwLjE3Ni44NSIsIm5hbWUiOiJQb3dlckJJIFNlcnZpY2UgQWNjb3VudCIsIm9pZCI6IjhiMWI4ZjdiLTU4NDgtNDZhYy04OWVlLTQyNjI1YzJhZWMyYyIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zMjY2MzM2NDQ4LTM0MjE2NzYyNDAtMTI1MTg0OTkxMS0xOTkzMzYiLCJwdWlkIjoiMTAwM0JGRkRBOEU1MDRFMSIsInJoIjoiMC5BUnNBWlpCd0VteHV5VUdlVGZzS1EybHB6Z3dmMFFnN09QcExwYVgxdEhxLXRrSWJBQUkuIiwic2NwIjoiRGFzaGJvYXJkLlJlYWQuQWxsIERhdGFzZXQuUmVhZC5BbGwgR3JvdXAuUmVhZCBSZXBvcnQuUmVhZC5BbGwiLCJzdWIiOiJwRE1JVlNFcWJzX3plSUFXUDBORVRmbmVYYWcteTZBeTc4SEFkbXNzMHZjIiwidGlkIjoiMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlIiwidW5pcXVlX25hbWUiOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidXBuIjoiUE9XRVJCSUBsZXhtYXJrLmNvbSIsInV0aSI6ImtYRVJHdnNsYWtpbHBJcXRWSFF0QUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdfQ.DT1fw37OhVSQcyogaYIwhS1llSApSSlKKs4Llt0AmNYoDfRRaeZMVM_RjyBOa9v-BQ7zFbaEcK1BX_rr5-pznyN5trlaYvbKYDUOIbmX7AFLhDQSFl6t4TXMv41YYKTg2db6dFiR3AhBgB5u8aQwq1Sl9oobcLC4HFLZMFeYPgZ63d7gt2nfEaUkTV4Wdah4GZvOT48vjW_J2yf7pGfXaT1_Te1iFwp51KXo2xuhJa6cvaVJe6syLxa-ua2CusFmuVjG_C3awb0bQFF6ksa_70UlSYcQOkmfOKNUdwkfKml8nU0VqQGtIBogeoKgw2W-tZr9-dgo7f2arZEoK5cMxQ","refresh_token":"0.ARsAZZBwEmxuyUGeTfsKQ2lpzgwf0Qg7OPpLpaX1tHq-tkIbAAI.AgABAAAAAAD--DLA3VO7QrddgJg7WevrAgDs_wQA9P978ajBvvdptmjyvHHmOmmfwG5rl4Aoo_9arkjmToY5qfdaZm3SRq2b7sod2DkQKvFeO_DJ-UWUzpYU_XyyOcFr1SYNnRe5R4qqnnJdyICRejstNFgAMbhznOHI8YsAsOE7yyv165j2Jchacb1KeZFdAupg6MGv110MgWAo69fZbj7OA5yP6QtlC2np8LK7unsmGh1Ris5zEqtcVZSq2K_0z0o4HDWuUqzzET0krkR3OwEKIFSwgN9BUsPhgNKuA-rsPuAzZd3QMIvtsCrSKf8vvGo-nE4gaJRAr5Lo1axZfL6F2zNu2QuOI__kWZkYLbHJVw9tI6_6IsE9C87FTeW8mUCxhgO2LnUVALdW6rJrsaZBiWiBnkhQJBfoIXPfq1godK3qV1CiIOag5z76xy6LeG9BEu1e1mYecUkbRmcLNN0g3gK_ccf0txvGCooenZJKMsAnC22k7y0EH4xiPOALz87NocdYS031ae5f7RinlGgKg4Q53NLEX9mxTpgcQ0jTpW_enRjDSoifvEgDdEA4N36hOadFAsZWCsqL6HDRhpv-Iojldm4wqvGWc5bffl9QwuVWHyT-rwSfKZwmqEjgHzZt6ZbvNdi_rNVP5D_YZLpoqfyNFKyQQlxwZO-bGGBeVJqIk1rQVn0Ibtfeg0KmCcBXNT8RxyXjoLedmZFESUJjlvffr3lhh5rNEp3NvO1xVYocISsZYN6fgv0cT3k6J8jyf_WyG7dR2HwSrnD2mQd-iHD58rUi4KBHzPqdhjeNkC1ibZp8HK9r7ZczfYszAAPUUZbS9h6ghNP9Qxmvl63PRBajnJU33N4C5ueJ_LGeQ1V0ef6bP2I2UY7h8QWsacwbhCGr7OT6G7CUtSruGvC07xuv-Hh_mIiaSpVRmsYQQOYj7T4QHDdseJ17V0KdauyjjDBdHcAW4xoWe9NaNV7lw1XomDKIxAuPbinxTRncHYU","id_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwOGQxMWYwYy0zODNiLTRiZmEtYTVhNS1mNWI0N2FiZWI2NDIiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UvIiwiaWF0IjoxNjI0MDQ4NTAxLCJuYmYiOjE2MjQwNDg1MDEsImV4cCI6MTYyNDA1MjQwMSwiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlNlcnZpY2UgQWNjb3VudCIsImdpdmVuX25hbWUiOiJQb3dlckJJIiwiaXBhZGRyIjoiMTA3LjEwLjE3Ni44NSIsIm5hbWUiOiJQb3dlckJJIFNlcnZpY2UgQWNjb3VudCIsIm9pZCI6IjhiMWI4ZjdiLTU4NDgtNDZhYy04OWVlLTQyNjI1YzJhZWMyYyIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zMjY2MzM2NDQ4LTM0MjE2NzYyNDAtMTI1MTg0OTkxMS0xOTkzMzYiLCJyaCI6IjAuQVJzQVpaQndFbXh1eVVHZVRmc0tRMmxwemd3ZjBRZzdPUHBMcGFYMXRIcS10a0liQUFJLiIsInN1YiI6ImM5SXBoU2Y3X2JNeXg4aXgwT3BGMHNXd19OSkJjd1VZYUhITV9WUldSbHciLCJ0aWQiOiIxMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UiLCJ1bmlxdWVfbmFtZSI6IlBPV0VSQklAbGV4bWFyay5jb20iLCJ1cG4iOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidmVyIjoiMS4wIn0."}'
+  recorded_at: Fri, 18 Jun 2021 20:40:02 GMT
+- request:
+    method: get
+    uri: https://api.powerbi.com/v1.0/myorg/groups/23269a7d-a364-4ef3-b85d-5ca8c9730b46/datasets/34685ffd-5dbe-4d00-85b7-4d5c44b95b14
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.6.0 x86_64) ruby/2.6.3p62
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlLyIsImlhdCI6MTYyNDA0ODUwMSwibmJmIjoxNjI0MDQ4NTAxLCJleHAiOjE2MjQwNTI0MDEsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84VEFBQUEvdFFhMVFpWm1ndEVtc1ZJSmptTDNmaDZ6TGtHcER4QWtzU0pITlJSWjNRPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwOGQxMWYwYy0zODNiLTRiZmEtYTVhNS1mNWI0N2FiZWI2NDIiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlNlcnZpY2UgQWNjb3VudCIsImdpdmVuX25hbWUiOiJQb3dlckJJIiwiaXBhZGRyIjoiMTA3LjEwLjE3Ni44NSIsIm5hbWUiOiJQb3dlckJJIFNlcnZpY2UgQWNjb3VudCIsIm9pZCI6IjhiMWI4ZjdiLTU4NDgtNDZhYy04OWVlLTQyNjI1YzJhZWMyYyIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zMjY2MzM2NDQ4LTM0MjE2NzYyNDAtMTI1MTg0OTkxMS0xOTkzMzYiLCJwdWlkIjoiMTAwM0JGRkRBOEU1MDRFMSIsInJoIjoiMC5BUnNBWlpCd0VteHV5VUdlVGZzS1EybHB6Z3dmMFFnN09QcExwYVgxdEhxLXRrSWJBQUkuIiwic2NwIjoiRGFzaGJvYXJkLlJlYWQuQWxsIERhdGFzZXQuUmVhZC5BbGwgR3JvdXAuUmVhZCBSZXBvcnQuUmVhZC5BbGwiLCJzdWIiOiJwRE1JVlNFcWJzX3plSUFXUDBORVRmbmVYYWcteTZBeTc4SEFkbXNzMHZjIiwidGlkIjoiMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlIiwidW5pcXVlX25hbWUiOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidXBuIjoiUE9XRVJCSUBsZXhtYXJrLmNvbSIsInV0aSI6ImtYRVJHdnNsYWtpbHBJcXRWSFF0QUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdfQ.DT1fw37OhVSQcyogaYIwhS1llSApSSlKKs4Llt0AmNYoDfRRaeZMVM_RjyBOa9v-BQ7zFbaEcK1BX_rr5-pznyN5trlaYvbKYDUOIbmX7AFLhDQSFl6t4TXMv41YYKTg2db6dFiR3AhBgB5u8aQwq1Sl9oobcLC4HFLZMFeYPgZ63d7gt2nfEaUkTV4Wdah4GZvOT48vjW_J2yf7pGfXaT1_Te1iFwp51KXo2xuhJa6cvaVJe6syLxa-ua2CusFmuVjG_C3awb0bQFF6ksa_70UlSYcQOkmfOKNUdwkfKml8nU0VqQGtIBogeoKgw2W-tZr9-dgo7f2arZEoK5cMxQ
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.powerbi.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, must-revalidate, no-cache
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '624'
+      Content-Type:
+      - application/json; odata.metadata=minimal
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      Requestid:
+      - 442b31d3-e327-4bcc-8121-e3159de5d460
+      Odata-Version:
+      - '4.0'
+      Access-Control-Expose-Headers:
+      - RequestId
+      Request-Redirected:
+      - 'true'
+      Home-Cluster-Uri:
+      - https://wabi-us-east2-redirect.analysis.windows.net/
+      Date:
+      - Fri, 18 Jun 2021 20:40:02 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: "{\r\n  \"@odata.context\":\"http://wabi-us-east2-redirect.analysis.windows.net/v1.0/myorg/groups/23269a7d-a364-4ef3-b85d-5ca8c9730b46/$metadata#datasets/$entity\",\"id\":\"34685ffd-5dbe-4d00-85b7-4d5c44b95b14\",\"name\":\"Abercrombie
+        ADS Analysis May 2021\",\"addRowsAPIEnabled\":false,\"configuredBy\":\"kamana.shrestha@lexmark.com\",\"isRefreshable\":true,\"isEffectiveIdentityRequired\":false,\"isEffectiveIdentityRolesRequired\":false,\"isOnPremGatewayRequired\":true,\"targetStorageMode\":\"Abf\",\"createReportEmbedURL\":\"https://app.powerbi.com/reportEmbed?config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"qnaEmbedURL\":\"https://app.powerbi.com/qnaEmbed?config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"upstreamDatasets\":[\r\n
+        \   \r\n  ],\"schemaMayNotBeUpToDate\":false,\"users\":[\r\n    \r\n  ]\r\n}"
+  recorded_at: Fri, 18 Jun 2021 20:40:03 GMT
+- request:
+    method: post
+    uri: https://api.powerbi.com/v1.0/myorg/groups/23269a7d-a364-4ef3-b85d-5ca8c9730b46/reports/083f20d3-8f12-4cf3-9930-ba89612e80a4/GenerateToken
+    body:
+      encoding: UTF-8
+      string: '{"accessLevel":"view"}'
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.6.0 x86_64) ruby/2.6.3p62
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlLyIsImlhdCI6MTYyNDA0ODUwMSwibmJmIjoxNjI0MDQ4NTAxLCJleHAiOjE2MjQwNTI0MDEsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84VEFBQUEvdFFhMVFpWm1ndEVtc1ZJSmptTDNmaDZ6TGtHcER4QWtzU0pITlJSWjNRPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwOGQxMWYwYy0zODNiLTRiZmEtYTVhNS1mNWI0N2FiZWI2NDIiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlNlcnZpY2UgQWNjb3VudCIsImdpdmVuX25hbWUiOiJQb3dlckJJIiwiaXBhZGRyIjoiMTA3LjEwLjE3Ni44NSIsIm5hbWUiOiJQb3dlckJJIFNlcnZpY2UgQWNjb3VudCIsIm9pZCI6IjhiMWI4ZjdiLTU4NDgtNDZhYy04OWVlLTQyNjI1YzJhZWMyYyIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zMjY2MzM2NDQ4LTM0MjE2NzYyNDAtMTI1MTg0OTkxMS0xOTkzMzYiLCJwdWlkIjoiMTAwM0JGRkRBOEU1MDRFMSIsInJoIjoiMC5BUnNBWlpCd0VteHV5VUdlVGZzS1EybHB6Z3dmMFFnN09QcExwYVgxdEhxLXRrSWJBQUkuIiwic2NwIjoiRGFzaGJvYXJkLlJlYWQuQWxsIERhdGFzZXQuUmVhZC5BbGwgR3JvdXAuUmVhZCBSZXBvcnQuUmVhZC5BbGwiLCJzdWIiOiJwRE1JVlNFcWJzX3plSUFXUDBORVRmbmVYYWcteTZBeTc4SEFkbXNzMHZjIiwidGlkIjoiMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlIiwidW5pcXVlX25hbWUiOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidXBuIjoiUE9XRVJCSUBsZXhtYXJrLmNvbSIsInV0aSI6ImtYRVJHdnNsYWtpbHBJcXRWSFF0QUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdfQ.DT1fw37OhVSQcyogaYIwhS1llSApSSlKKs4Llt0AmNYoDfRRaeZMVM_RjyBOa9v-BQ7zFbaEcK1BX_rr5-pznyN5trlaYvbKYDUOIbmX7AFLhDQSFl6t4TXMv41YYKTg2db6dFiR3AhBgB5u8aQwq1Sl9oobcLC4HFLZMFeYPgZ63d7gt2nfEaUkTV4Wdah4GZvOT48vjW_J2yf7pGfXaT1_Te1iFwp51KXo2xuhJa6cvaVJe6syLxa-ua2CusFmuVjG_C3awb0bQFF6ksa_70UlSYcQOkmfOKNUdwkfKml8nU0VqQGtIBogeoKgw2W-tZr9-dgo7f2arZEoK5cMxQ
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '22'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.powerbi.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, must-revalidate, no-cache
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '2807'
+      Content-Type:
+      - application/json; odata.metadata=minimal
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      Requestid:
+      - 6dbd5e8e-75de-4421-9837-20ae69516bc3
+      Odata-Version:
+      - '4.0'
+      Access-Control-Expose-Headers:
+      - RequestId
+      Request-Redirected:
+      - 'true'
+      Home-Cluster-Uri:
+      - https://wabi-us-east2-redirect.analysis.windows.net/
+      Date:
+      - Fri, 18 Jun 2021 20:40:03 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: "{\r\n  \"@odata.context\":\"http://wabi-us-east2-redirect.analysis.windows.net/v1.0/myorg/groups/23269a7d-a364-4ef3-b85d-5ca8c9730b46/$metadata#Microsoft.PowerBI.ServiceContracts.Api.V1.GenerateTokenResponse\",\"token\":\"H4sIAAAAAAAEAB2WRw7sSA5E7_K31YBKXmqgF_Lee-3kvfcazN2nepZJMAFmJIN8__ljJk8_Jfmfv__wT6hNWWzjwyATu_o9NcbsE7SWIk94RHfkJyOF8AhweioslgnhG-B--zod96r_Sq6qqOpMbo_rSVCOfZvKSDoD5NgMLA1bSLoWHwDjgj82bDR2OSwKwr27htTSDUxEK_XJyJEJOhFue23sl3RY7BbPDRx7oZng9mjpNRvWLqFGYAZnzVQf7zPYAsgU9ELbY2ZcylODRGu9fMVNqpR91i2wEXUjIAWWOCj_-lrSrhc1Sovt6W4poqAro20JetOyCzFC13FnYhW84amUOlJsoCEtOuow8nzx_sr-FFOFQCbaDaIX51TNSsQcBVv-E-fTGTN3XvPndgprKoddXk6RddDMA_j8DRFLjhWiP07YtrCXpk1vxyHFX_Iia1I-iQ0Zv0txpHdv-ZgkmDkWlRt14HUQQk9PlxCndFxUc_kL_05rTr65e7Jejexj5bkLGd6OzJ0DVG1AiasggPe1mDspdPO4niR-AH68vUXOIL6orXRdQtA-sFmSAHeIZCE21BkoJrbeX9fbotvNuISNIOfrguVm1v0YmLb1TWONOEZQS0N66wKkPYSCaYTiikbifnELBCdgd8_S21TmxN9Q47Uw9Eo5zHzmmWiblihHIc45A6dD3yVLboa6b14D4sYPHx7LDommmoXCxLjmQUot7zYfnniKBBxOvpeNZlfXVyfkLCd0qfUasHOTxreYTz_ziYZGmDy5ObZLdl4wFN2bZl4EMU464tFviSstc8KK0aaZot95N7ZbJxcffkgsHrsLB-PPwJxS0l2A8c451qsKftV33EK412Uz7cWAVw6ACVFT9nLFdCoR0wX_7vF9qwdwQX777rTILR95m3OW9QocYk4MxSAun0Mp8XKfO0vLVX2xgHCAwtdqtF3xsiKOyqGdDNESPHuwtrBBKspKuQGmLrpDK0ZZ74JtKg1KwKSWVlTPipJ1H59IGkN7AyhhFgJsR2wqruVY0802rhjrFjNckq6Y7hRBm2obcXV0z90J7aFLVDwXOQAiivbjUfQ61sI4L4pfYsE4mpTCJX1thUW4zqhApHgEqOzpPXDolI8YzvCrCtZBu5DyHnO5izEMe0qYGcMFzRnPuI8LbapP3b7rIpqN3p9a894JuwN7EtzgoSaze4BVGDeAUL-kzjhVn7zW2AtYpVFE0pyn1xeNPkEOBFu1pAC_BJtdYkoWHNN_kUM20q9aRT1tMpO16alROZWXa6GjGDKnnoaAottdGHOvHeT7conqhW2gOtm3temoWwR5Lr36Z0-Fj6OkHe8j0kctJmN7jhoCWQk7E2ZTcRQdOt4Pd59o58Fd3sGFE3I22J4VoKWN6aF61dGnzjmMF-OxQhe9yteo4OWg0hgn10HRagkvHED9PWh3yj3BQHwkw4dc5DsSiu1cqlgGUIFMc9qH369yhaf6wcTffxVRq7n15lercWtHxCku45ILz3rar2fRVwE-GZTlUj9Vpsv8gsfRihrr-ITc1aCNA_j-AWFIlD5VFoYTbLrxLGXAXchzB2FLzTdxkJrGJC3ZxcooruGnBMAoa5bCWpAjwFBLo7z5RzdMSXo6KyIMlxJClN1UtLna0GmtgaUmdxn1ucEZAIb8YbXlQ9JCguRWBsM8TAEvz8P7yVzwl_dEATNVN20oUQlZQVYRlW0nHaSrbh8o86ncy1RYM298xjwVyC-OnbHyluDNW3m_OAR7WLUhKC5yT3eu8qN-QfDc6hp--W1vIdxYh-7WMoNud9LcXC0vh5JQis3fyQcgEsuUVTkUlcGBovP7gOO3Gsa9-0zyWGto8Qw5VcI7sTDZHjkNGdOusu8aRG_oxSYzD-zvWX4vZppyOVR9nsLj6NmbHARbNRphrbV2T58Dm9SzNpC1MTTsM1SPs_uClmQ7fIGhx_JA2_ciUp7OiwcnPuta1glQVGi_lcWqeE0rdS1p5IgslVW7bdxcVNpW3zqMqw1E9dFSli52lsz8ntPdSST8uNtk4FpcUXlz1CX8JJj3FH1xvh-BNL4wVS4_d97zyMweRs91qUlQA0pL6Tx7nOeFSynmHeRbqD7fJrUkcj5KMJfIRRh3ZSBEEaFB-8wAcf7yZgThoVR-O5pMz9Nhs6ekIQrPCrJEc4-bBxvom7UiBpVRCElRdkfgbm7cdxl2v2t3nKgYMbRddKF-X6GmfO3X5yh1W9n0aGvJ0J_N8MWfRDvHEPgrnzYTwGw9nKQXqm4pacwpLCCb4el9-fIBr9FuVGbFZnpJFrnfqn6YlPYoSPY7PcOu8WW5_9qMXMnmpHwvYY4tLajDuWwMCy5mhyRWeCYZFt_YIhfNaszM352nVKxoEbI_f_1h1mfeJ6V4fjhk0D9mOZ4UcrNV9XdLcIFhdrdtm0xezxTLoHEE4edW-A2HHc_sz8_rG1oCpFKQH2KmZhH_ZFTtE4a9ou6TRZveiAmWXakegnE20DInQcX7shsJTRRJQuWEgaBcZ7_T4U3yByVoxlRTm0uvursVf8uh8cYRDfxYiK4deB4i6fZALBfCc18bWhu-7qMd82ZvnLixhxtlIiw4nsj_AOAoqaQgZvPmms5GrlKr5jQg6mFcw1o3I9QgOnfpYJjukw30jWV3EduzkCpISSx2q5rPdzqZ71r_Vr-BQVpUaee06KMcjalwwxbLu7oKv5UyJedRTO4Jjkz-4B5T2BVgF7xhaRX6QlL__POvzM9cF6vk_1RGCa09w6iLpHgIgt_iowvxqf6f5TTVmOzHWvzSxk88_fxfM_3q-UP-JIB4G48HfoeYgSPjO53fNRmEd7F2Ld6LZhEmAIMtmH_75kiEe548XciEjIxmc00W5dnW6rcHsPqLEZAwFGXEUuzgtVpAJqAd5c26rYWBy36ijC-2R2vrmkP0fEqyU9i9EF3bzwoMIgc5xrGyr2AJbYd2w08T0T9mkWokjnfqVTFYDlbaPlurej8PV4G0WWJKTybPldNxwmdErVh4avFHxx8CVrYB92klJDM6FSbR3K7S6fdSv8t-NLDbJz6CP5LNAx7npNUwgdLTvHBlH4NCvEArAKuS1SzrxDmxLJalPWXbi48V6dghJzOUVkntsrwmWSlIG9H4r8z__R8USGakAgwAAA==.eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6ZmFsc2V9fQ==\",\"tokenId\":\"15804e55-c5c8-4b58-98f6-272642c7dcc7\",\"expiration\":\"2021-06-18T21:40:01Z\"\r\n}"
+  recorded_at: Fri, 18 Jun 2021 20:40:03 GMT
+- request:
+    method: post
+    uri: https://login.windows.net/common/oauth2/token/
+    body:
+      encoding: UTF-8
+      string: client_id=08d11f0c-383b-4bfa-a5a5-f5b47abeb642&grant_type=password&username=powerbi%40lexmark.com&password=Rabbit1010%21&scope=openid&resource=https%3A%2F%2Fanalysis.windows.net%2Fpowerbi%2Fapi
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.6.0 x86_64) ruby/2.6.3p62
+      Content-Length:
+      - '193'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - login.windows.net
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      P3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      X-Ms-Request-Id:
+      - 85c4dc93-bd2b-4c94-bb36-b171dfa24e00
+      X-Ms-Ests-Server:
+      - 2.1.11829.4 - WUS2 ProdSlices
+      Set-Cookie:
+      - fpc=AvyoSPxiZrNGow3C8bdApxtbBFe4AQAAAKT7XtgOAAAA; expires=Sun, 18-Jul-2021
+        20:40:04 GMT; path=/; secure; HttpOnly; SameSite=None
+      - stsservicecookie=estsfd; path=/; secure; samesite=none; httponly
+      - x-ms-gateway-slice=estsfd; path=/; secure; samesite=none; httponly
+      Date:
+      - Fri, 18 Jun 2021 20:40:04 GMT
+      Content-Length:
+      - '4008'
+    body:
+      encoding: UTF-8
+      string: '{"token_type":"Bearer","scope":"Dashboard.Read.All Dataset.Read.All
+        Group.Read Report.Read.All","expires_in":"3599","ext_expires_in":"3599","expires_on":"1624052404","not_before":"1624048504","resource":"https://analysis.windows.net/powerbi/api","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlLyIsImlhdCI6MTYyNDA0ODUwNCwibmJmIjoxNjI0MDQ4NTA0LCJleHAiOjE2MjQwNTI0MDQsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84VEFBQUFNSDA0ektWbDVzNFFOY0cwaS8wbTR2enE3WDB6a3U0eXhObnFGZ0RjL1RFPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwOGQxMWYwYy0zODNiLTRiZmEtYTVhNS1mNWI0N2FiZWI2NDIiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlNlcnZpY2UgQWNjb3VudCIsImdpdmVuX25hbWUiOiJQb3dlckJJIiwiaXBhZGRyIjoiMTA3LjEwLjE3Ni44NSIsIm5hbWUiOiJQb3dlckJJIFNlcnZpY2UgQWNjb3VudCIsIm9pZCI6IjhiMWI4ZjdiLTU4NDgtNDZhYy04OWVlLTQyNjI1YzJhZWMyYyIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zMjY2MzM2NDQ4LTM0MjE2NzYyNDAtMTI1MTg0OTkxMS0xOTkzMzYiLCJwdWlkIjoiMTAwM0JGRkRBOEU1MDRFMSIsInJoIjoiMC5BUnNBWlpCd0VteHV5VUdlVGZzS1EybHB6Z3dmMFFnN09QcExwYVgxdEhxLXRrSWJBQUkuIiwic2NwIjoiRGFzaGJvYXJkLlJlYWQuQWxsIERhdGFzZXQuUmVhZC5BbGwgR3JvdXAuUmVhZCBSZXBvcnQuUmVhZC5BbGwiLCJzdWIiOiJwRE1JVlNFcWJzX3plSUFXUDBORVRmbmVYYWcteTZBeTc4SEFkbXNzMHZjIiwidGlkIjoiMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlIiwidW5pcXVlX25hbWUiOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidXBuIjoiUE9XRVJCSUBsZXhtYXJrLmNvbSIsInV0aSI6Ims5ekVoU3U5bEV5N05yRngzNkpPQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdfQ.Ktyb-7lU0RJ0Kboknrk-zu4PUFLsItl0QwctSaVGPUzAzakrGzq3_Ol7VG8Be0e1NAJYUva2U8RcsAGPNOi9IFm7lbsv1mHoZsiof3tty1mU8UQmg61u1sL1pDdkrtWbzS4UgVWIBu582oVnIkTXeMdqyFqZk0lGjY29qIlzaC_jmQdR8hi0ffxjK5iY2_5qkJp1OjAXmzPYxZWVehEcfCW_O3P99Vd4OopZzkXofcs8_Al694K5m4drIJmYq1qHrTEjDq35Gd4DMEU7ZXicWPH3D6S65REtVZ-KXNQ6fKMNVxlUp9ZlZed4QKZQz4BdR5nMj1cCxJSPdx9vMiE1cA","refresh_token":"0.ARsAZZBwEmxuyUGeTfsKQ2lpzgwf0Qg7OPpLpaX1tHq-tkIbAAI.AgABAAAAAAD--DLA3VO7QrddgJg7WevrAgDs_wQA9P8nQN--2y4Mfjyvy2kE-dEgvmuEoaqe8_mOoB9jzYxT4GcjRqa8GMnXKahXfXqAm-w_SASL-bJd_RU4zlQtS1TZv-GtqeczS5fbcFl4sU0Eb2VvYHpfMSKPdIkBmILREx1eY3f8okZDKGV70n752iuD_hn7tEWu-gve5sbPCI4pOtwMtgW6sl2Mh1u5JUeTMqRaW_9KRxsROzIhKUdwBr8yj_yl14iUKkwOfUMlmp-NxJvOWPNtm2njV_P_lbJJmJu-6Mp3OkDCOcEsl7eGAz1P8kdXIS95sXsK9ogFbf3JLh9_m2zAqunGjeH0_YZ4TOsPuLOXr5lrB5hopjqYhKuvpNenE91dRZ7iSWhB1Gpl8NyICwxIIkdmBC7DS6tddK3AmbnZXbrZ8Dk8OYzsKrUSP3N6SLMLInvxNCjbbqlyA9YfzEjc1gGMUlmeT8NK-_xsaq9skiCmIx0JuTEJPPTkzWvD9DXuQzikNCyc-VZcd_7EHjnpOKvYWm9wPTUpYbTPHExzLEfL-p8uP0R5TGOhyT4fkIErMn5c1BTWcqUIhBcnZ6oAuxE6GCkoqMU_WcusUCfhcvZ7cRnShog9ldnXBJitlai9vglCaGRmWDMqaKQrC8zrboQGaZqbU_LUlaEKjT-L8ZC0mgjI2in5EqfO_eucgTLnRR1rxyyj1mXw2svtgFm9XsmFNdfbuZ4_0kiq227TJuhRP4XdD88syMs-sGXQd3n_ehU1lctFGa3Z74m4lXcH_MKK42qYWvHhlO9oaDDv2i2kKohru6itQjam2xSkPfQSp2cc-qJ_oNXv1U4zBdodmVK_716fqfhfCOPUZiiIFQCpwzyTmQIJ1RAQpkwTahKRVNfMID1i-OPeK8ljg-xh6SpqYuVqxRNLah0_i4Trer_Hko9-mehUoBKFTM3YIBQA-XuA3H-IK-gQb56sZO0vMjiiG6ifdvxsA2B8kxQ","id_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwOGQxMWYwYy0zODNiLTRiZmEtYTVhNS1mNWI0N2FiZWI2NDIiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UvIiwiaWF0IjoxNjI0MDQ4NTA0LCJuYmYiOjE2MjQwNDg1MDQsImV4cCI6MTYyNDA1MjQwNCwiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlNlcnZpY2UgQWNjb3VudCIsImdpdmVuX25hbWUiOiJQb3dlckJJIiwiaXBhZGRyIjoiMTA3LjEwLjE3Ni44NSIsIm5hbWUiOiJQb3dlckJJIFNlcnZpY2UgQWNjb3VudCIsIm9pZCI6IjhiMWI4ZjdiLTU4NDgtNDZhYy04OWVlLTQyNjI1YzJhZWMyYyIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zMjY2MzM2NDQ4LTM0MjE2NzYyNDAtMTI1MTg0OTkxMS0xOTkzMzYiLCJyaCI6IjAuQVJzQVpaQndFbXh1eVVHZVRmc0tRMmxwemd3ZjBRZzdPUHBMcGFYMXRIcS10a0liQUFJLiIsInN1YiI6ImM5SXBoU2Y3X2JNeXg4aXgwT3BGMHNXd19OSkJjd1VZYUhITV9WUldSbHciLCJ0aWQiOiIxMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UiLCJ1bmlxdWVfbmFtZSI6IlBPV0VSQklAbGV4bWFyay5jb20iLCJ1cG4iOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidmVyIjoiMS4wIn0."}'
+  recorded_at: Fri, 18 Jun 2021 20:40:04 GMT
+- request:
+    method: get
+    uri: https://api.powerbi.com/v1.0/myorg/groups/23269a7d-a364-4ef3-b85d-5ca8c9730b46/datasets/34685ffd-5dbe-4d00-85b7-4d5c44b95b14
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.6.0 x86_64) ruby/2.6.3p62
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlLyIsImlhdCI6MTYyNDA0ODUwNCwibmJmIjoxNjI0MDQ4NTA0LCJleHAiOjE2MjQwNTI0MDQsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84VEFBQUFNSDA0ektWbDVzNFFOY0cwaS8wbTR2enE3WDB6a3U0eXhObnFGZ0RjL1RFPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwOGQxMWYwYy0zODNiLTRiZmEtYTVhNS1mNWI0N2FiZWI2NDIiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlNlcnZpY2UgQWNjb3VudCIsImdpdmVuX25hbWUiOiJQb3dlckJJIiwiaXBhZGRyIjoiMTA3LjEwLjE3Ni44NSIsIm5hbWUiOiJQb3dlckJJIFNlcnZpY2UgQWNjb3VudCIsIm9pZCI6IjhiMWI4ZjdiLTU4NDgtNDZhYy04OWVlLTQyNjI1YzJhZWMyYyIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zMjY2MzM2NDQ4LTM0MjE2NzYyNDAtMTI1MTg0OTkxMS0xOTkzMzYiLCJwdWlkIjoiMTAwM0JGRkRBOEU1MDRFMSIsInJoIjoiMC5BUnNBWlpCd0VteHV5VUdlVGZzS1EybHB6Z3dmMFFnN09QcExwYVgxdEhxLXRrSWJBQUkuIiwic2NwIjoiRGFzaGJvYXJkLlJlYWQuQWxsIERhdGFzZXQuUmVhZC5BbGwgR3JvdXAuUmVhZCBSZXBvcnQuUmVhZC5BbGwiLCJzdWIiOiJwRE1JVlNFcWJzX3plSUFXUDBORVRmbmVYYWcteTZBeTc4SEFkbXNzMHZjIiwidGlkIjoiMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlIiwidW5pcXVlX25hbWUiOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidXBuIjoiUE9XRVJCSUBsZXhtYXJrLmNvbSIsInV0aSI6Ims5ekVoU3U5bEV5N05yRngzNkpPQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdfQ.Ktyb-7lU0RJ0Kboknrk-zu4PUFLsItl0QwctSaVGPUzAzakrGzq3_Ol7VG8Be0e1NAJYUva2U8RcsAGPNOi9IFm7lbsv1mHoZsiof3tty1mU8UQmg61u1sL1pDdkrtWbzS4UgVWIBu582oVnIkTXeMdqyFqZk0lGjY29qIlzaC_jmQdR8hi0ffxjK5iY2_5qkJp1OjAXmzPYxZWVehEcfCW_O3P99Vd4OopZzkXofcs8_Al694K5m4drIJmYq1qHrTEjDq35Gd4DMEU7ZXicWPH3D6S65REtVZ-KXNQ6fKMNVxlUp9ZlZed4QKZQz4BdR5nMj1cCxJSPdx9vMiE1cA
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.powerbi.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, must-revalidate, no-cache
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '624'
+      Content-Type:
+      - application/json; odata.metadata=minimal
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      Requestid:
+      - 0f32f10a-1375-4470-8dad-aa757051db33
+      Odata-Version:
+      - '4.0'
+      Access-Control-Expose-Headers:
+      - RequestId
+      Request-Redirected:
+      - 'true'
+      Home-Cluster-Uri:
+      - https://wabi-us-east2-redirect.analysis.windows.net/
+      Date:
+      - Fri, 18 Jun 2021 20:40:04 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: "{\r\n  \"@odata.context\":\"http://wabi-us-east2-redirect.analysis.windows.net/v1.0/myorg/groups/23269a7d-a364-4ef3-b85d-5ca8c9730b46/$metadata#datasets/$entity\",\"id\":\"34685ffd-5dbe-4d00-85b7-4d5c44b95b14\",\"name\":\"Abercrombie
+        ADS Analysis May 2021\",\"addRowsAPIEnabled\":false,\"configuredBy\":\"kamana.shrestha@lexmark.com\",\"isRefreshable\":true,\"isEffectiveIdentityRequired\":false,\"isEffectiveIdentityRolesRequired\":false,\"isOnPremGatewayRequired\":true,\"targetStorageMode\":\"Abf\",\"createReportEmbedURL\":\"https://app.powerbi.com/reportEmbed?config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"qnaEmbedURL\":\"https://app.powerbi.com/qnaEmbed?config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6dHJ1ZSwiY2VydGlmaWVkVGVsZW1ldHJ5RW1iZWQiOnRydWUsInVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d\",\"upstreamDatasets\":[\r\n
+        \   \r\n  ],\"schemaMayNotBeUpToDate\":false,\"users\":[\r\n    \r\n  ]\r\n}"
+  recorded_at: Fri, 18 Jun 2021 20:40:04 GMT
+- request:
+    method: post
+    uri: https://api.powerbi.com/v1.0/myorg/groups/23269a7d-a364-4ef3-b85d-5ca8c9730b46/reports/083f20d3-8f12-4cf3-9930-ba89612e80a4/GenerateToken
+    body:
+      encoding: UTF-8
+      string: '{"accessLevel":"view"}'
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.6.0 x86_64) ruby/2.6.3p62
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlLyIsImlhdCI6MTYyNDA0ODUwNCwibmJmIjoxNjI0MDQ4NTA0LCJleHAiOjE2MjQwNTI0MDQsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84VEFBQUFNSDA0ektWbDVzNFFOY0cwaS8wbTR2enE3WDB6a3U0eXhObnFGZ0RjL1RFPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwOGQxMWYwYy0zODNiLTRiZmEtYTVhNS1mNWI0N2FiZWI2NDIiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlNlcnZpY2UgQWNjb3VudCIsImdpdmVuX25hbWUiOiJQb3dlckJJIiwiaXBhZGRyIjoiMTA3LjEwLjE3Ni44NSIsIm5hbWUiOiJQb3dlckJJIFNlcnZpY2UgQWNjb3VudCIsIm9pZCI6IjhiMWI4ZjdiLTU4NDgtNDZhYy04OWVlLTQyNjI1YzJhZWMyYyIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zMjY2MzM2NDQ4LTM0MjE2NzYyNDAtMTI1MTg0OTkxMS0xOTkzMzYiLCJwdWlkIjoiMTAwM0JGRkRBOEU1MDRFMSIsInJoIjoiMC5BUnNBWlpCd0VteHV5VUdlVGZzS1EybHB6Z3dmMFFnN09QcExwYVgxdEhxLXRrSWJBQUkuIiwic2NwIjoiRGFzaGJvYXJkLlJlYWQuQWxsIERhdGFzZXQuUmVhZC5BbGwgR3JvdXAuUmVhZCBSZXBvcnQuUmVhZC5BbGwiLCJzdWIiOiJwRE1JVlNFcWJzX3plSUFXUDBORVRmbmVYYWcteTZBeTc4SEFkbXNzMHZjIiwidGlkIjoiMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlIiwidW5pcXVlX25hbWUiOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidXBuIjoiUE9XRVJCSUBsZXhtYXJrLmNvbSIsInV0aSI6Ims5ekVoU3U5bEV5N05yRngzNkpPQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdfQ.Ktyb-7lU0RJ0Kboknrk-zu4PUFLsItl0QwctSaVGPUzAzakrGzq3_Ol7VG8Be0e1NAJYUva2U8RcsAGPNOi9IFm7lbsv1mHoZsiof3tty1mU8UQmg61u1sL1pDdkrtWbzS4UgVWIBu582oVnIkTXeMdqyFqZk0lGjY29qIlzaC_jmQdR8hi0ffxjK5iY2_5qkJp1OjAXmzPYxZWVehEcfCW_O3P99Vd4OopZzkXofcs8_Al694K5m4drIJmYq1qHrTEjDq35Gd4DMEU7ZXicWPH3D6S65REtVZ-KXNQ6fKMNVxlUp9ZlZed4QKZQz4BdR5nMj1cCxJSPdx9vMiE1cA
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '22'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.powerbi.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, must-revalidate, no-cache
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '2818'
+      Content-Type:
+      - application/json; odata.metadata=minimal
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      Requestid:
+      - e097aa6f-7562-4982-a2fe-022e98a94635
+      Odata-Version:
+      - '4.0'
+      Access-Control-Expose-Headers:
+      - RequestId
+      Request-Redirected:
+      - 'true'
+      Home-Cluster-Uri:
+      - https://wabi-us-east2-redirect.analysis.windows.net/
+      Date:
+      - Fri, 18 Jun 2021 20:40:05 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: "{\r\n  \"@odata.context\":\"http://wabi-us-east2-redirect.analysis.windows.net/v1.0/myorg/groups/23269a7d-a364-4ef3-b85d-5ca8c9730b46/$metadata#Microsoft.PowerBI.ServiceContracts.Api.V1.GenerateTokenResponse\",\"token\":\"H4sIAAAAAAAEACWWtc7GirFF3-W0jmSmSCnMzPi5MzOzo_vu95fS7ylmaTRr__cfO32HOS3--fc_0WJ9glUMn9ofy3yh7cNaj-REwhtnQgui-496N2RHKVPe69n3Obgo8i0ZNoNPa2NWSbci5qWP1xsO5qq08IQ1t1KGMlqtKzMyvBIufoIrS_Fg3Q2qhJsc1OFB2mVC8a5wGEOK_d6gzaVxMCf4LPjy4Ze4k8DCWf20cD945EmQLqlt4MCIuqoRBtkduCWsa8Jaivc1ZKVK7o_Q9rRTfG66vmY_Y07dOWfgZL0Ma_sMkZlHka8LCp8MUXOzRJhu8tkD2t4srgYb_cHyUkds6jfSMQEB187KbzBBUtzJRYsxUr46UVSqHP6Znb4utjQaBdLRmpQyCLmzIklpksQR-Pewb-RuuYsrTiw7HUgfnKbU55ryJQAKS9cLaTU3v2Ag6Ak6B6YMgmNrqfo0QUux1nGo2R65v0ZPvfKXz0LvnDEiRZZ_D9K4CnaUQiVsjFaKeZ5xWA3XJuFB004Q4tVmeqCs3P02bfVeEoJElZiEvlx7LvCRz7QRwR08hIqPyciB7i_-QOZipDXhtSJx6gPK8u7Mh429DT3BKYrvmZc1-GrNZclvd0OPKl2_cWFX5tyTwiU-1-Y-wk9Fe93JrASmoLL1jGlRRGCTWwza947V_4pgReGBt3Wy6PQF14ak5AnRhup5rFoKAM76sl7LyG57CJI8AEQWR0YNm0Kl07bVrweIlAl3nQkde4kMIPQrt3xvwS8QJzG4UUohPW4GUwCVZcqY0hm7ocLsJ9SaG9Dip7J5RzIDeJt5Q6jKm5K5Ru4YzH4vyOTYfkZX6t1iWbpz6vD3rkIrm0EdBb1i-lknv_RJg0Ho78Z9YIj95BnmJk5Kl93P-AQPlm_jQOAnDNsFSorvzfOUNvsZBW9OaQ0Or6XB4wQVEdUENkMI1yl2ayDVV-5s9LtNdx-phIMzlmYWS2BeUXMWmjeKcaDtadItYUPPUFmYAgSIxiIfpfIr28pc61wXOQKpjXYaAeRl02ejmW7zhb892LLA2O1ZVzL-CiuqYxdnGmfHv-k-lJbc1ePiA6BkTgZP-UQ326Dq1l1EKBnABJOWR5hEtTIy0DBG8ihIQoAOhadytjaagO8a4pPwRrYo4IF-5spDcx2z2RdX8UzBfPFOXphOnud7hsYgBn5EWXKff2hjbMSPF4wASvOfHKeOFEgozbDiOV3wTZapUlQokdgR9DkmkxAtykjd6iVnx4Edqer5Qxur9QtdkK-DOGwtbI9cBaX5k98Tf4m9k-N2SQGuT986X-J5pRjtpoALBX5V5wllm7XZn-tnQJXPgH_217fBMFUqYgQFJPa9ZkYcNCI-PvjkhZAPN7gWm-j8JLQczs3aQFG9OlI6xvR1NrO3bPW8rcFWmPaL9Uwh0gI7bVSYstDy7fe-jo2ifyaCk85QzgXVtnnTIst0iCugdIdzBF_29YnJMtezcdLCeRyGIgNDvi35KCpTWbd7yIyrSodNIqCuHoflKY5iBSI9X3yRKs4oF5GIlTzvbRg1Exl4yrOQO-qVzETLtx0OEp5DA_R6yeQHKU4_cBk38SkAkd1ZXtffIgytq7X9pbSeaRaOyufDDSeX2syg-0yiqTDmRsk6XxPdiD49DU_NwOOV8fcFayuntnQFyedJyxpPUYzTj2VlC3GTU5m4pelBvIFW_UlG0PAQPhqBtd90_OJUQaIsOlwBw8OscwR9xJBt5SsOPqIkaCCULNdt9M-NJDMBdAWaHk7PbbGvZBAK1ClRT0vauUt8YlkQY7z6jgCSXby_7824kmQMPh4zcDUwS1iDRuB9tC527TmHI_nRbX8lGYNnn1VtMdjYmD1XeyXxHP3LzewZ4MepKiNJk79LnU6-pz8nXz62rk8_mRPRmJ3bgZnndsTyqkp2Hsg1X8QoaP6UKe563zrbGVTw-UplVxeV4bZyTRjtMEti9koP_bsMkxsHDlrY824etDWyb-tmaavR8PJNXRxkvymtRcnl1M5psDI33dygP-103-mFfXfexTza2qJB-fzbfU5xf-nla0HsujjykxRR96q7TEH0V970bl0t7kj3R4lhxylbU46L_GlNVWgXYnnedEbugCTgJcBx66R22J5fI4Wshnybarqqw02RYU4_GJrTTNrZ5TdlUfOcDhUjd72z3n2uE35VHTuZLoRXgi6BUn14UUdhRBr4V_RaEDxjQZMOqH4t2MMVl-4-LzmkGfYTpGyRjRPIl0T9qMWY_sZ6SvFKCEgC7_h0byDTXpa5Y3IKHwha4glxUP19Bg8u-KriUgUDVF9NqNO2J80vdYJd1N8XMYP-zSdxksILjXHI35_qDBKS4PnHVRUDlx_1nOnxxd8FTeJGSI0cLdeEkgbA-c9__vnXP9z2Lsesle9fTeJBScnPkrpofVlPMnSMHtH6p-Q7ll7wORdH_CoZS7T2n_g8EoQxy5ne9AH8lSFc9CaEFlFDdK2w_AhQqBLBCeMU4jAVmem_ibtHROvLoXq3r870qD-ExkWHA968HsCseb5oJ5yyz-Em7V0q8mFlXR60pPMt_jut7XGulcLRqjn8JY1C0fFsMZKeAxYyLix4h-R8ZZ040cNcrLfoD36COyzOQ0EOokq5-zdp0jNB0bqDwqLZSU01YHee05Erb08MvvZJS5bz9NEGstaf8wF0kiFuLjGT7sExElquf3mt5SYEbgxc7BVNmYY9BvrQuhUvYN2oGZVwLT3uJrAfoZkMXzbM_zC_S1NuSvhHGRdS5scAscsud4AcoDcq4_i_lNfWU3qcW_kXk2O8KMQ0S41eX3ngZT3JyiMuQk00lKuSuAB7KHdYOJJ7-sxXBtzYlF24eIJmoX2_09jRLsATAem-v4BUW3smJ_q-qMjXQoVMZUzbhHqTdfxeuiAgQ_FF946qmTqFuBPOnOj2DezDd-wPxjpxNHo18022Wut-sw6Rz7ae7kiCvi43qcyPCEKmMXW3WO3MyhyW7oIzTglH9mLuZZXjr0-FPOIgX72rUcOvN0b3ZlsayPKVG740hcSmb-xek5Us96rX1p8KYKvTBJUOmzZXxnoDlnGwq75mXnaAQpt6qll1N7ZPwkcsa9Winb82IXYsEmy6cfwURq8IV6Aq0djlsc0ZbefqP8z_9_9rcbGcGgwAAA==.eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6eyJtb2Rlcm5FbWJlZCI6ZmFsc2V9fQ==\",\"tokenId\":\"1fcc948a-9247-49fd-98c3-17b59949af5a\",\"expiration\":\"2021-06-18T21:40:04Z\"\r\n}"
+  recorded_at: Fri, 18 Jun 2021 20:40:05 GMT
+recorded_with: VCR 6.0.0

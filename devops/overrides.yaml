@@ -1,0 +1,28 @@
+vault_addr: https://vault.us.tools.onelxk.co
+vault_role: dev2-eastus-cloud-reporting-gat-reporting-app
+vault_mount_point: dev2-eastus-cloud-kubernetes
+base_dns: cloud.onelxk.co
+idp_url: https://idp.dev.us.cloud.onelxk.co
+internal_reporting_url: internal.reporting.dev.platform.onelxk.co
+reporting_url: reporting.dev.cloud.onelxk.co
+database_host: dev2-eastus-cloud-db-postgresql-1.postgres.database.azure.com
+database_name: reporting_gat_reporting_app
+database_port: "5432"
+vault_application_secret: dev2/eastus/cloud/reporting/gat-reporting-app
+powerbi:
+  username: "powerbi@lexmark.com"
+
+b2c:
+  oauth2_token_url: "https://login.microsoftonline.com/LexmarkB2CQA.onmicrosoft.com/oauth2/v2.0/token"
+  oauth2_scope: "https://LexmarkB2CQA.onmicrosoft.com/identity-management-service/.default"
+  raw_authorize_endpoint_url: "https://LexmarkB2CQA.b2clogin.com/LexmarkB2CQA.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_SignIn_v2&client_id=fb8c38cd-f1e2-4634-a27b-b257568e7fe0&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&response_mode=form_post"
+  openid_config_url: "https://LexmarkB2CQA.b2clogin.com/LexmarkB2CQA.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_SignIn_v2"
+  signing_keys_url: "https://login.microsoftonline.com/LexmarkB2CQA.onmicrosoft.com/discovery/v2.0/keys?p=B2C_1A_SignIn_v2"
+
+acim:
+  url: "https://ims.us.qa.cloud.onelxk.co"
+  redirect_uri: "https://reporting.dev.cloud.onelxk.co/auth/azureactivedirectory/callback"
+
+idp:
+  url: "https://idp.us.cloud.onelxk.co"
+  redirect_uri: "https://reporting.dev.cloud.onelxk.co/mps/callback"

@@ -1,0 +1,402 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require font-awesome
+ *= require_self
+ */
+
+body {
+  background: #f3f2f1;
+  font-family: "TP Hero";
+}
+
+.powerbi-container {
+  height: 90vh;
+  overflow: hidden;
+}
+
+.powerbi-container-border {
+  border: 1px solid silver;
+}
+
+.pbi-iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.report-list {
+  height: 90vh;
+  overflow: auto;
+  margin-left: 20px;
+}
+
+.report-list::-webkit-scrollbar {
+  width: 0px;
+}
+
+#login-container {
+  margin-top:50px;
+  height: 70vh;
+}
+
+#login {
+  width: 600px;
+  margin: auto;
+  width: 50%;
+  border: 1px solid #8e8e8e;
+}
+
+#login h1 { background: #8e8e8e; color: white; padding: 10px 20px;}
+
+/* Track */
+.report-list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+.report-list::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #9c9c9c;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.report-item {
+  padding: 10px 20px;
+}
+
+.navbar {
+  background: #44434e;
+}
+.navbar-item {
+  color: white;
+  height: 65px;
+}
+.nav {
+  background-color: #44434e;
+  padding-left: 50px;
+  padding-right: 40px;
+  height: 72px;
+  color: #e6e6f0;
+  font-size: 16px;
+  list-style: none;
+  margin: 0 0 0 0 !important;
+  z-index: 2;
+  position: relative;
+  border-bottom: 1px solid #32323c;
+  vertical-align: middle !important;
+  padding-bottom: 0px !important;
+  padding-top: 22px;
+}
+
+.navbar-link {
+  color: #3af23a;
+  font-weight: bold;
+}
+
+.navbar-link:not(.is-arrowless)::after {
+  border-color: #3af23a;
+}
+
+.navbar-item:focus {
+  background: black;
+}
+
+.btn_fullscreen {
+  border: 1px solid #00ad21;
+  padding: 4px;
+  font-size: 10px;
+  border-radius: 30px;
+}
+
+.btn_fullscreen:hover {
+  background: #333;
+  cursor: pointer;
+}
+
+.topnav-divider {
+  border-right: 1px solid gray;
+  padding-left: 10px;
+  color: silver;
+}
+
+.menu-list li:hover {
+  cursor: pointer;
+}
+
+.menu-list li div.workspace-name {
+  padding: 10px 0px;
+}
+
+.menu-list li div.workspace-reports {
+  padding: 15px 15px 15px 34px;
+}
+
+.menu-list li div:hover {
+  background: #ececec;
+}
+
+.footer {
+  background: #44434e;
+  color: #fff;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.workspace-reports.active {
+  background: #f3f2f1;
+  color: black;
+  font-weight: bold;
+}
+
+.workspace-reports.active:hover {
+  background: #bbbaba;
+  color: black;
+}
+
+a.btn_fullscreen {
+  color: white;
+}
+
+.navbar-item.has-dropdown:hover .navbar-link {
+  background: #00ad21;
+  color: white;
+}
+
+.navbar-item.has-dropdown:hover .navbar-link:after {
+  border-color: white;
+}
+
+.navbar-item.has-dropdown:hover .navbar-dropdown a.navbar-item {
+  color: black;
+}
+
+.section {
+  padding: 0px;
+}
+
+.workspace-name .icon {
+  margin-left: 14px;
+  width: 10px;
+}
+
+li.active {
+  background:#f3f2f1;
+}
+
+.button {
+  border-radius: 0px;
+}
+
+.modal-card-head {
+  border-radius: 0px;
+}
+.modal-card-foot {
+  border-radius: 0px;
+}
+
+@font-face {
+  font-family: "TP Hero";
+  src: url("/fonts/tp-hero/tphero-light-webfont.eot");
+  src: url("/fonts/tp-hero/tphero-light-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("/fonts/tp-hero/tphero-light-webfont.woff2") format("woff2"),
+    url("/fonts/tp-hero/tphero-light-webfont.woff") format("woff"),
+    url("/fonts/tp-hero/tphero-light-webfont.ttf") format("truetype"),
+    url("/fonts/tp-hero/tphero-light-webfont.svg#tp_herolight") format("svg");
+  font-weight: 100;
+  font-style: normal;
+}
+
+h3.title {
+  font-size: 24px;
+}
+
+.is-primary {
+  background-color: #00ad21 !important;
+}
+
+.dropdown-menu.is-active {
+  display: block !important;
+}
+
+.button.is-text {
+  text-decoration: none;
+}
+
+.table td:hover {
+  cursor: pointer;
+}
+
+.table.no-hover td:hover {
+  cursor: default;
+}
+
+.back-to-reports {
+  cursor: pointer;
+}
+
+.back-to-reports:hover {
+  background: #ececec!important;
+  color white;
+}
+
+.workspaces i.fa:hover {
+  cursor: pointer;
+}
+
+.flash-ah-ah {
+  position: fixed;
+  right: 200px;
+  z-index: 1000;
+  width: 300px;
+  margin-top: 5px;
+}
+
+.activity-header {
+  background: #e0e0e0;
+  padding: 10px;
+}
+
+.navbar-item.has-dropdown.is-active .navbar-link {
+  background: #00ad21;
+  color: white;
+}
+
+.navbar-item.has-dropdown.is-active .navbar-link:not(.is-arrowless)::after {
+  border-color: white;
+}
+
+.navbar-dropdown.is-right.is-active a {
+  color: black;
+}
+
+
+.menu-list li div.workspace-name.admin, .menu-list li div.user-name.admin {
+  padding: 10px 20px;
+}
+
+.btn_users {
+  padding-left: 10px;
+  color: #e6e6f0;
+}
+
+.workspaces {
+  top: 0px;
+  position: sticky;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: white
+}
+
+.filter-workspaces {
+  border: 0px; 
+  height: 28px;
+  font-size: 16px
+}
+
+.report-error-msg {
+  height: 90vh
+}
+
+.report-error-msg div {
+  background: lightyellow;
+  padding: 10px;
+  margin: 10px;
+  color: red;
+}
+
+.display-none { display: none }
+.bg-white { background:white; }
+
+.float-right { float: right }
+
+.mt-5 { margin-top: 5px }
+.mb-5 { margin-bottom: 5px }
+
+.pl-5 { padding-left: 5px }
+.pr-15 { padding-right: 15px }
+
+.flex { display: flex }
+
+
+.flash__message {
+  box-sizing: border-box;
+  padding: 15px 30px 15px 15px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #ccc;position:relative
+}
+
+.flash__message.success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6
+}
+
+.flash__message.warning{
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc
+}
+ 
+.flash__message.error{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1
+}
+
+.flash__message.info{
+  color: #37516a;
+  background-color: #f2f5fe;
+  border-color: #dfe3f0
+}
+
+.flash__close-button{
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 10px;
+  margin: 0;
+  padding: 8px;
+}
+
+.flash__close-button:active, .flash__close-button:focus {
+  outline:none
+}
+
+.msg_alert {
+  color: red
+}
+
+.userdata-heading {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

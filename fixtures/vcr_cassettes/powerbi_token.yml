@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://login.windows.net/common/oauth2/token/
+    body:
+      encoding: UTF-8
+      string: client_id=08d11f0c-383b-4bfa-a5a5-f5b47abeb642&grant_type=password&username=powerbi%40lexmark.com&password=Rabbit1010%21&scope=openid&resource=https%3A%2F%2Fanalysis.windows.net%2Fpowerbi%2Fapi
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.6.0 x86_64) ruby/2.6.3p62
+      Content-Length:
+      - '193'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - login.windows.net
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      P3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      X-Ms-Request-Id:
+      - 7bb26992-6e92-427d-96e3-68f669962e00
+      X-Ms-Ests-Server:
+      - 2.1.11829.4 - NCUS ProdSlices
+      Set-Cookie:
+      - fpc=AoAkkWpTjctFoTUOGMDsyLNbBFe4AQAAAJz7XtgOAAAA; expires=Sun, 18-Jul-2021
+        20:39:57 GMT; path=/; secure; HttpOnly; SameSite=None
+      - stsservicecookie=estsfd; path=/; secure; samesite=none; httponly
+      - x-ms-gateway-slice=estsfd; path=/; secure; samesite=none; httponly
+      Date:
+      - Fri, 18 Jun 2021 20:39:57 GMT
+      Content-Length:
+      - '4002'
+    body:
+      encoding: UTF-8
+      string: '{"token_type":"Bearer","scope":"Dashboard.Read.All Dataset.Read.All
+        Group.Read Report.Read.All","expires_in":"3599","ext_expires_in":"3599","expires_on":"1624052397","not_before":"1624048497","resource":"https://analysis.windows.net/powerbi/api","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMTI3MDkwNjUtNmU2Yy00MWM5LTllNGQtZmIwYTQzNjk2OWNlLyIsImlhdCI6MTYyNDA0ODQ5NywibmJmIjoxNjI0MDQ4NDk3LCJleHAiOjE2MjQwNTIzOTcsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJFMlpnWUZqUDh0VHk4azROL2h5M3EwdnVwVHo4MG1ubHF2bk1odlBCOGNCZG55M2tHM1FCIiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6IjA4ZDExZjBjLTM4M2ItNGJmYS1hNWE1LWY1YjQ3YWJlYjY0MiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiU2VydmljZSBBY2NvdW50IiwiZ2l2ZW5fbmFtZSI6IlBvd2VyQkkiLCJpcGFkZHIiOiIxMDcuMTAuMTc2Ljg1IiwibmFtZSI6IlBvd2VyQkkgU2VydmljZSBBY2NvdW50Iiwib2lkIjoiOGIxYjhmN2ItNTg0OC00NmFjLTg5ZWUtNDI2MjVjMmFlYzJjIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTMyNjYzMzY0NDgtMzQyMTY3NjI0MC0xMjUxODQ5OTExLTE5OTMzNiIsInB1aWQiOiIxMDAzQkZGREE4RTUwNEUxIiwicmgiOiIwLkFSc0FaWkJ3RW14dXlVR2VUZnNLUTJscHpnd2YwUWc3T1BwTHBhWDF0SHEtdGtJYkFBSS4iLCJzY3AiOiJEYXNoYm9hcmQuUmVhZC5BbGwgRGF0YXNldC5SZWFkLkFsbCBHcm91cC5SZWFkIFJlcG9ydC5SZWFkLkFsbCIsInN1YiI6InBETUlWU0VxYnNfemVJQVdQME5FVGZuZVhhZy15NkF5NzhIQWRtc3MwdmMiLCJ0aWQiOiIxMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UiLCJ1bmlxdWVfbmFtZSI6IlBPV0VSQklAbGV4bWFyay5jb20iLCJ1cG4iOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidXRpIjoia21teWU1SnVmVUtXNDJqMmFaWXVBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il19.SVzejLvvo_rOe8PBUDteNOjMB5dkPKBDIT_IhGSa4BpBmvuOt2LAv40hRBM7ZPcalSLNGwT2t361L18teUhWKIsHOPJOFRHyz08PikdWCsgI-Ehn0_cKZ2WdnzItg61gwaVhEsFD8RiGXlobMrci0MFyqi0BjvZzrpKp93dQJt-ikLVOKTxOyvcQxcJZCZcjrcSA_hU0G-SgBid_lclCkYsdZNOB6aVPI5N-w68PLcJqOm8nCKWUTgoNH8SqmSC4FX83qEzctWQZR43eGIq-IfdGMc1JRy6V6cCTdE8Qd-eMadzq5oEF0NAHtmy9VuA1EjU2JY8KSVMHMWQZS9TxUg","refresh_token":"0.ARsAZZBwEmxuyUGeTfsKQ2lpzgwf0Qg7OPpLpaX1tHq-tkIbAAI.AgABAAAAAAD--DLA3VO7QrddgJg7WevrAgDs_wQA9P9OApcHW6A3xecew2EifoyMUfzuWOF5DwBDBFsxBngNWU_CS8VJTRdGkUBvGgG3Q4XfN8tXqPSsd7pd-hpd5iHqLn7mhGUIKqfA-Ofd5bAL9kf07FHxeyDgLpYEX-4ves-iwTG1CAtDlBxJGB1deOPSW2Cer4DzEaije-k62JV-8xgt-y1XtiI0513fTrTGcWIJFvkqj07QULdQlm9x71hXGLU49WST1RMLJwElXxShJqcunXFPZ_15xV2hrWDtk0tkNfuzLzBphRSqlLLT5-YW7qErl__1jqDFLo046VijfUt383PgYhIBnJeoriAH6y0jC15gp72IUUsmTlqQby2IocpfklVRZn7h-gxCH1tkifaHFLrNnfFu6pxchfxA7I6g3-E69VtdoWia_gAEvNZ2iH5fsKj08CLpMHr8J8Yl4ULkoQrtTuaE5b18KdNxGprfrqFIOWZEzTPdmvv0UL2ura3E_AODk_tNXgOh4WkI7F8Nv9MtRyUNsZnpsadIVvg7o59Zryi-EQgX2l5ZCdgTLrmuD-MMZSR9F_ZEiTj_8AW41_2lpMuB4_8wcJB87u3XBF5jlcLTE97P1P5SLRGv7xwuwA3XAWe80eXJjzi_xj_804TJN8XiJYUye-unJh7MThxGs3oQNDIG6M-vxFixTGaswJNJclmpfPiiutuVP02zUqMH1Z-TNV7D29_WplGu3L1-NkqwNtMnaqzl_ZEeHBb4313UT7gh01GtxaIwnlJ7ZKMztJvLFZzpkwftVGdrIgT1VdaYB8LnuYHHQKrIkGz7HJ4en2_ZM1UAtrPNor4HASCl5bkjAfLQIAY1RRVnxuRKuDgyO-Jc2Sv8USW_NapGghS0qJnonguMlmr1Xy9uMD4O6XmrWEotbdSC46HfCdYHLEhONuNIph0QkkiEeGd16GEr3Svo_N-x_9niCXJj48zCs8-QHcLFaWly4UIYKyE","id_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwOGQxMWYwYy0zODNiLTRiZmEtYTVhNS1mNWI0N2FiZWI2NDIiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UvIiwiaWF0IjoxNjI0MDQ4NDk3LCJuYmYiOjE2MjQwNDg0OTcsImV4cCI6MTYyNDA1MjM5NywiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlNlcnZpY2UgQWNjb3VudCIsImdpdmVuX25hbWUiOiJQb3dlckJJIiwiaXBhZGRyIjoiMTA3LjEwLjE3Ni44NSIsIm5hbWUiOiJQb3dlckJJIFNlcnZpY2UgQWNjb3VudCIsIm9pZCI6IjhiMWI4ZjdiLTU4NDgtNDZhYy04OWVlLTQyNjI1YzJhZWMyYyIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0zMjY2MzM2NDQ4LTM0MjE2NzYyNDAtMTI1MTg0OTkxMS0xOTkzMzYiLCJyaCI6IjAuQVJzQVpaQndFbXh1eVVHZVRmc0tRMmxwemd3ZjBRZzdPUHBMcGFYMXRIcS10a0liQUFJLiIsInN1YiI6ImM5SXBoU2Y3X2JNeXg4aXgwT3BGMHNXd19OSkJjd1VZYUhITV9WUldSbHciLCJ0aWQiOiIxMjcwOTA2NS02ZTZjLTQxYzktOWU0ZC1mYjBhNDM2OTY5Y2UiLCJ1bmlxdWVfbmFtZSI6IlBPV0VSQklAbGV4bWFyay5jb20iLCJ1cG4iOiJQT1dFUkJJQGxleG1hcmsuY29tIiwidmVyIjoiMS4wIn0."}'
+  recorded_at: Fri, 18 Jun 2021 20:39:57 GMT
+recorded_with: VCR 6.0.0

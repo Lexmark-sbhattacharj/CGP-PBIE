@@ -1,0 +1,44 @@
+<section class="section">
+<div v-bind:class="{modal: true, 'is-active': showAnnouncementDetails }">
+<div class="modal-background"></div>
+<div class="modal-card">
+  <header class="modal-card-head">
+    <p class="modal-card-title">Announcements Details</p>
+    <button class="delete" aria-label="close" v-on:click="showAnnouncementDetails=false"></button>
+  </header>
+  <section class="modal-card-body">
+  <table class="table is-hoverable is-fullwidth" style="width:100%">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Start Date</th>
+          <th>End Date
+          <th width="50px"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @announcements.each do |f| %>
+        <td>
+          <td class="user-username"><%=f.title%></td>
+          <td class="user-username">
+           <%=f.start_date.strftime('%d-%m-%Y')%>
+          </td>
+          <td class="user-username">
+            <%=f.end_date.strftime('%d-%m-%Y')%>
+          </td>
+          <td class="user-username"><%= link_to "Show", announcement_path(f) %></td>
+          <td class="user-username"><%= link_to "Edit", edit_announcement_path(f) %></td>
+          <td class="user-username"><%= link_to "Destroy", announcement_path(f),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+  <footer class="modal-card-foot">
+    <button class="button is-success" v-on:click="showAnnouncement = true, showAnnouncementDetails = false">Create</button>
+  </footer>
+  </section>
+</div>
+</div>
+</section>

@@ -1,0 +1,87 @@
+<% content_for :vue_js do %>
+  <%= javascript_pack_tag 'reports_vue', nonce: true %>
+<% end %>
+
+<% content_for :navbar do %>
+  <div v-if="reportLoaded" class="navbar-item">
+    <a class="nav-link btn_fullscreen" v-on:click="fullScreen()">FULL SCREEN</a>
+  </div>
+  <div class="navbar-item">  
+    <a href="/admin" class="fa fa-users btn_users" aria-hidden="true"></a>
+  </div>
+<% end %>
+
+<section class="section">
+<div class="columns is-gapless">
+  <div class="column is-4-tablet is-3-desktop is-2-widescreen report-list bg-white" v-if="!noPermissions">
+    <nav class="menu">
+
+      <div class="workspaces">
+        <div v-if="!showFilterWorkspaces && filteredWorkspaces.length > 1" class="float-right">
+          <span>
+            <span class="icon is-small">
+              <i class="fa fa-filter" v-on:click="showFilterWorkspaces=!showFilterWorkspaces;focusWorkspaceFilter()"></i>
+            </span>
+          </span>
+        </div>
+
+        <h1 v-if="!showFilterWorkspaces" class="title is-6 mb-5 pt-5">Workspaces</h1>
+     
+        <div v-show="showFilterWorkspaces">
+          <div class="float-right">
+            <span class="icon is-small">
+              <i class="fa fa-times" v-on:click="showFilterWorkspaces=false;search=''"></i>
+            </span>
+          </div>
+          <input
+            ref="filterWorkspaces"
+            name="name"
+            placeholder="Filter Workspaces"
+            v-model="search"
+            autocomplete="off"
+            type="text"
+            value
+            class="ng-pristine ng-valid ng-touched border-0 filter-workspaces"
+          />
+        </div>
+      </div>
+      
+
+      <ul class="menu-list">
+        <li v-if="workspacesLoading"><i class="fa fa-spinner fa-spin"></i></li>
+        <li v-for="workspace in filteredWorkspaces" v-on:click="loadReportsForWorkspace(workspace)">
+          <div class="workspace-name flex">
+            <div class="icon pr-15 pl-5">
+              <i v-if="!workspace.selected" class="fa fa-angle-right"></i>
+              <i v-if="workspace.selected" class="fa fa-angle-down"></i>
+            </div>
+            <div>
+            {{workspace.name}}</div>
+          </div>
+          <div class="workspace-reports" v-if="workspace.selected && workspace.no_reports" v-bind:class="{ active: showNoReportsMessage}" v-on:click.stop="resetPowerBi();showNoReportsMessage=true">No Reports</div>
+          <div class="workspace-reports" v-if="workspace.selected" v-for="report in workspace.reports" v-bind:class="{ active: report.isActive }" v-on:click.stop="showReport(report, workspace)">
+            {{report.name}}
+          </div>
+        </li>
+      </ul> 
+    </nav>
+  </div>
+  <div class="column">
+    <div class="column report-error-msg" v-if="noPermissions && !notAuthorized">
+        We are unable to find any groups that have powerbi reports for your profile.
+    </div>
+    <div class="column report-error-msg" v-if="showNoReportsMessage">
+      <div>
+        There are no reports for this workspace
+      </div>
+    </div>
+    <div class="column report-error-msg" v-if="notAuthorized">
+      <div>
+        You are not authorized to view that report
+      </div>
+    </div>
+    <i v-if="reportLoading" class="fa fa-spinner fa-spin"></i>
+    <div id="reportContainer" class="powerbi-container">&nbsp;</div>
+  </div>
+</div>
+</section>

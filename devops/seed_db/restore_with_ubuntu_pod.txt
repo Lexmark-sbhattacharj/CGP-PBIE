@@ -1,0 +1,5 @@
+$ kubectl cp reportingdb.dump <ubuntu pod>:. -n reporting
+$ kubectl exec -it <ubuntu pod> -n reporting /bin/bash
+$ apt-get update
+$ apt-get install postgres
+$ pg_restore -v --host=dev2-eastus-cloud-db-postgresql-1.postgres.database.azure.com --clean --no-acl --no-owner --username=reporting_gat_reporting_app@dev2-eastus-cloud-db-postgresql-1 --port=5432 --dbname=reporting_gat_reporting_app reportingdb.dump

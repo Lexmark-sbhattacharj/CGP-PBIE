@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pbi_workspace_id: 5ee276ae-2485-4f3d-a453-db6d74869186
+  name: MyString
+
+two:
+  pbi_workspace_id: 031cd415-fb8f-4a14-83a7-1732f12555a2
+  name: MyString

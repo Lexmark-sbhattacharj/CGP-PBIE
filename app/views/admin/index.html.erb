@@ -1,0 +1,376 @@
+<% content_for :vue_js do %>
+  <%= javascript_pack_tag 'admin_vue' %>
+<% end %>
+    
+<flash-message class="flash-ah-ah"></flash-message>
+
+<section class="section">
+  <div class="columns is-gapless">
+    <div class="column is-4-tablet is-3-desktop is-2-widescreen report-list" style="background:white;">
+
+      <div class="back-to-reports" v-on:click="backToReports()" style="top:0px;position:sticky;background:white;z-index:1;padding:20px 20px;border-bottom:1px solid #e0e0e0">
+        <i class="fa fa-angle-left"></i> Back to Reports
+      </div>
+
+      <div class="workspaces" style="top:65px;position:sticky;padding:20px;border-bottom:1px solid #e0e0e0;background:white">
+        <div v-if="!showFilterWorkspaces && filteredWorkspaces.length > 1" style="float:right">
+          <span>
+            <span class="icon is-small">
+              <i class="fa fa-filter" v-on:click="showFilterWorkspaces=!showFilterWorkspaces;focusWorkspaceFilter()"></i>
+            </span>
+          </span>
+          <% if @current_user.is_admin? %>
+          <span v-on:click="addWorkspace=true;errors=[];workspace={}">
+            <span class="icon is-small">
+              <i class="fa fa-plus"></i>
+            </span>
+          </span> 
+          <% end %>
+        </div>
+
+        <h1 v-if="!showFilterWorkspaces" class="title is-6" style="margin-bottom:5px;padding-top:5px;">Workspaces</h1>
+     
+        <div v-show="showFilterWorkspaces">
+          <div style="float:right">
+            <span class="icon is-small">
+              <i class="fa fa-times" v-on:click="showFilterWorkspaces=false;search=''"></i>
+            </span>
+          </div>
+          <input
+            ref="filterWorkspaces"
+            name="name"
+            placeholder="Filter Workspaces"
+            v-model="search"
+            autocomplete="off"
+            style="border:0px; height:28px;font-size:16px"
+            type="text"
+            value
+            class="ng-pristine ng-valid ng-touched"
+          />
+        </div>
+      </div>
+      
+
+      <nav class="menu">
+        <ul class="menu-list">
+          <li v-if="workspacesLoading"><i class="fa fa-spinner fa-spin"></i></li>
+          <li v-bind:class="{ active: workspace == selectedWorkspace }" v-for="workspace in filteredWorkspaces" v-on:click="loadUsers(workspace)">
+            <div class="workspace-name admin">
+              {{workspace.name}} 
+            </div>        
+          </li>
+        </ul> 
+      </nav>
+    </div>
+    
+    <div class="column">
+      <div style="padding: 20px;">
+      <h3 class="title" v-if="selectedWorkspace" style="margin-bottom:10px;">
+
+        <% if @current_user.is_admin? %>
+        <div class="tabs is-toggle is-centered">
+          <ul>
+            <li class="is-active"><a style="border-color:#6d6e71!important; background-color:#6d6e71!important">Workspaces</a></li>
+            <li><a href="/admin/people">People</a></li>
+            <li><a v-on:click="showAnnouncementDetails = true">Announcement</a></li>
+          </ul>
+        </div>
+        <% end %>
+
+        
+        <a
+          class="button is-primary is-pulled-right"
+          v-on:click="addUser = true;user={}"
+        >Share</a>
+        
+        {{selectedWorkspace.name}} 
+
+        <% if @current_user.is_admin? %>
+          <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button is-text" aria-haspopup="true" aria-controls="dropdown-menu3" v-on:click="showWorkspaceMenu=!showWorkspaceMenu">
+                <i class="fa fa-ellipsis-h"></i>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu3" role="menu" v-bind:class="{ 'is-active': showWorkspaceMenu }">
+              <div class="dropdown-content">
+                <a href="#" v-on:click="setWorkspace(selectedWorkspace);editWorkspace=true;errors=[];showWorkspaceMenu=false" class="dropdown-item">
+                  Edit Workspace
+                </a>
+                <a href="#" v-on:click="setWorkspace(selectedWorkspace);deleteWorkspace=true;errors=[];showWorkspaceMenu=false" class="dropdown-item">
+                  Delete Workspace
+                </a>
+              </div>
+            </div>
+          </div>
+      <% else %>
+        <div style="margin-bottom:20px"></div>
+      <% end %>
+      </h3>
+    
+      
+      <% if @current_user.is_admin? %>
+      <table class="table is-hoverable is-fullwidth" style="width:100%" v-if="selectedWorkspace">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th width="50px"></th>
+          <% if @current_user.is_admin? %>
+            <th width="50px"></th>
+            <th width="50px"></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="user in selectedWorkspace.users"
+
+          v-on:click="editUser = true;setUser(user);"
+        >
+          <td class="user-username" v-if="user.name">{{user.name}}</td>
+          <td class="user-username" v-if="!user.name"><b>Not Signed In Yet</b></td>
+          <td class="user-username">
+            {{user.email}}
+          </td>
+          <td><span class="tag is-light" v-if="user.is_admin">ADMIN</span></td>
+          <% if @current_user.is_admin? %>
+            <td class="user-activity"><i class="fa fa-history" v-on:click.stop="loadActivity(user)"></i></td>
+            <td width="50px">
+              <i class="fa fa-trash" v-show="!user.is_admin" v-on:click.stop="deleteUser = true;setUser(user)" />
+            </td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+
+      <% else %>
+
+      <table class="table no-hover is-fullwidth" style="width:100%" v-if="selectedWorkspace">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th width="50px"></th>
+            <% if @current_user.is_admin? %>
+              <th width="50px"></th>
+              <th width="50px"></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="user in selectedWorkspace.users">
+            <td class="user-username" v-if="user.name">{{user.name}}</td>
+            <td class="user-username" v-if="!user.name"><b>Not Signed In Yet</b></td>
+            <td class="user-username">
+              {{user.email}}
+            </td>
+            <td><span class="tag is-light" v-if="user.is_admin">ADMIN</span></td>
+            <% if @current_user.is_admin? %>
+              <td class="user-activity"><i class="fa fa-history" v-on:click.stop="loadActivity(user)"></i></td>
+              <td width="50px">
+                <i class="fa fa-trash" v-show="!user.is_admin" v-on:click.stop="deleteUser = true;setUser(user)" />
+              </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+
+      <% end %>
+
+      
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- MODAL: ADD/EDIT USER -->
+<div v-bind:class="{modal: true, 'is-active': editUser || addUser }">
+  <div class="modal-background"></div>
+  
+  <% if @current_user.is_admin? %>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title" v-if="editUser">Edit Roles</p>
+      <p class="modal-card-title" v-if="addUser">Share Workspace</p>
+      <button class="delete" aria-label="close" v-on:click="editUser=false;addUser=false"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="field">
+        <label class="label">Email address</label>
+        <div class="control">
+          <span v-if="editUser">{{user.email}}</span>
+          <input class="input" v-if="addUser" v-model="user.email" type="text" placeholder="Enter email" />
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Roles</label>
+        <div class="control">
+          <textarea class="textarea" v-model="user.roles" placeholder="Role 1, Role 2, Role 3"></textarea>
+        </div>
+      </div>
+    </section>
+    
+    <footer class="modal-card-foot">
+      <button class="button is-success" v-if="editUser" v-on:click="updateUser()">Save</button>
+      <button class="button is-success" v-if="addUser" v-on:click="createUser()">Create</button>
+      <button class="button" v-on:click="editUser=false;addUser=false">Cancel</button>
+    </footer>
+  </div>
+  <% else %>
+  <div class="modal-card">
+  <header class="modal-card-head">
+    <p class="modal-card-title" v-if="editUser">Edit Workspace Sharing</p>
+    <p class="modal-card-title" v-if="addUser">Share Workspace</p>
+    <button class="delete" aria-label="close" v-on:click="editUser=false;addUser=false"></button>
+  </header>
+  <section class="modal-card-body">
+    <p v-if="editUser">Please contact Lexmark to modify workspace sharing.</p>
+    <p v-if="addUser">Please contact Lexmark to share workspace.</p>
+  </section>
+  
+  <footer class="modal-card-foot">
+    <button class="button" v-on:click="editUser=false;addUser=false">Close</button>
+  </footer>
+</div>
+  <% end %>
+</div>
+
+
+
+<!-- MODAL: REMOVE ACCESS -->
+<div v-bind:class="{modal: true, 'is-active': deleteUser}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Remove Access</p>
+      <button class="delete" aria-label="close" v-on:click="deleteUser=false"></button>
+    </header>
+    <section class="modal-card-body">
+      Are you sure you want to remove <strong>{{user.email}}</strong> from  {{selectedWorkspace.name}}?
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-danger" v-on:click="removeUser()">Remove</button>
+      <button class="button" v-on:click="deleteUser=false">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+
+<!-- MODAL: ADD/EDIT WORKSPACE -->
+<div v-bind:class="{modal: true, 'is-active': addWorkspace || editWorkspace}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title" v-if="addWorkspace">Add Workspace</p>
+      <p class="modal-card-title" v-if="editWorkspace">Edit Workspace</p>
+      <button
+        class="delete"
+        aria-label="close"
+        v-on:click="addWorkspace=false;editWorkspace=false"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" v-model="workspace.name" type="text" placeholder="Enter name" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">PowerBI Workspace ID</label>
+        <div class="control">
+          <input
+            class="input"
+            v-model="workspace.pbi_workspace_id"
+            type="text"
+            placeholder="Enter PowerBI Workspace ID"
+          />
+        </div>
+      </div>
+
+      <div v-show="errors">
+        <div v-for="error_list, k in errors">
+            <span class="msg_alert">{{k}} <span v-for="error in error_list">{{error}}<br></span>
+        <div>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button
+        class="button is-success"
+        v-if="addWorkspace"
+        v-on:click="createWorkspace()"
+      >Create</button>
+      <button
+        class="button is-success"
+        v-if="editWorkspace"
+        v-on:click="saveWorkspace()"
+      >Save</button>
+      <button class="button" v-on:click="addWorkspace=false;editWorkspace=false">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+
+<!-- MODAL: ACTIVITY -->
+<div v-bind:class="{modal: true, 'is-active': showActivity}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">User Activity: {{userActivity.user.name}}</p>
+      <button
+        class="delete"
+        aria-label="close"
+        v-on:click="showActivity=false;"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <ul>
+        <li></li>
+        <li v-for="metric in userActivity.usage_metrics">
+         <div class="activity-header">{{metric.date_on}}</div>
+         <table class="table">
+          <tr>
+            <th width="200px">Report</th>
+            <th>Workspace</th>
+            <th width="125px;">View Count</th>
+          </tr>
+          <tr v-for="(report_view, report_id) in metric.report_views">
+            <td>{{report_view.report_name}}</td>
+            <td>{{report_view.workspace_name}}</td> 
+            <td>{{report_view.count}}</td>
+          </tr>
+         </table>
+        </li>
+      </ul>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" v-on:click="showActivity=false">Close</button>
+    </footer>
+  </div>
+</div>
+
+<!-- MODAL: DELETE Workspace -->
+<div v-if="selectedWorkspace" v-bind:class="{modal: true, 'is-active': deleteWorkspace}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Delete Workspace</p>
+      <button class="delete" aria-label="close" v-on:click="deleteWorkspace=false"></button>
+    </header>
+    <section class="modal-card-body">
+      Are you sure you want to delete
+      <strong>{{selectedWorkspace.name}}</strong>?
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-danger" v-on:click="removeWorkspace()">Delete</button>
+      <button class="button" v-on:click="deleteWorkspace=false">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<%= render '/announcements/new'%>
+<%= render '/announcements/index'%>

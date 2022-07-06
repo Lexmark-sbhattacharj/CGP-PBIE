@@ -1,0 +1,98 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://login.microsoftonline.com/LexmarkB2CQA.onmicrosoft.com/oauth2/v2.0/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=https%3A%2F%2FLexmarkB2CQA.onmicrosoft.com%2Fidentity-management-service%2F.default&client_id=fb8c38cd-f1e2-4634-a27b-b257568e7fe0&client_secret=%3Dq7K0%236bG26%5C3pUjCo0%5B%25OeL
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin20.6.0 x86_64) ruby/2.6.3p62
+      Content-Length:
+      - '215'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - login.microsoftonline.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      P3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      X-Ms-Request-Id:
+      - 19afd9b5-3901-42aa-86f9-e32cbcde4c00
+      X-Ms-Ests-Server:
+      - 2.1.12559.10 - WUS2 ProdSlices
+      Set-Cookie:
+      - fpc=At38TihRteZDqMmpW7XNLS58XBnpAQAAAHK7z9kOAAAA; expires=Sun, 24-Apr-2022
+        13:32:35 GMT; path=/; secure; HttpOnly; SameSite=None
+      - stsservicecookie=estsfd; path=/; secure; samesite=none; httponly
+      - x-ms-gateway-slice=estsfd; path=/; secure; samesite=none; httponly
+      Date:
+      - Fri, 25 Mar 2022 13:32:34 GMT
+      Content-Length:
+      - '1203'
+    body:
+      encoding: UTF-8
+      string: '{"token_type":"Bearer","expires_in":3599,"ext_expires_in":3599,"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyJ9.eyJhdWQiOiJhMGZlOGY5OC03YWVlLTQ1ZDQtOTZhYi05NjQ0YzI3OTJjYjkiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNTE5NWMzZTQtNTM4YS00ZjJkLWFkYWUtOTgxNTc1MjM1NDFmL3YyLjAiLCJpYXQiOjE2NDgyMTQ4NTUsIm5iZiI6MTY0ODIxNDg1NSwiZXhwIjoxNjQ4MjE4NzU1LCJhaW8iOiJFMlpnWUZnL1RXS0YweGFoajNzZkp2aXZUenhvQXdBPSIsImF6cCI6ImZiOGMzOGNkLWYxZTItNDYzNC1hMjdiLWIyNTc1NjhlN2ZlMCIsImF6cGFjciI6IjEiLCJvaWQiOiIwZTUxMDNlNi0yOWEwLTQ3YjctOTQ2ZC0wMWY0M2I3ZjFlMDkiLCJyaCI6IjAuQVIwQTVNT1ZVWXBUTFUtdHJwZ1ZkU05VSDVpUF9xRHVldFJGbHF1V1JNSjVMTGtkQUFBLiIsInN1YiI6IjBlNTEwM2U2LTI5YTAtNDdiNy05NDZkLTAxZjQzYjdmMWUwOSIsInRpZCI6IjUxOTVjM2U0LTUzOGEtNGYyZC1hZGFlLTk4MTU3NTIzNTQxZiIsInV0aSI6InRkbXZHUUU1cWtLRy1lTXN2TjVNQUEiLCJ2ZXIiOiIyLjAifQ.ZRchSU7iBMADbBf2nZEuF2q-jkuY1JwClBwLsmwrghUOVKcteJCwWjq3VAMVXdPEuUevg42X1qJNVM9S-mwr92_gFnXsVezc6t6fR-u04_Rh67hrB5oMpI2LoHBNMPdn3H3VQFSTA07oEVCqWCtI896blaPzPEegq18fTXhHhvUo3uwy3SIBN3MImi3qf-paDFTMvtIepPLV2r0KR3dGznG3fiOJO8pGZmxeVX5b_UOvm6alucQrBGfKMSph9w0ppJOdx2iwe26sTIBP1h4SbTUAGYP8T0Fr4hdQAHr8vKA4hYpOJHbQa_pkha0EhxkQCNqOFnnMLZKX-DtswamlMA"}'
+  recorded_at: Fri, 25 Mar 2022 13:32:35 GMT
+- request:
+    method: post
+    uri: https://ims.us.qa.cloud.onelxk.co/api/v1.0/adusers?clientId=fb8c38cd-f1e2-4634-a27b-b257568e7fe0&redirectUri=https://reporting-qa.lexmark.com/auth/route&responseMode=FormPost
+    body:
+      encoding: UTF-8
+      string: '{"email":"creighton.medley@lexmark.fr","displayName":"creighton.medley@lexmark.fr"}'
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin20.6.0 x86_64) ruby/2.6.3p62
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyJ9.eyJhdWQiOiJhMGZlOGY5OC03YWVlLTQ1ZDQtOTZhYi05NjQ0YzI3OTJjYjkiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNTE5NWMzZTQtNTM4YS00ZjJkLWFkYWUtOTgxNTc1MjM1NDFmL3YyLjAiLCJpYXQiOjE2NDgyMTQ4NTUsIm5iZiI6MTY0ODIxNDg1NSwiZXhwIjoxNjQ4MjE4NzU1LCJhaW8iOiJFMlpnWUZnL1RXS0YweGFoajNzZkp2aXZUenhvQXdBPSIsImF6cCI6ImZiOGMzOGNkLWYxZTItNDYzNC1hMjdiLWIyNTc1NjhlN2ZlMCIsImF6cGFjciI6IjEiLCJvaWQiOiIwZTUxMDNlNi0yOWEwLTQ3YjctOTQ2ZC0wMWY0M2I3ZjFlMDkiLCJyaCI6IjAuQVIwQTVNT1ZVWXBUTFUtdHJwZ1ZkU05VSDVpUF9xRHVldFJGbHF1V1JNSjVMTGtkQUFBLiIsInN1YiI6IjBlNTEwM2U2LTI5YTAtNDdiNy05NDZkLTAxZjQzYjdmMWUwOSIsInRpZCI6IjUxOTVjM2U0LTUzOGEtNGYyZC1hZGFlLTk4MTU3NTIzNTQxZiIsInV0aSI6InRkbXZHUUU1cWtLRy1lTXN2TjVNQUEiLCJ2ZXIiOiIyLjAifQ.ZRchSU7iBMADbBf2nZEuF2q-jkuY1JwClBwLsmwrghUOVKcteJCwWjq3VAMVXdPEuUevg42X1qJNVM9S-mwr92_gFnXsVezc6t6fR-u04_Rh67hrB5oMpI2LoHBNMPdn3H3VQFSTA07oEVCqWCtI896blaPzPEegq18fTXhHhvUo3uwy3SIBN3MImi3qf-paDFTMvtIepPLV2r0KR3dGznG3fiOJO8pGZmxeVX5b_UOvm6alucQrBGfKMSph9w0ppJOdx2iwe26sTIBP1h4SbTUAGYP8T0Fr4hdQAHr8vKA4hYpOJHbQa_pkha0EhxkQCNqOFnnMLZKX-DtswamlMA
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '83'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - ims.us.qa.cloud.onelxk.co
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Date:
+      - Fri, 25 Mar 2022 13:32:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - Kestrel
+    body:
+      encoding: UTF-8
+      string: '{"error":"User [creighton.medley@lexmark.fr] already exists."}'
+  recorded_at: Fri, 25 Mar 2022 13:32:35 GMT
+recorded_with: VCR 6.0.0

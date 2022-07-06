@@ -1,0 +1,98 @@
+trigger:
+  branches:
+    include:
+      - master
+      - task/*
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: platformTools/pipeline-templates
+
+variables:
+  - group: dev2-pbie-variables
+  - name: App.poolName
+    value: OneLexmarkCloudAgentPool
+
+stages:
+
+  - stage: build
+    displayName: Build
+    pool:
+      name: $(App.poolName)
+
+    jobs:
+
+      - template: jobs-docker-build.yaml@templates
+        parameters:
+          dockerfile: Dockerfile
+          environment: dev2-pbie
+          imageName: pbie
+          push: true
+          tags: |
+            $(Build.BuildId)
+
+  - stage: dev
+    displayName: Deploy to dev
+    dependsOn:
+      - build
+    pool:
+      name: $(App.poolName)
+
+    jobs:
+
+      - template: jobs-deploy.yaml@templates
+        parameters:
+          environment: dev2-pbie
+          helmChartPath: devops/pbie
+          helmReleaseName: pbie
+          imageName: pbie
+          imageTag: $(Build.BuildId)
+          secrets:
+            - acim-client-id
+            - ad-client-id
+            - ad-client-secret
+            - azure-client-id
+            - azure-client-secret
+            - b2c-client-id
+            - b2c-client-secret
+            - idp-client-id
+            - idp-client-secret
+            - pbi-client-id
+            - pbi-group-id
+            - pbi-password
+          appDependencies: |
+            {
+              "database": "create",
+              "pg-extensions": [ "pgcrypto" ],
+              "additional_config": {
+                "PBI_OAUTH2_URL": "https://login.windows.net/common/oauth2/token/",
+                "PBI_AUTHORITY_URL": "https://login.windows.net/common/oauth2/authorize/",
+                "PBI_RESOURCE_URL": "https://analysis.windows.net/powerbi/api",
+                "PBI_API_URL": "https://api.powerbi.com/",
+                "PBI_EMBEDED_URL_BASE": "https://app.powerbi.com/",
+                "BIE_USERNAME": "powerbi@lexmark.com",
+                "AZURE_TENANT_ID": "LexmarkAD.onmicrosoft.com",
+                "IDP_AUTHORITY_URL": "/oauth/authorize",
+                "IDP_OAUTH2_TOKEN_URL": "/oauth/token",
+                "PBI_USERNAME": "powerbi@lexmark.com",
+                "B2C_OAUTH2_TOKEN_URL": "https://login.microsoftonline.com/LexmarkB2CQA.onmicrosoft.com/oauth2/v2.0/token",
+                "B2C_OAUTH2_SCOPE": "https://LexmarkB2CQA.onmicrosoft.com/identity-management-service/.default",
+                "B2C_RAW_AUTHORIZE_ENDPOINT_URL": "https://LexmarkB2CQA.b2clogin.com/LexmarkB2CQA.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_SignIn_v2&client_id=11e4215e-4dea-46c6-9e36-50a6ff779ac9&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&response_mode=form_post",
+                "B2C_OPENID_CONFIG_URL": "https://LexmarkB2CQA.b2clogin.com/LexmarkB2CQA.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_SignIn_v2",
+                "B2C_SIGNING_KEYS_URL": "https://login.microsoftonline.com/LexmarkB2CQA.onmicrosoft.com/discovery/v2.0/keys?p=B2C_1A_SignIn_v2",
+                "ACIM_URL": "https://ims.us.qa.cloud.onelxk.co",
+                "ACIM_REDIRECT_URL": "https://reporting.dev.cloud.onelxk.co/auth/azureactivedirectory/callback",
+                "IDP_URL": "https://idp.us.cloud.onelxk.co",
+                "IDP_REDIRECT_URL": "https://reporting.dev.cloud.onelxk.co/mps/callback",
+                "INTERNAL_REPORTING_URL": "internal.reporting.dev.platform.onelxk.co",
+                "REPORTING_URL": "reporting.dev.cloud.onelxk.co"
+              }
+            }
+          projectDependencies: |
+            {
+              "dns":{
+                "app_name":"pbie"
+              }
+            }

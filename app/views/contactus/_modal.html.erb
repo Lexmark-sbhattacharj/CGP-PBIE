@@ -1,0 +1,56 @@
+<section class="section">
+<div v-bind:class="{modal: true, 'is-active': showContactUs }">
+<div class="modal-background"></div>
+<div class="modal-card">
+  <header class="modal-card-head">
+    <p class="modal-card-title">Contact Us</p>
+    <button class="delete" aria-label="close" v-on:click="showContactUs=false"></button>
+  </header>
+  <section class="modal-card-body">
+  <div class="field">
+      <label class="label">Contact Name</label>
+      <div class="control">
+        <span v-if="showContactUs"></span>
+        <input class="input" v-model="contactusmodels.name" type="text" placeholder="Enter Name"/>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Contact Email</label>
+      <div class="control">
+        <span v-if="showContactUs"></span>
+        <input class="input"  v-model="contactusmodels.email" type="text" placeholder="Enter email"/>
+      </div>
+    </div>
+    
+    <div class="field">
+      <div class="control">
+      <label class="label">Comments</label>
+        <textarea class="textarea" v-model="contactusmodels.comments" placeholder=""></textarea>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="modal-card-foot">
+    <button class="button is-success" v-on:click="contactUs(); showContactUs = false; showContactUsConfirmation = true; contactusmodels.name = ''; contactusmodels.email = '', contactusmodels.comments = ''">Send</button>
+  </footer>
+</div>
+</div>
+</section>
+<section class="section">
+<div v-bind:class="{modal: true, 'is-active': showContactUsConfirmation }">
+<div class="modal-background"></div>
+<div class="modal-card">
+  <header class="modal-card-head">
+    <p class="modal-card-title">Contact Us</p>
+    <button class="delete" aria-label="close" v-on:click="showContactUsConfirmation=false"></button>
+  </header>
+  <section class="modal-card-body">
+  <div class="field">
+      <label class="label">Thanks for reaching us. We will contact you shortly.</label>
+    </div>
+  </section>
+
+</div>
+</div>
+</section>
