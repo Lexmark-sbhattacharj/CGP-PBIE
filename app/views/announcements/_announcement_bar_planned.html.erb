@@ -1,9 +1,9 @@
 <%announcement=Announcement.last%>
-  <%if Time.now <= announcement.start_date%>
+  <%if (Time.now) < (announcement.start_date.strftime('%Y-%m-%d  %I:%M:%S')) %>
    <div class="notification-bar">
     <div>
      <p><strong>Scheduled Maintenance</strong><p>
-     <p>This site will be undergoing scheduled maintenance on <%=announcement.title%> at [TIME] for approximately [X] hours. We apologize for any inconvenience caused during this time.</p>
+     <p>This site will be undergoing scheduled maintenance at <%=announcement.title%> at <%=announcement.start_date.strftime('%d-%m-%Y  %I:%M%p')%> for approximately <%=((announcement.end_date-announcement.start_date)/(3600)).round(2)%> hours. We apologize for any inconvenience caused during this time.</p>
     </div>
     <div class="close">×</div>
    </div>
