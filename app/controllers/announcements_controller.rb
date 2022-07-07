@@ -15,7 +15,7 @@ class AnnouncementsController < ApplicationController
     end
     def edit
         @announcements = Announcement.find(params[:id])
-      end
+    end
     def index 
         @announcements = Announcement.all.order(created_at: :DESC)
     end
