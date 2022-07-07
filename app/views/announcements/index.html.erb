@@ -1,0 +1,65 @@
+<% content_for :vue_js do %>
+  <%= javascript_pack_tag 'admin_vue' %>
+<% end %>
+    
+<flash-message class="flash-ah-ah"></flash-message>
+
+<section class="section">
+  <div class="columns is-gapless">
+    
+    
+    <div class="column">
+      <div style="padding: 20px;">
+      <h3 class="title" v-if="selectedWorkspace" style="margin-bottom:10px;">
+
+        <% if @current_user.is_admin? %>
+        <div class="tabs is-toggle is-centered">
+          <ul>
+            <li><a href="/admin">Workspaces</a></li>
+            <li><a href="/admin/people">People</a></li>
+            <li class="is-active"><a style="border-color:#6d6e71!important; background-color:#6d6e71!important" href="/announcements">Announcement</a></li>
+          </ul>
+        </div>
+        <% end %>
+        <a
+          class="button is-primary is-pulled-right"
+          v-on:click="newAnnouncement = true"
+        >Create Announcement</a>
+      </h3>
+    
+      <table class="table is-hoverable is-fullwidth" style="width:100%">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>DownTime</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @announcements.each do |msg| %>
+        <tr>
+          <td class="user-username"><%=msg.title%></td>
+          <td class="user-username">
+           <%=msg.start_date.strftime('%d-%m-%Y  %I:%M%p')%>
+          </td>
+          <td class="user-username">
+            <%=msg.end_date.strftime('%d-%m-%Y  %I:%M%p')%>
+          </td>
+          <td><%=%></td>
+          <td class="user-username"><%= link_to "Show", announcement_path(msg) %></td>
+          <td class="user-username"><%= link_to "Delete", announcement_path(msg),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %></td>
+        </tr>
+      <%end%>
+      </tbody>
+</table>
+
+      
+    </div>
+    </div>
+  </div>
+</section>
+
+<%= render '/announcements/new'%>

@@ -35,10 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
       showContactUs: "",
       showContactUsConfirmation: "",
       contactusmodels:{},
-      showAnnouncement: "",
-      showAnnouncementConfirmation: "",
+      newAnnouncement: "",
+      newAnnouncementConfirmation: "",
       announcements:{},
-      showAnnouncementDetails: ""
+      showAnnouncement: "",
+      indexAnnouncement: ""
     },
     created() {
       this.workspacesLoading = true;
@@ -209,7 +210,10 @@ document.addEventListener("DOMContentLoaded", () => {
               this.flash("Announcement created", "success", { timeout: 3000 });
             }
           });
-      }
+      },
+      backToAnnouncement: function() {
+        location.href = "/announcements";
+      },
     }
   });
 });

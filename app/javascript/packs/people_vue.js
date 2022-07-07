@@ -37,10 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
       showContactUs: "",
       showContactUsConfirmation: "",
       contactusmodels:{},
-      showAnnouncement: "",
-      showAnnouncementConfirmation: "",
+      newAnnouncement: "",
+      newAnnouncementConfirmation: "",
       announcements:{},
-      showAnnouncementDetails: ""
+      showAnnouncement: "",
+      indexAnnouncement: ""
     },
     created() {
       this.usersLoading = true;
