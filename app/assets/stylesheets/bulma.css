@@ -6109,7 +6109,7 @@ a.list-item {
   .navbar.is-white .navbar-end > a.navbar-item:hover,
   .navbar.is-white .navbar-end > a.navbar-item.is-active,
   .navbar.is-white .navbar-end .navbar-link:hover,
-  .navbar.is-white .navbar-end .navbar-link.is-active {`
+  .navbar.is-white .navbar-end .navbar-link.is-active {
     background-color: #f2f2f2;
     color: #0a0a0a;
   }
@@ -10285,5 +10285,24 @@ label.panel-block:hover {
 .footer {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem;
+}
+
+.announcement-bar {
+  -webkit-overflow-scrolling: touch;
+  background-color: white;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: auto;
+  padding: 2px;
+}
+
+.announcement-bar-body {
+  -webkit-overflow-scrolling: touch;
+  background-color: skyblue;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: auto;
+  padding: 2px;
+  text-align: center;
 }
 /*# sourceMappingURL=bulma.css.map */

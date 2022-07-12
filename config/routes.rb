@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resource :session, only: [:destroy]
   resources :profile, only: [:index]
 
+  resources :maintenance
+
   resources :workspaces
   resources :contactus
   resources :announcements

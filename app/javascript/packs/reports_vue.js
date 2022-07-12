@@ -30,7 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
       last_viewed_report: "",
       showContactUs: "",
       showContactUsConfirmation: "",
-      contactusmodels:{}
+      contactusmodels:{},
+      navAnnouncement: ""
     },
     created() {
       this.workspacesLoading = true;
