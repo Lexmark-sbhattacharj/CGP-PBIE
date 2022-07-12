@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
       newAnnouncementConfirmation: "",
       announcements:{},
       showAnnouncement: "",
-      indexAnnouncement: ""
+      indexAnnouncement: "",
+      navAnnouncement: ""
     },
     created() {
       this.usersLoading = true;

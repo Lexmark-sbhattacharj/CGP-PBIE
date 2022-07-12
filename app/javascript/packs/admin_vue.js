@@ -39,7 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
       newAnnouncementConfirmation: "",
       announcements:{},
       showAnnouncement: "",
-      indexAnnouncement: ""
+      indexAnnouncement: "",
+      navAnnouncement: ""
     },
     created() {
       this.workspacesLoading = true;
@@ -213,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       backToAnnouncement: function() {
         location.href = "/announcements";
-      },
+      }
     }
   });
 });

@@ -1,12 +1,9 @@
-<%announcement=Announcement.last%>
- <%if announcement.present?%>
-  <%if (Time.now.strftime('%Y-%m-%d  %I:%M:%S')) >= (announcement.start_date.strftime('%Y-%m-%d  %I:%M:%S')) && (Time.now.strftime('%Y-%m-%d  %I:%M:%S')) <= (announcement.end_date.strftime('%Y-%m-%d  %I:%M:%S')) %>
-   <div class="notification-bar">
-    <div>
-     <p><strong>Scheduled Maintenance</strong><p>
-     <p>This site is undergoing scheduled maintenance at <%=announcement.title%> at <%=announcement.start_date.strftime('%d-%m-%Y  %I:%M%p')%> for approximately <%=((announcement.end_date-announcement.start_date)/(3600)).round(2)%> hours. We apologize for any inconvenience caused during this time.</p>
-    </div>
-    <div class="close">×</div>
-   </div>
-  <%end%>
- <%end%>
+ <%announcement=Announcement.last%>
+ <div v-bind:class="{modal: false, 'is-active': navAnnouncement }">
+ <div class="announcement-bar">
+  <section class="announcement-bar-body">
+    <h2><p><strong>Scheduled Maintenance!</strong><button class="delete" aria-label="close" v-on:click="navAnnouncement=false"></button><p></h2>
+     <p>This site is undergoing scheduled maintenance at <b><%=announcement.title%></b> at <b><%=announcement.start_date.strftime('%d-%m-%Y  %I:%M%p')%></b> for approximately <b><%=((announcement.end_date-announcement.start_date)/(3600)).round(2)%></b> hours. We apologize for any inconvenience caused during this time.</p>  
+  </section>
+</div>
+</div>
