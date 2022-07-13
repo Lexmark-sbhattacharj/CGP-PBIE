@@ -20,13 +20,15 @@
             <li class="is-active"><a style="border-color:#6d6e71!important; background-color:#6d6e71!important" href="/announcements">Announcement</a></li>
           </ul>
         </div>
+        <div class="tabs is-toggle is-centered">
+          <ul>
+            <li><a class="button is-primary is-pulled-right" v-on:click="newAnnouncement = true">Create Announcement</a></li>
+          </ul>
+        </div>
         <% end %>
-        <a
-          class="button is-primary is-pulled-right"
-          v-on:click="newAnnouncement = true"
-        >Create Announcement</a>
+        
       </h3>
-    
+    <div class="table-container" style="height:50vh;overflow:auto">
       <table class="table is-hoverable is-fullwidth" style="width:100%">
       <thead>
         <tr>
@@ -46,7 +48,7 @@
           <td class="user-username">
             <%=msg.end_date.strftime('%d-%m-%Y  %I:%M%p')%>
           </td>
-          <td><%=((msg.end_date-msg.start_date)/(3600)).round(2)%> Hours</td>
+          <td><%=((msg.end_date-msg.start_date)/(3600)).round(0)%> Hours, <%=(((msg.end_date-msg.start_date)/60)%60).round(0)%> Minutes</td>
           <td class="user-username"><%= link_to "Show", announcement_path(msg) %></td>
           <td class="user-username"><%= link_to "Delete", announcement_path(msg),
           method: :delete,

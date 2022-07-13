@@ -1,9 +1,23 @@
- <%announcement=Announcement.last%>
- <div v-bind:class="{modal: false, 'is-active': navAnnouncement }">
- <div class="announcement-bar">
-  <section class="announcement-bar-body">
-    <h2><p><strong>Scheduled Maintenance!</strong><button class="delete" aria-label="close" v-on:click="navAnnouncement=false"></button><p></h2>
-     <p>This site is undergoing scheduled maintenance at <b><%=announcement.title%></b> at <b><%=announcement.start_date.strftime('%d-%m-%Y  %I:%M%p')%></b> for approximately <b><%=((announcement.end_date-announcement.start_date)/(3600)).round(2)%></b> hours. We apologize for any inconvenience caused during this time.</p>  
-  </section>
-</div>
-</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#announcementModal").modal('show');
+	});
+</script>
+<%announcement=Announcement.last%>
+ <%if announcement.present?%>
+ <%startdate=((announcement.start_date)-7.days).strftime('%d-%m-%Y  %I:%M%p')%>
+ <%enddate=(announcement.start_date).strftime('%d-%m-%Y  %I:%M%p')%>
+  <%if (Time.now.strftime('%d-%m-%Y  %I:%M%p')).between?(startdate,enddate)%>
+         <div id="announcementModal">
+          <div class="announcement-bar">
+            <section class="announcement-bar-body">
+                <h1 class="announcement-title">Upcoming Maintenance!</h1>
+                <button type="button" class="delete" data-dismiss="modal" style="float: right;">&times;</button>
+                <p>This site will be undergoing scheduled maintenance starting from <b><%=announcement.start_date.strftime('%d-%m-%Y  %I:%M%p')%></b> for approximately <b><%=((announcement.end_date-announcement.start_date)/(3600)).round(0)%></b> hours & <b><%=(((announcement.end_date-announcement.start_date)/60)%60).round(0)%></b> minutes for <b><%=announcement.title%></b>. Please contact <b>"gatteamtest@lexmark.com"</b> for any questions.</p>  
+            </section>
+          </div>
+         </div>
+  <%end%>
+ <%end%>

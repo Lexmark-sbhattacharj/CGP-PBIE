@@ -3,7 +3,7 @@
 # base application controller
 class ApplicationController < ActionController::Base
   before_action :require_sign_in
-  before_action :show_maintenance_page
+  #before_action :show_maintenance_page
   protect_from_forgery with: :exception, prepend: true
 
   def require_sign_in
