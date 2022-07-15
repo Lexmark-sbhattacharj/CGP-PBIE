@@ -2,6 +2,7 @@
 
 # methods for managing user creation, usage tracking and access to workspaces
 class UsersController < ApplicationController
+  before_action :show_maintenance_page
   def index
     return render json: { status: :not_authorized } unless @current_user.is_admin?
 

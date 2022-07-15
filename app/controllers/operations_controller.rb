@@ -2,6 +2,7 @@
 
 # base application controller
 class OperationsController < ApplicationController
+  before_action :show_maintenance_page
   def check
     raise ActionController::RoutingError, 'Not Found' unless @current_user.email.ends_with?('lexmark.com')
 

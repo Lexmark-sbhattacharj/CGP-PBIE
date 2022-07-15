@@ -2,6 +2,7 @@
 
 # methods for managing workspaces associated to powerbi workspaces
 class WorkspacesController < ApplicationController
+  before_action :show_maintenance_page
   before_action :set_workspace, only: %i[reports show update destroy]
 
   def index

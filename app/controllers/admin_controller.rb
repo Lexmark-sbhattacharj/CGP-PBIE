@@ -2,6 +2,7 @@
 
 # methods for admin
 class AdminController < ApplicationController
+  before_action :show_maintenance_page
   def index; end
 
   def people

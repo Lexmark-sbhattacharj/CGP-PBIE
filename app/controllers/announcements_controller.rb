@@ -1,4 +1,5 @@
 class AnnouncementsController < ApplicationController
+    before_action :show_maintenance_page, except: [:destroy]
     def new
         @announcements=Announcement.new
     end
@@ -33,6 +34,6 @@ class AnnouncementsController < ApplicationController
         redirect_to announcements_path
     end
     def announcement_params
-        params.require(:announcements).permit(:title, :start_date, :end_date)
+        params.require(:announcements).permit(:title, :start_date, :end_date, :scope)
     end
 end

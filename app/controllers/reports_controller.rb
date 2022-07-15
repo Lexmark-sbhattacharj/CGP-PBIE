@@ -2,6 +2,7 @@
 
 # method for managing pbi report token
 class ReportsController < ApplicationController
+  before_action :show_maintenance_page
   protect_from_forgery prepend: true, with: :exception
 
   def refresh_token

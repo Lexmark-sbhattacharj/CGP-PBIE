@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ContactusController < ApplicationController
+  before_action :show_maintenance_page
   def index
     @contactus = params[:contactusmodels]
   end
