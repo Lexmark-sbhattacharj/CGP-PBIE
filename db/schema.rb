@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2022_07_06_033347) do
     t.string "title"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.string "scope"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -13,11 +13,28 @@
          <div id="announcementModal">
           <div class="announcement-bar">
             <section class="announcement-bar-body">
-                <h1 class="announcement-title">Upcoming Maintenance!</h1>
+                <h1 class="announcement-title">Upcoming <%=announcement.scope%> Maintenance</h1>
                 <button type="button" class="delete" data-dismiss="modal" style="float: right;">&times;</button>
                 <p>This site will be undergoing scheduled maintenance starting from <b><%=announcement.start_date.strftime('%d-%m-%Y  %I:%M%p')%></b> for approximately <b><%=((announcement.end_date-announcement.start_date)/(3600)).round(0)%></b> hours & <b><%=(((announcement.end_date-announcement.start_date)/60)%60).round(0)%></b> minutes for <b><%=announcement.title%></b>. Please contact <b>"gatteamtest@lexmark.com"</b> for any questions.</p>  
             </section>
           </div>
          </div>
   <%end%>
+ <%end%>
+ <%if announcement.present?%>
+ <%if (announcement.scope!="Global") %>
+ <%startdate=(announcement.start_date).strftime('%d-%m-%Y  %I:%M%p')%>
+ <%enddate=(announcement.end_date).strftime('%d-%m-%Y  %I:%M%p')%>
+  <%if (Time.now.strftime('%d-%m-%Y  %I:%M%p')).between?(startdate,enddate)%>
+         <div id="announcementModal">
+          <div class="announcement-bar">
+            <section class="announcement-bar-body">
+                <h1 class="announcement-title">Scheduled Maintenance for workspace "<%=announcement.scope%>"</h1>
+                <button type="button" class="delete" data-dismiss="modal" style="float: right;">&times;</button>
+                <p>This site will be undergoing scheduled maintenance starting from <b><%=announcement.start_date.strftime('%d-%m-%Y  %I:%M%p')%></b> for approximately <b><%=((announcement.end_date-announcement.start_date)/(3600)).round(0)%></b> hours & <b><%=(((announcement.end_date-announcement.start_date)/60)%60).round(0)%></b> minutes for <b><%=announcement.title%></b>. Please contact <b>"gatteamtest@lexmark.com"</b> for any questions.</p>  
+            </section>
+          </div>
+         </div>
+  <%end%>
+ <%end%>
  <%end%>

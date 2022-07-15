@@ -29,6 +29,18 @@
         <input class="input"  v-model="announcements.end_date" type="datetime-local" placeholder="Enter End Time"/>
       </div>
     </div>
+
+    <div class="field">
+      <label class="label">Scope</label>
+      <div class="control">
+        <span v-if="showAnnouncement"></span>
+        <select v-model="announcements.scope">
+             <option disabled value="">Please select one</option>
+             <option value="Global">GLOBAL</option>
+             <option v-for="item in workspaces" :value="item.name">{{item.name}}</option>
+     </select>
+      </div>
+    </div>
   </section>
   
   <footer class="modal-card-foot">

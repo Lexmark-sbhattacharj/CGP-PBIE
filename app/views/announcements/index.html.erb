@@ -36,6 +36,7 @@
           <th>Start Time</th>
           <th>End Time</th>
           <th>DownTime</th>
+          <th>Scope</th>
         </tr>
       </thead>
       <tbody>
@@ -49,7 +50,8 @@
             <%=msg.end_date.strftime('%d-%m-%Y  %I:%M%p')%>
           </td>
           <td><%=((msg.end_date-msg.start_date)/(3600)).round(0)%> Hours, <%=(((msg.end_date-msg.start_date)/60)%60).round(0)%> Minutes</td>
-          <td class="user-username"><b><%= link_to "Preview", announcement_path(msg) %></b></td>
+          <td class="user-username"><%=msg.scope%></td>
+          <td class="user-username"><b><%= link_to "Preview", announcement_path(msg)%></b></td>
           <td class="user-username"><b><%= link_to "Delete", announcement_path(msg),
           method: :delete,
           data: { confirm: "Are you sure?" } %></b></td>

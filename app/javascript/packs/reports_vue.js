@@ -31,7 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
       showContactUs: "",
       showContactUsConfirmation: "",
       contactusmodels:{},
-      navAnnouncement: ""
+      navAnnouncement: "",
+      selectedWorkspace: {},
     },
     created() {
       this.workspacesLoading = true;
@@ -257,6 +258,10 @@ document.addEventListener("DOMContentLoaded", () => {
               this.flash("ContactUs created", "success", { timeout: 3000 });
             }
           });
+      },
+      setWorkspace: function(workspace) {
+        this.workspace = workspace;
+        this.selectedWorkspace = workspace;
       }
     }
   });
