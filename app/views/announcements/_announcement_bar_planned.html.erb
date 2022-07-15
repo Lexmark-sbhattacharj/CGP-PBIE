@@ -10,6 +10,7 @@
  <%startdate=((announcement.start_date)-7.days).strftime('%d-%m-%Y  %I:%M%p')%>
  <%enddate=(announcement.start_date).strftime('%d-%m-%Y  %I:%M%p')%>
   <%if (Time.now.strftime('%d-%m-%Y  %I:%M%p')).between?(startdate,enddate)%>
+        <%if (announcement.scope=="Global") %>
          <div id="announcementModal">
           <div class="announcement-bar">
             <section class="announcement-bar-body">
@@ -21,6 +22,7 @@
          </div>
   <%end%>
  <%end%>
+<%end%>
  <%if announcement.present?%>
  <%if (announcement.scope!="Global") %>
  <%startdate=(announcement.start_date).strftime('%d-%m-%Y  %I:%M%p')%>
