@@ -80,6 +80,11 @@
         You are not authorized to view that report
       </div>
     </div>
+    <div class="column report-error-msg" v-if="showMaintenanceWorkspace">
+      <div>
+     <b>This workspace is undergoing scheduled maintenance. Please contact "gatteamtest@lexmark.com" for any questions.</b>
+    </div>
+    </div>
     <i v-if="reportLoading" class="fa fa-spinner fa-spin"></i>
     <div id="reportContainer" class="powerbi-container">&nbsp;</div>
   </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_06_033347) do
+ActiveRecord::Schema.define(version: 2022_07_19_090428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 2022_07_06_033347) do
     t.uuid "pbi_workspace_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "maintain", default: false
   end
 
 end
