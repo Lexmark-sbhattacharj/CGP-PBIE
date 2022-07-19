@@ -15,10 +15,24 @@ class ApplicationController < ActionController::Base
 
   def isMaintenance?
     announcement=Announcement.last
-    return announcement.present? && (Time.now.strftime('%Y-%m-%d  %I:%M:%S')) >= (announcement.start_date.strftime('%Y-%m-%d  %I:%M:%S')) && (Time.now.strftime('%Y-%m-%d  %I:%M:%S')) <= (announcement.end_date.strftime('%Y-%m-%d  %I:%M:%S')) && (announcement.scope=="Global")
+    return announcement.present? && (Time.now.strftime('%Y-%m-%d  %H:%M:%S')) >= (announcement.start_date.strftime('%Y-%m-%d  %H:%M:%S')) && (Time.now.strftime('%Y-%m-%d  %H:%M:%S')) <= (announcement.end_date.strftime('%Y-%m-%d  %H:%M:%S')) && (announcement.scope=="Global")
   end
 
   def show_maintenance_page
+    announcements = Announcement.all
+    for x in announcements
+      if x.scope != "Global"
+        workspace = Workspace.find_by(name: x.scope)
+         if (Time.now.strftime('%Y-%m-%d  %H:%M:%S')) >= (x.start_date.strftime('%Y-%m-%d  %H:%M:%S')) && (Time.now.strftime('%Y-%m-%d  %H:%M:%S')) <= (x.end_date.strftime('%Y-%m-%d  %H:%M:%S'))
+          workspace.maintain = true
+          workspace.save
+         else
+          workspace.maintain = false
+          workspace.save
+         end
+      end
+    end
+    
     if isMaintenance?
       redirect_to '/maintenance' unless request.fullpath == '/maintenance'
     end

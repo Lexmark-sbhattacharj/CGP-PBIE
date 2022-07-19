@@ -30,6 +30,11 @@ class AnnouncementsController < ApplicationController
     end
     def destroy
         @announcements = Announcement.find(params[:id])
+        if @announcements.scope != "Global"
+            workspace = Workspace.find_by(name: @announcements.scope)
+            workspace.maintain = false
+            workspace.save
+        end   
         @announcements.destroy
         redirect_to announcements_path
     end

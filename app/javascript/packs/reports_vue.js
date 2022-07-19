@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       contactusmodels:{},
       navAnnouncement: "",
       selectedWorkspace: {},
+      showMaintenanceWorkspace: false
     },
     created() {
       this.workspacesLoading = true;
@@ -123,6 +124,12 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       },
       loadReportsForWorkspace(workspace) {
+        if(workspace.maintain == true){
+          console.log(workspace.name);
+          this.showMaintenanceWorkspace = true;
+        }
+        else{
+          this.showMaintenanceWorkspace = false;
         this.showNoReportsMessage = false;
         if (workspace.selected) {
           workspace.selected = false;
@@ -162,6 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 workspace.no_reports = true
               } 
             });
+        }
         }
       },
       fullScreen() {
