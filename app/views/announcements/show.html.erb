@@ -21,12 +21,13 @@
           </ul>
         </div>
         <% end %>
-        <a
-          class="button is-primary is-pulled-right"
-          v-on:click="backToAnnouncement()"
-        >Announcement Lists</a>
+        <div class="tabs is-toggle is-centered">
+          <ul>
+            <li><a class="button is-primary is-pulled-right" v-on:click="backToAnnouncement()">Announcement Lists</a></li>
+          </ul>
+        </div>
       </h3>
-    
+    <div class="table-container" style="height:50vh;overflow:auto">
       <table class="table is-hoverable is-fullwidth" style="width:100%" v-if="selectedWorkspace">
    <tr>
       <td class="user-username">Details :</td>
@@ -34,18 +35,15 @@
    </tr>
    <tr>
       <td class="user-username">Start Date :</td>
-      <td class="user-username"><%=@announcements.start_date.strftime('%d-%m-%Y')%></td>
+      <td class="user-username"><%=@announcements.start_date.strftime('%m-%d-%Y  %H:%M:%S')%></td>
    </tr>
    <tr>
       <td class="user-username">End Date</td>
-      <td class="user-username"><%=@announcements.end_date.strftime('%d-%m-%Y')%></td>
+      <td class="user-username"><%=@announcements.end_date.strftime('%m-%d-%Y  %H:%M:%S')%></td>
    </tr> 
 </table>
-
-      
+</div>   
     </div>
     </div>
   </div>
 </section>
-
-<%= render '/announcements/new'%>

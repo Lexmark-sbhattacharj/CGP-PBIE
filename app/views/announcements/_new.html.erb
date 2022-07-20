@@ -8,43 +8,49 @@
   </header>
   <section class="modal-card-body">
   <div class="field">
+  
       <div class="control">
-        <label class="label">Details</label>
-        <textarea class="textarea" v-model="announcements.title" placeholder=""></textarea>
+        <label class="label">Details *</label>    
+        <textarea class="textarea" v-model="announcements.title" placeholder="" v-on:input="setTitle" v-on:focusout="setField" v-on:focusin="setFieldFocus"></textarea>
+        <p style="color:red;"><b>{{ titleError }}<b></p>   
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Start Date</label>
+      <label class="label">Start Date *</label>
       <div class="control">
         <span v-if="showAnnouncement"></span>
-        <input class="input"  v-model="announcements.start_date" type="datetime-local" placeholder="Enter Start Time"/>
+        <input class="input"  v-model="announcements.start_date" type="datetime-local" placeholder="Enter Start Time" v-on:input="setStart" v-on:focusout="setStartDate" v-on:focusin="setStartFocus"/>
+        <p style="color:red;"><b>{{ startError }}</b></p>
       </div>
     </div>
     
     <div class="field">
-      <label class="label">End Date</label>
+      <label class="label">End Date *</label>
       <div class="control">
         <span v-if="showAnnouncement"></span>
-        <input class="input"  v-model="announcements.end_date" type="datetime-local" placeholder="Enter End Time"/>
+        <input class="input"  v-model="announcements.end_date" type="datetime-local" placeholder="Enter End Time" v-on:input="setEnd" v-on:focusout="setEndDate" v-on:focusin="setEndFocus"/>
+        <p style="color:red;"><b>{{ endError }}</b></p>
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Scope</label>
+      <label class="label">Scope *</label>
       <div class="control">
         <span v-if="showAnnouncement"></span>
-        <select v-model="announcements.scope">
+        <select v-model="announcements.scope" v-on:input="setScope" v-on:focusout="setScopeValue" v-on:focusin="setScopeFocus">
              <option disabled value="">Please select one</option>
              <option value="Global">GLOBAL</option>
              <option v-for="item in workspaces" :value="item.name">{{item.name}}</option>
      </select>
+     <p style="color:red;"><b>{{ scopeError }}</b></p>
       </div>
     </div>
+    
   </section>
   
   <footer class="modal-card-foot">
-    <button class="button is-success" v-on:click="announcement();  newAnnouncement = false; newAnnouncementConfirmation = true; announcements.title = ''; announcements.start_date = '', announcements.end_date = ''">Submit</button>
+    <button :disabled="!isDisabled" class="button is-success" v-on:click="announcement();  newAnnouncement = false; newAnnouncementConfirmation = true; announcements.title = ''; announcements.start_date = '', announcements.end_date = ''">Submit</button>
   </footer>
 </div>
 </div>
