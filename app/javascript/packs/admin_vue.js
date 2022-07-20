@@ -40,7 +40,17 @@ document.addEventListener("DOMContentLoaded", () => {
       announcements:{},
       showAnnouncement: "",
       indexAnnouncement: "",
-      navAnnouncement: ""
+      navAnnouncement: "",
+      updateAnnouncement: "",
+      updateAnnouncementConfirmation: "",
+      title: "",
+      titleError: "",
+      start: "",
+      startError: "",
+      end: "",
+      endError: "",
+      scope: "",
+      scopeError: ""
     },
     created() {
       this.workspacesLoading = true;
@@ -69,6 +79,9 @@ document.addEventListener("DOMContentLoaded", () => {
             workspace.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
           );
         });
+      },
+      isDisabled(){
+        return ((this.start != "") && (this.end !="") && (this.title !="") && (this.scope !="")) ;
       }
     },
 
@@ -214,7 +227,65 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       backToAnnouncement: function() {
         location.href = "/announcements";
-      }
+      },
+      updateAnnouncement: function() {
+        axios
+          .post(`/announcements/`, {
+            announcements: this.announcements
+          })
+          .then(response => {
+            if (response.data.status == "updated") {
+              this.announcements.push(response.data);
+              this.flash("Announcement updated", "success", { timeout: 3000 });
+            }
+          });
+      },
+      setTitle(event){
+        this.title = event.target.value;
+       },
+       setStart(event){
+         this.start = event.target.value;
+        },
+       setEnd(event){
+         this.end = event.target.value;
+        },
+        setScope(event){
+          this.scope = event.target.value;
+        },
+       setField(event){
+         console.log(this.title);
+         if(this.title == ""){
+           this.titleError="Title cannot be empty";
+         }
+        },
+        setFieldFocus(event){
+         this.titleError=""
+        },
+        setStartFocus(event){
+         this.startError=""
+        },
+        setEndFocus(event){
+         this.endError=""
+        },
+        setScopeFocus(event){
+          this.scopeError=""
+         },
+        setStartDate(event){
+         console.log(this.start);
+         if(this.start == ""){
+            this.startError="Start Date cannot be empty";
+         }
+        },
+        setEndDate(event){
+         if(this.end == ""){
+           this.endError = "End Date cannot be empty";
+         }
+        },
+        setScopeValue(event){
+          if(this.scope == ""){
+            this.scopeError = "Scope cannot be empty";
+          }
+        }
     }
   });
 });

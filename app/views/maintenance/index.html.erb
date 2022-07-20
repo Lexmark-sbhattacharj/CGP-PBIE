@@ -41,7 +41,7 @@
     <div>
         <%announcement=Announcement.last%>
         <%if announcement.present?%>
-     <p>This site is undergoing scheduled maintenance for "<b><%=announcement.title%></b>" untill "<b><%=announcement.end_date.strftime('%Y-%m-%d  %H:%M:%S')%></b>". </p>
+     <p>This site is undergoing scheduled maintenance for "<b><%=announcement.title%></b>" untill "<b><%=announcement.end_date.strftime('%m-%d-%Y  %H:%M:%S')%></b>". </p>
      Please contact <b>"gatteamtest@lexmark.com"</b> for any questions.
         <%end%>
     </div>
