@@ -84,6 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       isDisabled(){
         return ((this.start != "") && (this.end !="") && (this.title !="") && (this.scope !="")) ;
+      },
+      isEditDisabled(){
+        return ((this.start != "") && (this.end !="") && (this.title !="")) ;
       }
     },
 
@@ -215,18 +218,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (response.data.status == "created") {
               this.announcement.push(response.data);
               this.flash("Announcement created", "success", { timeout: 3000 });
-            }
-          });
-      },
-      updateAnnouncement: function() {
-        axios
-          .post(`/announcements/`, {
-            announcements: this.announcements
-          })
-          .then(response => {
-            if (response.data.status == "created") {
-              this.announcement.push(response.data);
-              this.flash("Announcement updated", "success", { timeout: 3000 });
             }
           });
       },

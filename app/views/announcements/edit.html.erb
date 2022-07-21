@@ -18,21 +18,7 @@
     <div class="column">
       <div style="padding: 20px;">
       <h3 class="title" v-if="selectedWorkspace" style="margin-bottom:10px;">
-
-        <% if @current_user.is_admin? %>
-        <div class="tabs is-toggle is-centered">
-          <ul>
-            <li><a href="/admin">Workspaces</a></li>
-            <li><a href="/admin/people">People</a></li>
-            <li class="is-active"><a style="border-color:#6d6e71!important; background-color:#6d6e71!important" href="/announcements">Announcement</a></li>
-          </ul>
-        </div>
-        <% end %>
-        <div class="tabs is-toggle is-centered">
-          <ul>
-            <li><a class="button is-primary is-pulled-right" v-on:click="backToAnnouncement()">Announcement Lists</a></li>
-          </ul>
-        </div>
+       
       </h3>
     <section class="section">
 <div id="updateAnnouncementModal">
@@ -42,46 +28,34 @@
     <p class="modal-card-title">Update Announcement</p>
     <button type="button" class="delete" data-dismiss="modal" v-on:click="backToAnnouncement()" style="float: right;">&times;</button>
   </header>
-  <section class="modal-card-body">
-  <div class="field">
-      <div class="control">
-        <label class="label">Details</label>
-        <textarea class="textarea" v-model="announcements.title" placeholder=""><%=@announcements.title%></textarea>
-      </div>
-    </div>
 
-    <div class="field">
-      <label class="label">Start Date</label>
-      <div class="control">
-        <span v-if="showAnnouncement"></span>
-        <input class="input"  v-model="announcements.start_date" type="datetime-local" placeholder="Enter Start Time"/>
-      </div>
-    </div>
-    
-    <div class="field">
-      <label class="label">End Date</label>
-      <div class="control">
-        <span v-if="showAnnouncement"></span>
-        <input class="input"  v-model="announcements.end_date" type="datetime-local" placeholder="Enter End Time"/>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="label">Scope</label>
-      <div class="control">
-        <span v-if="showAnnouncement"></span>
-        <select v-model="announcements.scope">
-             <option disabled value="">Please select one</option>
-             <option value="Global">GLOBAL</option>
-             <option v-for="item in workspaces" :value="item.name">{{item.name}}</option>
-     </select>
-      </div>
-    </div>
-  </section>
   
-  <footer class="modal-card-foot">
-    <button class="button is-success" v-on:click="updateAnnouncement();  updateAnnouncement = false; updateAnnouncementConfirmation = true; announcements.title = ''; announcements.start_date = '', announcements.end_date = ''">Update</button>
-  </footer>
+  <%= form_with(model: @announcements, class: "modal-card-body",local: true) do |f| %>
+  ** Scope Field is non-editable.<br>
+	<div class="field">
+   <div class="control">
+    <%= f.label :title, class: "label" %>
+    <%= f.text_field :title, class: "textarea", placeholder: ""%>
+    </div>
+   </div>
+   
+  <div class="field">
+   <div class="control">
+    <%= f.label :start_date, class: "label" %>
+    <%= f.datetime_field :start_date, class: "input", placeholder: ""%>
+    </div>
+   </div>
+  <div class="field">
+   <div class="control">
+    <%= f.label :end_date, class: "label" %>
+    <%= f.datetime_field :end_date, class: "input", placeholder: ""%>
+    </div>
+   </div>
+  
+    <%= f.submit class: "button is-success" %> 
+  </div>
+<% end %>
+
 </div>
 </div>
 </section>

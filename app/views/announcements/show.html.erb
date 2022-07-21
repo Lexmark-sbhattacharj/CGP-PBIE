@@ -1,3 +1,10 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#ushowAnnouncementModal").modal('show');
+	});
+</script>
 <% content_for :vue_js do %>
   <%= javascript_pack_tag 'admin_vue' %>
 <% end %>
@@ -11,39 +18,36 @@
     <div class="column">
       <div style="padding: 20px;">
       <h3 class="title" v-if="selectedWorkspace" style="margin-bottom:10px;">
-
-        <% if @current_user.is_admin? %>
-        <div class="tabs is-toggle is-centered">
-          <ul>
-            <li><a href="/admin">Workspaces</a></li>
-            <li><a href="/admin/people">People</a></li>
-            <li class="is-active"><a style="border-color:#6d6e71!important; background-color:#6d6e71!important" href="/announcements">Announcement</a></li>
-          </ul>
-        </div>
-        <% end %>
-        <div class="tabs is-toggle is-centered">
-          <ul>
-            <li><a class="button is-primary is-pulled-right" v-on:click="backToAnnouncement()">Announcement Lists</a></li>
-          </ul>
-        </div>
+       
       </h3>
-    <div class="table-container" style="height:50vh;overflow:auto">
+    <section class="section">
+<div id="showAnnouncementModal">
+<div class="modal-background"></div>
+<div class="modal-card">
+  <header class="modal-card-head">
+    <p class="modal-card-title">Preview Announcement</p>
+    <button type="button" class="delete" data-dismiss="modal" v-on:click="backToAnnouncement()" style="float: right;">&times;</button>
+  </header>
+  <div class="table-container" style="height:50vh;overflow:auto">
       <table class="table is-hoverable is-fullwidth" style="width:100%" v-if="selectedWorkspace">
    <tr>
-      <td class="user-username">Details :</td>
+      <td class="user-username"><b>Details :<b></td>
       <td class="user-username"><%=@announcements.title%></td>  
    </tr>
    <tr>
-      <td class="user-username">Start Date :</td>
+      <td class="user-username"><b>Start Date :</b></td>
       <td class="user-username"><%=@announcements.start_date.strftime('%m-%d-%Y  %H:%M:%S')%></td>
    </tr>
    <tr>
-      <td class="user-username">End Date</td>
+      <td class="user-username"><b>End Date :</b></td>
       <td class="user-username"><%=@announcements.end_date.strftime('%m-%d-%Y  %H:%M:%S')%></td>
    </tr> 
+   <tr>
+      <td class="user-username"><b>Scope :</b></td>
+      <td class="user-username"><%=@announcements.scope%></td>
+   </tr> 
 </table>
-</div>   
-    </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
 </section>

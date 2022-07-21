@@ -22,8 +22,8 @@ class AnnouncementsController < ApplicationController
     end
     def update 
         @announcements = Announcement.find(params[:id])
-        if @announcements.update(announcement_params)
-          redirect_to @announcement
+        if @announcements.update(update_announcement_params)
+          redirect_to @announcements
         else
           render 'edit'
         end  
@@ -40,5 +40,8 @@ class AnnouncementsController < ApplicationController
     end
     def announcement_params
         params.require(:announcements).permit(:title, :start_date, :end_date, :scope)
+    end
+    def update_announcement_params
+        params.require(:announcement).permit(:title, :start_date, :end_date)
     end
 end

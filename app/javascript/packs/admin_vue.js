@@ -82,6 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       isDisabled(){
         return ((this.start != "") && (this.end !="") && (this.title !="") && (this.scope !="")) ;
+      },
+      isEditDisabled(){
+        return ((this.start != "") && (this.end !="") && (this.title !="")) ;
       }
     },
 
@@ -227,18 +230,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       backToAnnouncement: function() {
         location.href = "/announcements";
-      },
-      updateAnnouncement: function() {
-        axios
-          .post(`/announcements/`, {
-            announcements: this.announcements
-          })
-          .then(response => {
-            if (response.data.status == "updated") {
-              this.announcements.push(response.data);
-              this.flash("Announcement updated", "success", { timeout: 3000 });
-            }
-          });
       },
       setTitle(event){
         this.title = event.target.value;
