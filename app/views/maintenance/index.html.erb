@@ -1,48 +1,73 @@
-<!doctype html>
-<title>Site Maintenance</title>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-<style>
-  html, body { padding: 0; margin: 0; width: 100%; height: 100%; }
-  * {box-sizing: border-box;}
-  body { text-align: center; padding: 0; background: #d6433b; color: #fff; font-family: Open Sans; }
-  h1 { font-size: 50px; font-weight: 100; text-align: center;}
-  body { font-family: Open Sans; font-weight: 100; font-size: 20px; color: #fff; text-align: center; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center;}
-  article { display: block; width: 1500px; padding: 50px; margin: 0 auto; }
-  a { color: #fff; font-weight: bold;}
-  a:hover { text-decoration: none; }
-  svg { width: 75px; margin-top: 1em; }
-  .button_to {
-     width: 30px;
-     margin-top: 2px;
-     position:absolute;
-     top:0;
- }
- .adm{
-    background-color: #4CAF50;
-    border-radius:6px;
-    height: 35px;
-    border-color:  #4CAF50;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
- }
-</style>
-<%@last_announcement = Announcement.last%>
-<% if @current_user.is_admin? %>  
-<%= button_to "Remove Maintenance", @last_announcement,class:"adm",method: :delete,data: { confirm: "Are you sure?" } %>
-<% end %>
-<article>
-    <a href="/"><img src="/images/logo_rgb_reversed.svg" width="250px"></a>
-    <h1>Scheduled Maintenance!<h1>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202.24 202.24"><defs><style>.cls-1{fill:#fff;}</style></defs><title>Asset 3</title><g id="Layer_2" data-name="Layer 2"><g id="Capa_1" data-name="Capa 1"><path class="cls-1" d="M101.12,0A101.12,101.12,0,1,0,202.24,101.12,101.12,101.12,0,0,0,101.12,0ZM159,148.76H43.28a11.57,11.57,0,0,1-10-17.34L91.09,31.16a11.57,11.57,0,0,1,20.06,0L169,131.43a11.57,11.57,0,0,1-10,17.34Z"/><path class="cls-1" d="M101.12,36.93h0L43.27,137.21H159L101.13,36.94Zm0,88.7a7.71,7.71,0,1,1,7.71-7.71A7.71,7.71,0,0,1,101.12,125.63Zm7.71-50.13a7.56,7.56,0,0,1-.11,1.3l-3.8,22.49a3.86,3.86,0,0,1-7.61,0l-3.8-22.49a8,8,0,0,1-.11-1.3,7.71,7.71,0,1,1,15.43,0Z"/></g></g></svg>
-    <h2>We&rsquo;ll be back soon!</h2>
-    <div>
-        <%announcement=Announcement.last%>
-        <%if announcement.present?%>
-     <p>This site is undergoing scheduled maintenance for "<b><%=announcement.title%></b>" untill "<b><%=announcement.end_date.strftime('%m-%d-%Y  %H:%M:%S')%></b>". </p>
-     Please contact <b>"gatteamtest@lexmark.com"</b> for any questions.
-        <%end%>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lexmark Reporting</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_include_tag '/assets/lodash.js', nonce: true %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag '/assets/powerbi.js', nonce: true %>
+    
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+
+    <%= yield :vue_js %>
+    
+  </head>
+
+  <body>
+    <div id="reports">
+
+        <nav class="navbar has-shadow">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                <img src="/images/logo_rgb_reversed.svg" width="200px">
+                </a>
+            </div>
+
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <div class="navbar-item">
+                        <div>Reporting</div>
+                    </div>
+                </div>
+
+                <div class="navbar-end">
+                </div>
+            </div>
+        </nav>
+
+
+        <div id="login-container">
+            <div id="maintenance">
+                <h1>Scheduled Maintenance!</h1>
+                <div style="padding:100px;text-align: center;font-size: 20px">                 
+                        <div style="margin-bottom: 20px;text-align: center;">
+                            <%announcement=Announcement.last%>
+                            <%if announcement.present?%>
+                            <p><b>We&rsquo;ll be back soon!</b></p>
+                            <br>
+                            <p>This site is undergoing scheduled maintenance for "<b><%=announcement.title%></b>" untill "<b><%=announcement.end_date.strftime('%m-%d-%Y  %H:%M:%S')%></b>". </p>
+                            <br>Please contact <b>"gatteamtest@lexmark.com"</b> for any questions.<br><br>
+                            <%end%>
+                        </div>
+                        <%@last_announcement = Announcement.last%>
+                        <% if @current_user.is_admin? %>  
+                        <%= button_to "Remove Maintenance", @last_announcement,class:"adm",method: :delete,data: { confirm: "Are you sure?" } %>
+                        <% end %>                  
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <div class="content has-text-centered">
+            <p>
+                &#169; 2021 Lexmark. All rights reserved.
+            </p>
+            </div>
+        </footer>
     </div>
-</article>
+  </body>
+</html>
