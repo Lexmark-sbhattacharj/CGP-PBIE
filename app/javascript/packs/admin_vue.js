@@ -50,7 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
       end: "",
       endError: "",
       scope: "",
-      scopeError: ""
+      scopeError: "",
+      formattedDate: ""
     },
     created() {
       this.workspacesLoading = true;
@@ -81,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       },
       isDisabled(){
-        return ((this.start != "") && (this.end !="") && (this.title !="") && (this.scope !="")) ;
+        return ((this.start != "") && (this.end !="") && (this.title !="") && (this.scope !="") && (this.end > this.start) && (this.start >= this.formattedDate)) ;
       },
       isEditDisabled(){
         return ((this.start != "") && (this.end !="") && (this.title !="")) ;
@@ -262,14 +263,21 @@ document.addEventListener("DOMContentLoaded", () => {
           this.scopeError=""
          },
         setStartDate(event){
-         console.log(this.start);
-         if(this.start == ""){
+          let currentDate = new Date()
+          this.formattedDate = currentDate.getFullYear() + ((currentDate.getMonth()+1) <= 9 ? ('-0'+(currentDate.getMonth()+1)) : ('-'+(currentDate.getMonth()+1))) +'-'+currentDate.getDate()+'T'+currentDate.getHours()+':'+currentDate.getMinutes()
+          if(this.start == ""){
             this.startError="Start Date cannot be empty";
+         }
+         else if(this.start < this.formattedDate){
+            this.startError="Start Date cannot be less than current date";
          }
         },
         setEndDate(event){
          if(this.end == ""){
            this.endError = "End Date cannot be empty";
+         }
+         else if(this.end <= this.start){
+          this.endError="End Date should be greater than Start Date";
          }
         },
         setScopeValue(event){
