@@ -56,7 +56,30 @@ body {
   border: 1px solid #8e8e8e;
 }
 
+#maintenance {
+  width: 1000px;
+  margin: auto;
+  width: 100%;
+  border: 5px solid #685757;
+  text-align: center;
+}
+
+.adm{
+  background-color: #bece0e;
+  border-radius:6px;
+  height: 30px;
+  border-color:  #0a0b0a;
+  color: rgb(15, 7, 7);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 #login h1 { background: #8e8e8e; color: white; padding: 10px 20px;}
+
+#maintenance h1 { background: #b32323; color: white; padding: 10px 20px; font-size: xx-large;}
 
 /* Track */
 .report-list::-webkit-scrollbar-track {
