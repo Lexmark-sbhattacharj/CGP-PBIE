@@ -52,7 +52,7 @@
           <td><%=((msg.end_date-msg.start_date)/(3600)).round(0)%> Hours, <%=(((msg.end_date-msg.start_date)/60)%60).round(0)%> Minutes</td>
           <td class="user-username"><%=msg.scope%></td>
           <td class="user-username"><b><%= link_to "Preview", announcement_path(msg)%></b></td>
-          <td class="user-username" v-on:click="updateAnnouncement = true"><b><%= link_to "Edit", edit_announcement_path(msg)%></b></td>
+          <td class="user-username"><b><%= link_to "Edit", edit_announcement_path(msg)%></b></td>
           <td class="user-username"><b><%= link_to "Delete", announcement_path(msg),
           method: :delete,
           data: { confirm: "Are you sure?" } %></b></td>
