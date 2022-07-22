@@ -126,11 +126,13 @@ document.addEventListener("DOMContentLoaded", () => {
       loadReportsForWorkspace(workspace) {
         if(workspace.maintain == true){
           console.log(workspace.name);
+          this.reportLoaded = false;
           this.showMaintenanceWorkspace = true;
         }
         else{
           this.showMaintenanceWorkspace = false;
-        this.showNoReportsMessage = false;
+          this.showNoReportsMessage = false;
+          this.reportLoaded = true;
         if (workspace.selected) {
           workspace.selected = false;
         } else {
