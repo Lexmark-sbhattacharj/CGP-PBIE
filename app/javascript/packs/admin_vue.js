@@ -274,9 +274,6 @@ document.addEventListener("DOMContentLoaded", () => {
           }
           this.formattedDate = currentDate.getFullYear() + ((currentDate.getMonth()+1) <= 9 ? ('-0'+(currentDate.getMonth()+1)) : ('-'+(currentDate.getMonth()+1)))
                                +'-'+currentDate.getDate()+'T'+hours+':'+minutes
-          console.log(this.formattedDate);
-          console.log(this.start);
-          console.log(hours);
           if(this.start == ""){
             this.startError="Start Date cannot be empty";
          }
