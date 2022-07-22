@@ -15,10 +15,12 @@ class ApplicationController < ActionController::Base
 
   def isMaintenance?
     announcements = Announcement.all
-    announcements.each do |x|
-      announcement = x if x.scope == 'Global'
+    for x in announcements
+      if x.scope == "Global"
+        announcement=x
+      end
     end
-    announcement.present? && (Time.now.strftime('%m-%d-%Y  %H:%M:%S')) >= (announcement.start_date.strftime('%m-%d-%Y  %H:%M:%S')) && (Time.now.strftime('%m-%d-%Y  %H:%M:%S')) <= (announcement.end_date.strftime('%m-%d-%Y  %H:%M:%S')) && (announcement.scope == 'Global')
+    return announcement.present? && (Time.now.strftime('%m-%d-%Y  %H:%M:%S')) >= (announcement.start_date.strftime('%m-%d-%Y  %H:%M:%S')) && (Time.now.strftime('%m-%d-%Y  %H:%M:%S')) <= (announcement.end_date.strftime('%m-%d-%Y  %H:%M:%S')) && (announcement.scope=="Global")
   end
 
   def show_maintenance_page
