@@ -262,9 +262,21 @@ document.addEventListener("DOMContentLoaded", () => {
         setScopeFocus(event){
           this.scopeError=""
          },
-        setStartDate(event){
+         setStartDate(event){
           let currentDate = new Date()
-          this.formattedDate = currentDate.getFullYear() + ((currentDate.getMonth()+1) <= 9 ? ('-0'+(currentDate.getMonth()+1)) : ('-'+(currentDate.getMonth()+1))) +'-'+currentDate.getDate()+'T'+currentDate.getHours()+':'+currentDate.getMinutes()
+          let hours = currentDate.getHours().toString();
+          if(hours.length==1){
+            hours ='0'+hours;
+          }
+          let minutes = currentDate.getMinutes().toString();
+          if(minutes.length==1){
+            minutes ='0'+hours;
+          }
+          this.formattedDate = currentDate.getFullYear() + ((currentDate.getMonth()+1) <= 9 ? ('-0'+(currentDate.getMonth()+1)) : ('-'+(currentDate.getMonth()+1)))
+                               +'-'+currentDate.getDate()+'T'+hours+':'+minutes
+          console.log(this.formattedDate);
+          console.log(this.start);
+          console.log(hours);
           if(this.start == ""){
             this.startError="Start Date cannot be empty";
          }

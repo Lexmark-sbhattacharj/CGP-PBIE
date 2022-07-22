@@ -14,27 +14,27 @@ class ApplicationController < ActionController::Base
   end
 
   def isMaintenance?
-    announcement=Announcement.last
-    return announcement.present? && (Time.now.strftime('%m-%d-%Y  %H:%M:%S')) >= (announcement.start_date.strftime('%m-%d-%Y  %H:%M:%S')) && (Time.now.strftime('%m-%d-%Y  %H:%M:%S')) <= (announcement.end_date.strftime('%m-%d-%Y  %H:%M:%S')) && (announcement.scope=="Global")
+    announcements = Announcement.all
+    announcements.each do |x|
+      announcement = x if x.scope == 'Global'
+    end
+    announcement.present? && (Time.now.strftime('%m-%d-%Y  %H:%M:%S')) >= (announcement.start_date.strftime('%m-%d-%Y  %H:%M:%S')) && (Time.now.strftime('%m-%d-%Y  %H:%M:%S')) <= (announcement.end_date.strftime('%m-%d-%Y  %H:%M:%S')) && (announcement.scope == 'Global')
   end
 
   def show_maintenance_page
     announcements = Announcement.all
-    for x in announcements
-      if x.scope != "Global"
-        workspace = Workspace.find_by(name: x.scope)
-         if (Time.now.strftime('%m-%d-%Y  %H:%M:%S')) >= (x.start_date.strftime('%m-%d-%Y  %H:%M:%S')) && (Time.now.strftime('%m-%d-%Y  %H:%M:%S')) <= (x.end_date.strftime('%m-%d-%Y  %H:%M:%S'))
-          workspace.maintain = true
-          workspace.save
-         else
-          workspace.maintain = false
-          workspace.save
-         end
+    announcements.each do |x|
+      next unless x.scope != 'Global'
+
+      workspace = Workspace.find_by(name: x.scope)
+      if (Time.now.strftime('%m-%d-%Y  %H:%M:%S')) >= (x.start_date.strftime('%m-%d-%Y  %H:%M:%S')) && (Time.now.strftime('%m-%d-%Y  %H:%M:%S')) <= (x.end_date.strftime('%m-%d-%Y  %H:%M:%S'))
+        workspace.maintain = true
+      else
+        workspace.maintain = false
       end
+      workspace.save
     end
-    
-    if isMaintenance?
-      redirect_to '/maintenance' unless request.fullpath == '/maintenance'
-    end
+
+    redirect_to '/maintenance' if isMaintenance? && request.fullpath != '/maintenance'
   end
 end
