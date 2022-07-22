@@ -128,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log(workspace.name);
           this.reportLoaded = false;
           this.showMaintenanceWorkspace = true;
+          this.showNoReportsMessage = false;
         }
         else{
           this.showMaintenanceWorkspace = false;
