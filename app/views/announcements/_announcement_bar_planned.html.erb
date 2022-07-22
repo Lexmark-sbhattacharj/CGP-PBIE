@@ -5,59 +5,63 @@
 		$("#announcementModal").modal('show');
 	});
 </script>
+<div id="announcementModal">
+<div class="announcement-bar">
 <%for announcement in Announcement.all%>
  <%if announcement.present?%>
  <%if @current_user.is_admin?%>
  <%announcement.scope=="Global" ? startdate=((announcement.start_date)-7.days).strftime('%d-%m-%Y  %H:%M:%S') : startdate=(announcement.start_date).strftime('%d-%m-%Y  %H:%M:%S')%>
  <%enddate=(announcement.end_date).strftime('%d-%m-%Y  %H:%M:%S')%>
   <%if (Time.now.strftime('%d-%m-%Y  %H:%M:%S')).between?(startdate,enddate)%>
-         <div id="announcementModal">
-          <div class="announcement-bar">
             <section class="announcement-bar-body">
                 <% if announcement.scope=="Global" %> 
                 <h1 class="announcement-title">Upcoming <%=announcement.scope%> Maintenance</h1>
                 <%else%>
                  <h1 class="announcement-title">Scheduled '<%=announcement.scope%>' Maintenance</h1> 
                  <%end%>
-                <button type="button" class="delete" data-dismiss="modal" style="float: right;">&times;</button>
-                <p>This site will be undergoing scheduled maintenance starting from <b><%=announcement.start_date.strftime('%d-%m-%Y  %H:%M:%S')%></b> for approximately <b><%=((announcement.end_date-announcement.start_date)/(3600)).round(0)%></b> hours & <b><%=(((announcement.end_date-announcement.start_date)/60)%60).round(0)%></b> minutes for <b><%=announcement.title%></b>. Please contact <b>"gatteamtest@lexmark.com"</b> for any questions.</p>  
+                <p>This site will be undergoing scheduled maintenance starting from <b><%=announcement.start_date.strftime('%d-%m-%Y  %H:%M:%S')%></b> for approximately <b><%=((announcement.end_date-announcement.start_date)/(3600)).round(0)%></b> hours & <b><%=(((announcement.end_date-announcement.start_date)/60)%60).round(0)%></b> minutes for <b><%=announcement.title%></b>. Please contact <b>"gatteamtest@lexmark.com"</b> for any questions.</p> 
+                -------------------------------------------------------------------------------------------------------------- 
             </section>
-          </div>
-         </div>
   <%end%>
   <%else%>
   <% if announcement.scope=="Global" %>
   <%startdate=((announcement.start_date)-7.days).strftime('%d-%m-%Y  %H:%M:%S')%>
   <%enddate=(announcement.end_date).strftime('%d-%m-%Y  %H:%M:%S')%>
   <%if (Time.now.strftime('%d-%m-%Y  %H:%M:%S')).between?(startdate,enddate)%>
-         <div id="announcementModal">
-          <div class="announcement-bar">
             <section class="announcement-bar-body">
                 <h1 class="announcement-title">Upcoming '<%=announcement.scope%>' Maintenance</h1>
-                <button type="button" class="delete" data-dismiss="modal" style="float: right;">&times;</button>
                 <p>This site will be undergoing scheduled maintenance starting from <b><%=announcement.start_date.strftime('%d-%m-%Y  %H:%M:%S')%></b> for approximately <b><%=((announcement.end_date-announcement.start_date)/(3600)).round(0)%></b> hours & <b><%=(((announcement.end_date-announcement.start_date)/60)%60).round(0)%></b> minutes for <b><%=announcement.title%></b>. Please contact <b>"gatteamtest@lexmark.com"</b> for any questions.</p>
+                --------------------------------------------------------------------------------------------------------------
             </section>
-          </div>
-         </div>
   <%end%>
   <%else%>
   <% if (@current_user.workspaces.to_a.map{|workspace| workspace ['name']}).include? announcement.scope%>
   <%startdate=(announcement.start_date).strftime('%d-%m-%Y  %H:%M:%S')%>
   <%enddate=(announcement.end_date).strftime('%d-%m-%Y  %H:%M:%S')%>
   <%if (Time.now.strftime('%d-%m-%Y  %H:%M:%S')).between?(startdate,enddate)%>
-         <div id="announcementModal">
-          <div class="announcement-bar">
             <section class="announcement-bar-body">
                 <h1 class="announcement-title">Scheduled '<%=announcement.scope%>' Maintenance</h1>
-                <button type="button" class="delete" data-dismiss="modal" style="float: right;">&times;</button>
                 <p>This site will be undergoing scheduled maintenance starting from <b><%=announcement.start_date.strftime('%d-%m-%Y  %H:%M:%S')%></b> for approximately <b><%=((announcement.end_date-announcement.start_date)/(3600)).round(0)%></b> hours & <b><%=(((announcement.end_date-announcement.start_date)/60)%60).round(0)%></b> minutes for <b><%=announcement.title%></b>. Please contact <b>"gatteamtest@lexmark.com"</b> for any questions.</p>
-            </section>
-          </div>
-         </div>
+                --------------------------------------------------------------------------------------------------------------
+            </section>  
   <%end%>
   <%end%>
   <%end%>
   <%end%>
   <%end%>
 <%end%>
+          </div>    
+  
+<% navBar = false %>
+<%for x in Announcement.all%>
+<%if (x.end_date.strftime('%m-%d-%Y  %H:%M:%S') > Time.now.strftime('%m-%d-%Y  %H:%M:%S'))%>
+<%navBar = true%>
+<%else%>
+<%navBar = false%>
+<%end%>
+<%end%>
+<%if navBar%>
+<button class="button is-success" data-dismiss="modal" style="float: right;">Got It!</button>
+<%end%>
+</div>
 
