@@ -5,7 +5,7 @@
 		$("#announcementModal").modal('show');
 	});
 </script>
-<%announcement=Announcement.last%>
+<%for announcement in Announcement.all%>
  <%if announcement.present?%>
  <%announcement.scope=="Global" ? startdate=((announcement.start_date)-7.days).strftime('%d-%m-%Y  %H:%M:%S') : startdate=(announcement.start_date).strftime('%d-%m-%Y  %H:%M:%S')%>
  <%enddate=(announcement.end_date).strftime('%d-%m-%Y  %H:%M:%S')%>
@@ -25,3 +25,4 @@
          </div>
   <%end%>
   <%end%>
+<%end%>
