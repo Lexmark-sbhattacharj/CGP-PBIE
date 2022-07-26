@@ -3,8 +3,11 @@
 <script>
 	$(document).ready(function(){
 		$("#updateAnnouncementModal").modal('show');
+    backdrop: 'static',
+    keyboard: false
 	});
 </script>
+
 <% content_for :vue_js do %>
   <%= javascript_pack_tag 'admin_vue' %>
 <% end %>
