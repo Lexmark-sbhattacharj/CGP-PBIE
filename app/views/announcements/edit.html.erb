@@ -35,24 +35,26 @@
 	<div class="field">
    <div class="control">
     <%= f.label :title, class: "label" %>
-    <%= f.text_field :title, class: "textarea", placeholder: ""%>
+    <%= f.text_field :title, class: "textarea", placeholder: "", "v-on:input":"setTitle", "v-on:focusout":"setField", "v-on:focusin":"setFieldFocus"%>
+    <p style="color:red;"><b>{{ titleError }}<b></p>
     </div>
    </div>
    
   <div class="field">
    <div class="control">
     <%= f.label :start_date, class: "label" %>
-    <%= f.datetime_field :start_date, class: "input", placeholder: ""%>
+    <%= f.datetime_field :start_date, class: "input", placeholder: "", "v-on:input":"setStart", "v-on:focusout":"setStartDate", "v-on:focusin":"setStartFocus"%>
+    <p style="color:red;"><b>{{ startError }}<b></p>
     </div>
    </div>
   <div class="field">
    <div class="control">
     <%= f.label :end_date, class: "label" %>
-    <%= f.datetime_field :end_date, class: "input", placeholder: ""%>
+    <%= f.datetime_field :end_date, class: "input", placeholder: "" , "v-on:input":"setEnd", "v-on:focusout":"setEndDate", "v-on:focusin":"setEndFocus"%>
+    <p style="color:red;"><b>{{ endError }}<b></p>
     </div>
    </div>
-  
-    <%= f.submit class: "button is-success" %> 
+    <%= f.submit class: "button is-success" ,":disabled": "!isEditDisabled"%> 
   </div>
 <% end %>
 

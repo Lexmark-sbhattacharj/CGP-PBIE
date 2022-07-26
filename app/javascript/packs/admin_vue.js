@@ -51,7 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
       endError: "",
       scope: "",
       scopeError: "",
-      formattedDate: ""
+      formattedDate: "",
+      editTitle: "" 
     },
     created() {
       this.workspacesLoading = true;
@@ -85,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return ((this.start != "") && (this.end !="") && (this.title !="") && (this.scope !="") && (this.end > this.start) && (this.start >= this.formattedDate)) ;
       },
       isEditDisabled(){
-        return ((this.start != "") && (this.end !="") && (this.title !="")) ;
+        return ((this.startError == "") && (this.endError =="") && (this.titleError =="")) ;
       }
     },
 
@@ -244,12 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setScope(event){
           this.scope = event.target.value;
         },
-       setField(event){
-         console.log(this.title);
-         if(this.title == ""){
-           this.titleError="Title cannot be empty";
-         }
-        },
+      
         setFieldFocus(event){
          this.titleError=""
         },
@@ -262,35 +258,41 @@ document.addEventListener("DOMContentLoaded", () => {
         setScopeFocus(event){
           this.scopeError=""
          },
-         setStartDate(event){
-          let currentDate = new Date()
-          let hours = currentDate.getHours().toString();
-          if(hours.length==1){
-            hours ='0'+hours;
+         
+       setField(event){
+        if(event.target.value == ""){
+          this.titleError="Title cannot be empty";
+        }
+       },
+        setStartDate(event){
+            let currentDate = new Date()
+            let hours = currentDate.getHours().toString();
+            if(hours.length==1){
+              hours ='0'+hours;
+            }
+            let minutes = currentDate.getMinutes().toString();
+            if(minutes.length==1){
+              minutes ='0'+hours;
+            }
+            this.formattedDate = currentDate.getFullYear() + ((currentDate.getMonth()+1) <= 9 ? ('-0'+(currentDate.getMonth()+1)) : ('-'+(currentDate.getMonth()+1)))
+                                +'-'+currentDate.getDate()+'T'+hours+':'+minutes
+            if(event.target.value == ""){
+              this.startError="Start Date cannot be empty";
           }
-          let minutes = currentDate.getMinutes().toString();
-          if(minutes.length==1){
-            minutes ='0'+hours;
+          else if(event.target.value < this.formattedDate){
+              this.startError="Start Date cannot be less than current date";
           }
-          this.formattedDate = currentDate.getFullYear() + ((currentDate.getMonth()+1) <= 9 ? ('-0'+(currentDate.getMonth()+1)) : ('-'+(currentDate.getMonth()+1)))
-                               +'-'+currentDate.getDate()+'T'+hours+':'+minutes
-          if(this.start == ""){
-            this.startError="Start Date cannot be empty";
-         }
-         else if(this.start < this.formattedDate){
-            this.startError="Start Date cannot be less than current date";
-         }
-        },
+          },
         setEndDate(event){
-         if(this.end == ""){
+         if(event.target.value == ""){
            this.endError = "End Date cannot be empty";
          }
-         else if(this.end <= this.start){
+         else if(event.target.value <= this.start){
           this.endError="End Date should be greater than Start Date";
          }
         },
         setScopeValue(event){
-          if(this.scope == ""){
+          if(event.target.value == ""){
             this.scopeError = "Scope cannot be empty";
           }
         }
