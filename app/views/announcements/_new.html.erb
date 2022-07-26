@@ -4,7 +4,7 @@
 <div class="modal-card">
   <header class="modal-card-head">
     <p class="modal-card-title">Create Announcement</p>
-    <button class="delete" aria-label="close" v-on:click="newAnnouncement=false"></button>
+    <button class="delete" aria-label="close" v-on:click="newAnnouncement=false; announcements.title = ''; announcements.start_date = '', announcements.end_date = '', announcements.scope = ''"></button>
   </header>
   <section class="modal-card-body">
    <div class="field">
