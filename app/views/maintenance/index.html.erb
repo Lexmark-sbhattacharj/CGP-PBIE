@@ -6,13 +6,10 @@
     <title>Lexmark Reporting</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= javascript_include_tag '/assets/lodash.js', nonce: true %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag '/assets/powerbi.js', nonce: true %>
-    
     <%= stylesheet_link_tag    'application', media: 'all' %>
-
     <%= yield :vue_js %>
     
   </head>
@@ -50,6 +47,26 @@
                                     <% announcement = x %>
                                 <%end%>
                             <%end%>
+
+                            <!--Modal Confirmation for deletion-->
+                            <div id="exampleModal<%= announcement.id %>" v-bind:class="{modal: true}">
+                            <div class="modal-background"></div>
+                            <div class="modal-card">
+                            <header class="modal-card-head">
+                                <p class="modal-card-title">Delete Announcement</p>
+                                <button class="delete" aria-label="close" data-dismiss="modal"></button>
+                            </header>
+                            <section class="modal-card-body">
+                            <div class="field">
+                                <label class="label">Are you sure want to delete this announcement?</label>
+                                </div>  
+                            <footer class="modal-card-foot">
+                                    <b><%= link_to 'Yes', announcement_path(announcement), method: :delete, :class => 'button is-danger is-pulled-left' %><b>
+                                    <b><%= link_to 'No', announcements_path(), :class => 'button is-primary is-pulled-right' %><b>
+                            </footer>
+                            </div>
+                            </div>
+                            <!------------------>
                             <%if announcement.present?%>
                             <p><b>We&rsquo;ll be back soon!</b></p>
                             <br>
@@ -59,7 +76,8 @@
                         </div>
                         <% if @current_user.is_admin? %>  
                         <%= button_to "Remove Maintenance", announcement,class:"adm",method: :delete,data: { confirm: "Are you sure?" } %>
-                        <% end %>                  
+                        <a class="button is-primary is-pulled-center" data-toggle="modal" data-target="#exampleModal<%= announcement.id %>">Remove Maintenance</a>
+                        <% end %>                                         
                 </div>
             </div>
         </div>
@@ -72,5 +90,7 @@
             </div>
         </footer>
     </div>
+
+
   </body>
 </html>

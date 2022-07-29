@@ -52,7 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
       end: "",
       endError: "",
       scope: "",
-      scopeError: ""
+      scopeError: "",
+      formattedDate: "",
+      editTitle: "",
+      announcementError: false,
+      errorMessage: ""
     },
     created() {
       this.usersLoading = true;
@@ -211,15 +215,23 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       announcement: function() {
         axios
-          .post(`/announcements/`, {
-            announcements: this.announcements
-          })
+          .post(`/announcements/`, {announcements: this.announcements})
           .then(response => {
             if (response.data.status == "created") {
-              this.announcement.push(response.data);
+              this.announcements.push(response.data);
               this.flash("Announcement created", "success", { timeout: 3000 });
+              console.log(this.announcements); 
             }
-          });
+            this.newAnnouncementConfirmation = true;
+          }).catch((error)=>{
+            if(error.response){
+              this.announcementError = true;
+              this.errorMessage = error.message;
+              
+            }
+            this.newAnnouncementConfirmation = false;
+          })
+          ;
       },
       setTitle(event){
         this.title = event.target.value;
