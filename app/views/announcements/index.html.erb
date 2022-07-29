@@ -1,7 +1,7 @@
 <% content_for :vue_js do %>
   <%= javascript_pack_tag 'admin_vue' %>
 <% end %>
-    
+
 <flash-message class="flash-ah-ah"></flash-message>
 
 <section class="section">
@@ -37,6 +37,9 @@
           <th>End Time</th>
           <th>DownTime</th>
           <th>Scope</th>
+          <th></th>
+          <th>Actions</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -53,10 +56,27 @@
           <td class="user-username"><%=msg.scope%></td>
           <td class="user-username"><b><%= link_to "Preview", announcement_path(msg)%></b></td>
           <td class="user-username"><b><%= link_to "Edit", edit_announcement_path(msg)%></b></td>
-          <td class="user-username"><b><%= link_to "Delete", announcement_path(msg),
-          method: :delete,
-          data: { confirm: "Are you sure?" } %></b></td>
+          <td class="user-username"><b><a data-toggle="modal" data-target="#exampleModal<%= msg.id %>">Delete</a></b></td>
         </tr>
+        <section class="section">
+<div id="exampleModal<%= msg.id %>" v-bind:class="{modal: true}">
+<div class="modal-background"></div>
+<div class="modal-card">
+  <header class="modal-card-head">
+    <p class="modal-card-title">Delete Announcement</p>
+    <button class="delete" aria-label="close" data-dismiss="modal"></button>
+  </header>
+  <section class="modal-card-body">
+   <div class="field">
+      <label class="label">Are you sure want to delete this announcement for <b>'<%= msg.scope %>'</b>?</label>
+    </div>  
+  <footer class="modal-card-foot">
+        <b><%= link_to 'Yes', announcement_path(msg), method: :delete, :class => 'button is-danger is-pulled-left' %><b>
+        <b><%= link_to 'No', announcements_path(), :class => 'button is-primary is-pulled-right' %><b>
+  </footer>
+</div>
+</div>
+</section>
       <%end%>
       </tbody>
 </table>
@@ -66,3 +86,6 @@
 </section>
 
 <%= render '/announcements/new'%>
+
+
+

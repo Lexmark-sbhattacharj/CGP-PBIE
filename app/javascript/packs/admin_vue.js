@@ -52,7 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
       scope: "",
       scopeError: "",
       formattedDate: "",
-      editTitle: "" 
+      editTitle: "",
+      announcementError: false,
+      errorMessage: "",
+      successMessage: ""
     },
     created() {
       this.workspacesLoading = true;
@@ -220,15 +223,23 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       announcement: function() {
         axios
-          .post(`/announcements/`, {
-            announcements: this.announcements
-          })
+          .post(`/announcements/`, {announcements: this.announcements})
           .then(response => {
             if (response.data.status == "created") {
               this.announcements.push(response.data);
               this.flash("Announcement created", "success", { timeout: 3000 });
+              console.log(this.announcements); 
             }
-          });
+            this.newAnnouncementConfirmation = true;
+          }).catch((error)=>{
+            if(error.response){
+              this.announcementError = true;
+              this.errorMessage = error.message;
+              
+            }
+            this.newAnnouncementConfirmation = false;
+          })
+          ;
       },
       backToAnnouncement: function() {
         location.href = "/announcements";

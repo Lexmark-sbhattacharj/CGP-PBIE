@@ -4,7 +4,7 @@
 <div class="modal-card">
   <header class="modal-card-head">
     <p class="modal-card-title">Create Announcement</p>
-    <button class="delete" aria-label="close" v-on:click="newAnnouncement=false; announcements.title = ''; announcements.start_date = '', announcements.end_date = '', announcements.scope = ''"></button>
+    <button class="delete" aria-label="close" v-on:click="announcementError=false; newAnnouncement=false; announcements.title = ''; announcements.start_date = '', announcements.end_date = '', announcements.scope = ''"></button>
   </header>
   <section class="modal-card-body">
    <div class="field">
@@ -49,13 +49,32 @@
   </section>
   
   <footer class="modal-card-foot">
-    <button :disabled="!isDisabled" class="button is-success" v-on:click="announcement();  newAnnouncement = false; newAnnouncementConfirmation = true; announcements.title = ''; announcements.start_date = '', announcements.end_date = ''">Submit</button>
+    <button class="button is-success" v-on:click="announcement(); newAnnouncement = false; announcements.title = ''; announcements.start_date = '', announcements.end_date = ''">Submit</button>
   </footer>
 </div>
 </div>
 </section>
+
 <section class="section">
-<div v-bind:class="{modal: true, 'is-active': newAnnouncementConfirmation }">
+<div v-bind:class="{modal: true, 'is-active': announcementError }">
+<div class="modal-background"></div>
+<div class="modal-card">
+  <header class="modal-card-head">
+    <p class="modal-card-title">Oops!</p>
+    <button class="delete" aria-label="close" v-on:click="announcementError=false;  newAnnouncementConfirmation=false;backToAnnouncement();"></button>
+  </header>
+  <section class="modal-card-body">
+  <div class="field">
+      <label class="label in-danger">Currently there is an issue with our system. Please try again after sometime.</label>
+    </div>
+  </section>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div v-bind:class="{modal: true, 'is-active': (newAnnouncementConfirmation && !announcementError ) }">
 <div class="modal-background"></div>
 <div class="modal-card">
   <header class="modal-card-head">
@@ -67,7 +86,6 @@
       <label class="label">Announcement created successfully</label>
     </div>
   </section>
-
 </div>
 </div>
 </section>

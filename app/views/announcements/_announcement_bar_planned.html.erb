@@ -54,8 +54,11 @@
   
 <% navBar = false %>
 <%for x in Announcement.all%>
-<%if (x.end_date.strftime('%m-%d-%Y  %H:%M:%S') > Time.now.strftime('%m-%d-%Y  %H:%M:%S'))%>
+<%x.scope=="Global" ? startdate=((x.start_date)-7.days).strftime('%d-%m-%Y  %H:%M:%S') : startdate=(x.start_date).strftime('%d-%m-%Y  %H:%M:%S')%>
+<%enddate=(x.end_date).strftime('%d-%m-%Y  %H:%M:%S')%>
+  <%if (Time.now.strftime('%d-%m-%Y  %H:%M:%S')).between?(startdate,enddate)%>
 <%navBar = true%>
+<%break%>
 <%else%>
 <%navBar = false%>
 <%end%>
